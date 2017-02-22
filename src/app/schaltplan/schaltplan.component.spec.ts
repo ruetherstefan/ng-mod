@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
 import {SchaltplanComponent} from './schaltplan.component';
-import {Baustein} from "../shared/Schiene";
+import {Baustein, Richtung, Weiche, Gleis} from "../shared/Schiene";
 
 describe('SchaltplanComponent', () => {
   let component: SchaltplanComponent;
@@ -68,16 +68,15 @@ describe('SchaltplanComponent', () => {
   });
 
   it('should show gefordertes Bild', () => {
-    let schiene: Baustein = {'bildAdresse': "../assets/img/weiche_von_links_nach_rechts_oben.png"};
-    component.schaltplan = [[neueHorSchiene()]];
+    component.schaltplan = [[new Weiche(Richtung.VON_LINKS_NACH_RECHTS_OBEN)]];
 
     fixture.detectChanges();
 
     let img = fixture.debugElement.query(By.css('#schaltplanDiv')).query(By.css('img'));
-    expect(img.nativeElement.src.search("weiche_von_links_nach_rechts_oben.png")).toBeTruthy();
+    expect(img.nativeElement.src.search(new Weiche(Richtung.VON_LINKS_NACH_RECHTS_OBEN).bildAdresse)).toBeTruthy();
   });
 
   function neueHorSchiene(): Baustein {
-    return {'bildAdresse': "../assets/img/gleis_horizontal.png"};
+    return new Gleis(Richtung.HORIZONTAL);
   }
-}
+});

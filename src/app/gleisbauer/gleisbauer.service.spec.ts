@@ -4,7 +4,7 @@ import {TestBed, async, inject} from '@angular/core/testing';
 import {GleisbauerService} from './gleisbauer.service';
 import {Baustein, Leer} from '../shared/Schiene';
 
-fdescribe('GleisbauerService', () => {
+describe('GleisbauerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [GleisbauerService]
