@@ -2,8 +2,17 @@ export interface Baustein {
   bildAdresse: String;
 }
 
+function gibBildordner() {
+  return "../assets/img/";
+}
+
 export class Leer implements Baustein {
-  bildAdresse: '../assets/img/leer.png'
+  bildAdresse: String;
+
+  constructor() {
+    this.bildAdresse = gibBildordner() + "leer.png"
+  }
+
 }
 
 export class Gleis implements Baustein {
@@ -23,9 +32,6 @@ export class Gleis implements Baustein {
   }
 }
 
-function gibBildordner() {
-  return "../assets/img/";
-}
 export class Weiche implements Gleis {
   bildAdresse: String;
 
@@ -46,6 +52,8 @@ export class Weiche implements Gleis {
 
 export enum Richtung {
   HORIZONTAL,
-  VON_LINKS_NACH_RECHTS_OBEN
+  VERTICAL,
 
+  VON_LINKS_NACH_RECHTS_OBEN,
+  VON_OBEN_NACH_LINKS_UNTEN
 }

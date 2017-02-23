@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Baustein} from "../shared/Schiene";
+import {Baustein, Gleis, Richtung} from "../shared/Schiene";
 import {GleisbauerService} from "../gleisbauer/gleisbauer.service";
 
 @Component({
@@ -16,8 +16,10 @@ export class SchaltplanComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.schaltplan = [[{'bildAdresse': "../assets/img/gleis_horizontal.png"}, {'bildAdresse': "../assets/img/gleis_horizontal.png"}],
-      [{'bildAdresse': "../assets/img/gleis_horizontal.png"}]];
+    this.schaltplan = this.gleisbauerService.neu(30, 30).setzePosition(10, 10)
+      .setzeBausteinAnAktuellePosition(new Gleis(Richtung.VERTICAL))
+      .setzeBausteinUntenDaneben(new Gleis(Richtung.VON_OBEN_NACH_LINKS_UNTEN))
+      .end();
   }
 
 }
