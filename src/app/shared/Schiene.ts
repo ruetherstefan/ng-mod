@@ -16,13 +16,16 @@ export class Gleis implements Baustein {
   gibBidZuRichtung(richtung: Richtung) {
     switch (richtung) {
       case Richtung.HORIZONTAL :
-        return "../assets/img/gleis_horizontal.png";
+        return gibBildordner() + "gleis_horizontal.png";
       default :
         throw Error();
     }
   }
 }
 
+function gibBildordner() {
+  return "../assets/img/";
+}
 export class Weiche implements Gleis {
   bildAdresse: String;
 
@@ -33,13 +36,12 @@ export class Weiche implements Gleis {
   gibBidZuRichtung(richtung: Richtung) {
     switch (richtung) {
       case Richtung.VON_LINKS_NACH_RECHTS_OBEN :
-        return "../assets/img/weiche_von_links_nach_rechts_oben.png";
+        return gibBildordner() + "weiche_von_links_nach_rechts_oben.png";
       default :
         throw Error();
     }
   }
 }
-
 
 
 export enum Richtung {
