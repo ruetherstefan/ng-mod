@@ -16,7 +16,7 @@ export class SchaltplanComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.schaltplan = this.gleisbauerService.neu(20, 20).setzePosition(10, 10)
+    this.schaltplan = this.gleisbauerService.neu(15, 15).setzePosition(10, 10)
       .setzeBausteinAnAktuellePosition(new Gleis(Richtung.VERTICAL))
       .setzeBausteinUntenDaneben(new Gleis(Richtung.VON_OBEN_NACH_LINKS_UNTEN))
       .setzeBausteinLinksUntenDaneben(new Gleis(Richtung.VON_LINKS_NACH_RECHTS_OBEN))

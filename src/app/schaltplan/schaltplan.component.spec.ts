@@ -6,7 +6,7 @@ import {DebugElement} from '@angular/core';
 import {SchaltplanComponent} from './schaltplan.component';
 import {Baustein, Richtung, Weiche, Gleis} from "../shared/Schiene";
 
-describe('SchaltplanComponent', () => {
+fdescribe('SchaltplanComponent', () => {
   let component: SchaltplanComponent;
   let fixture: ComponentFixture<SchaltplanComponent>;
 
@@ -79,4 +79,15 @@ describe('SchaltplanComponent', () => {
   function neueHorSchiene(): Baustein {
     return new Gleis(Richtung.HORIZONTAL);
   }
+
+
+  it('Weiche nach Rechts sollte Markierung zur Weichenstellung anzeigen', () => {
+    component.schaltplan = [[new Weiche(Richtung.VON_LINKS_NACH_RECHTS_UNTEN)]];
+
+    fixture.detectChanges();
+
+    let img = fixture.debugElement.query(By.css('#schaltplanDiv')).query(By.css('#weichenstellung_rechts'));
+    expect(img.nativeElement).toBeTruthy();
+  });
+
 });

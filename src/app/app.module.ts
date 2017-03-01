@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {SchaltplanComponent} from './schaltplan/schaltplan.component';
+import {BasteleckeComponent} from './bastelecke/bastelecke.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SchaltplanComponent
+    SchaltplanComponent,
+    BasteleckeComponent
   ],
   imports: [
     BrowserModule,
