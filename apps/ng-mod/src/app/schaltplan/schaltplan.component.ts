@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Baustein, Gleis, Weiche, Richtung} from "../shared/Schiene";
 import {GleisbauerService} from "../gleisbauer/gleisbauer.service";
 
+import * as SerialPort from 'serialport';
+
 @Component({
   selector: 'ad-ng-mod-schaltplan',
   templateUrl: './schaltplan.component.html',
@@ -33,6 +35,30 @@ export class SchaltplanComponent implements OnInit {
       .setzeBausteinRechtsDaneben(new Gleis(Richtung.HORIZONTAL))
 
       .end();
+  }
+
+
+  testSerialConnection() {
+    console.log("testSerialConnection");
+
+
+    //var SerialPort = require('serialport');
+    //var port = new SerialPort('COM3', {baudRate: 19200});
+    //let port = new SerialPort('');
+
+    /*
+    port.write('1', function(err) {
+      if (err) {
+        return console.log('Error on write: ', err.message);
+      }
+      console.log('message written');
+    });
+
+    // Open errors will be emitted as an error event
+    port.on('error', function(err) {
+      console.log('Error: ', err.message);
+    })*/
+    
   }
 
 }
