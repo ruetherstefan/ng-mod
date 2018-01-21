@@ -57,8 +57,8 @@ class GleisRechtsNachUnten(Baustein):
 #Weichen
 
 class Weichenstellung(Enum):
-    GESCHLOSSEN = 1
-    OFFEN = 2
+    GERADE = 1
+    ABZWEIGEND = 2
 
 
 
@@ -67,8 +67,8 @@ class Weiche(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.weichenstellung = Weichenstellung.GESCHLOSSEN
-
+        self.weichenstellung = Weichenstellung.GERADE
+        self.weichenstellung_bild = {}
 
 
 class WeicheRechtsNachUnten(Weiche):
@@ -101,7 +101,6 @@ class WeicheLinksNachOben(Weiche):
         super().__init__(screen)
 
         self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_tl1.xpm").convert()
-        self.weichenstellung_bild = pygame.image.load(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
 
 
 class WeicheLinksUntenNachOben(Weiche):
@@ -110,11 +109,16 @@ class WeicheLinksUntenNachOben(Weiche):
         super().__init__(screen)
 
         self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_dtr.xpm").convert()
-        self.weichenstellung_bild = pygame.image.load(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
+
+        self.weichenstellung_bild[Weichenstellung.GERADE] = pygame.image.load(
+            Baustein.bilder_ordner + "Markierungen/WeicheRechtsOben.png")
+
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = pygame.image.load(
+            Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
 
     def draw(self):
         super().draw()
-        self.screen.blit(self.weichenstellung_bild, self.get_position())
+        self.screen.blit(self.weichenstellung_bild.get(self.weichenstellung), self.get_position())
 
 class WeicheYR(Weiche):
 
