@@ -2,6 +2,7 @@ import pygame
 from enum import Enum
 
 from src.baustein.Baustein import Baustein
+from src.util.Bilder import *
 
 
 class GleisHorizontal(Baustein):
@@ -9,48 +10,49 @@ class GleisHorizontal(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_trh.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_trh.xpm")
+
 
 class GleisVertikal(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_trv.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_trv.xpm")
 
 class GleisUntenNachRechts(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_cr2.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr2.xpm")
 
 class GleisObenNachLinks(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_cr4.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr4.xpm")
 
 class GleisLinksNachOben(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_cl1.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl1.xpm")
 
 class GleisLinksNachUnten(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_cr1.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr1.xpm")
 
 class GleisRechtsNachUnten(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_cl3.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl3.xpm")
 
 
 
@@ -76,7 +78,7 @@ class WeicheRechtsNachUnten(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_tl3.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_tl3.xpm")
 
 
 class WeicheRechtsNachOben(Weiche):
@@ -84,7 +86,7 @@ class WeicheRechtsNachOben(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_tr3.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_tr3.xpm")
 
 
 class WeicheLinksNachUnten(Weiche):
@@ -92,7 +94,7 @@ class WeicheLinksNachUnten(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_tr1.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_tr1.xpm")
 
 
 class WeicheLinksNachOben(Weiche):
@@ -100,7 +102,7 @@ class WeicheLinksNachOben(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_tl1.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_tl1.xpm")
 
 
 class WeicheLinksUntenNachOben(Weiche):
@@ -108,12 +110,12 @@ class WeicheLinksUntenNachOben(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_dtr.xpm").convert()
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_dtr.xpm")
 
-        self.weichenstellung_bild[Weichenstellung.GERADE] = pygame.image.load(
+        self.weichenstellung_bild[Weichenstellung.GERADE] = get_image(
             Baustein.bilder_ordner + "Markierungen/WeicheRechtsOben.png")
 
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = pygame.image.load(
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = get_image(
             Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
 
     def draw(self):
