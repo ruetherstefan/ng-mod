@@ -79,7 +79,10 @@ while not done:
         elif event.type == pygame.KEYUP:
             print("User let go of a key.")
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            print("User pressed a mouse button")
+            for gleis in gleise:
+                if gleis.bild.get_rect().move(gleis.get_position()).collidepoint(event.pos):
+                    if isinstance(gleis, Weiche):
+                        gleis.aendereWeichenstellung()
 
     # --- Game logic should go here
 

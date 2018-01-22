@@ -72,6 +72,11 @@ class Weiche(Baustein):
         self.weichenstellung = Weichenstellung.GERADE
         self.weichenstellung_bild = {}
 
+    def aendereWeichenstellung(self):
+        if self.weichenstellung == Weichenstellung.GERADE:
+            self.weichenstellung = Weichenstellung.ABZWEIGEND
+        else:
+            self.weichenstellung = Weichenstellung.GERADE
 
 class WeicheRechtsNachUnten(Weiche):
 
