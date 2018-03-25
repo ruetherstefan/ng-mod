@@ -26,7 +26,7 @@ class Streckenplaner:
             .rechter_nachbar(WeicheRechtsNachOben(screen)) \
             .rechter_nachbar(WeicheLinksNachOben(screen)) \
             .rechter_nachbar(GleisLinksNachUnten(screen)) \
-            .rechts_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .rechts_unten_nachbar(WeicheRechtsUntenNachOben(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -57,8 +57,8 @@ class Streckenplaner:
             .unterer_nachbar(GleisVertikal(screen)) \
             .unterer_nachbar(GleisVertikal(screen)) \
             .unterer_nachbar(GleisVertikal(screen)) \
-            .unterer_nachbar(GleisObenNachLinks(screen)) \
-            .rechts_unten_nachbar(GleisRechtsNachUnten(screen)) \
+            .unterer_nachbar(GleisObenNachRechts(screen)) \
+            .rechts_unten_nachbar(GleisRechtsNachOben(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
@@ -85,7 +85,7 @@ class Streckenplaner:
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisVertikal(screen)) \
-            .oberer_nachbar(GleisUntenNachRechts(screen)) \
+            .oberer_nachbar(GleisUntenNachLinks(screen)) \
             .links_oben_nachbar(GleisLinksNachUnten(screen)) \
             .linker_nachbar(WeicheRechtsNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -98,8 +98,8 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
-            .links_unten_nachbar(WeicheRechtsNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
+            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -110,8 +110,8 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
-            .links_unten_nachbar(WeicheRechtsNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
+            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -122,7 +122,7 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
             .links_unten_nachbar(GleisLinksNachOben(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -132,8 +132,8 @@ class Streckenplaner:
             .links_unten_nachbar(WeicheLinksNachOben(screen)) \
             .linker_nachbar(WeicheRechtsNachUnten(screen)) \
  \
-            .linker_nachbar(GleisRechtsNachUnten(screen)) \
-            .links_oben_nachbar(GleisObenNachLinks(screen)) \
+            .linker_nachbar(GleisRechtsNachOben(screen)) \
+            .links_oben_nachbar(GleisObenNachRechts(screen)) \
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisVertikal(screen)) \
@@ -156,7 +156,7 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisLinksNachOben(screen)) \
             .rechts_oben_nachbar(GleisObenNachLinks(screen)) \
-            .oberer_nachbar(GleisUntenNachRechts(screen)) \
+            .oberer_nachbar(GleisUntenNachLinks(screen)) \
             .ende()
         return gleise
 
