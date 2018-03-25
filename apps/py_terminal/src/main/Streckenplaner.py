@@ -6,7 +6,7 @@ class Streckenplaner:
 
     def plane_ennepetal(self, screen):
         gleis1 = GleisHorizontal(screen)
-        gleis1.set_position_index([25, 10])
+        gleis1.set_position_index([23, 9])
 
         # Hauptbahnhof
         gleise = Gleisschrauber().neu(gleis1) \
@@ -38,12 +38,125 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(WeicheLinksNachOben(screen)) \
+        \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(GleisUntenNachRechts(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisObenNachLinks(screen)) \
+            .rechts_unten_nachbar(GleisRechtsNachUnten(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+        \
+            .rechter_nachbar(WeicheLinksNachOben(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisLinksNachOben(screen)) \
+            .rechts_oben_nachbar(WeicheRechtsNachUnten(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisLinksNachOben(screen)) \
+            .rechts_oben_nachbar(GleisObenNachLinks(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisUntenNachRechts(screen)) \
+            .links_oben_nachbar(GleisLinksNachUnten(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisRechtsNachUnten(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
+            .links_unten_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
+            .links_unten_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(WeicheRechtsNachUnten(screen)) \
+            .links_unten_nachbar(GleisLinksNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksNachOben(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+ \
+            .linker_nachbar(GleisRechtsNachUnten(screen)) \
+            .links_oben_nachbar(GleisObenNachLinks(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisUntenNachRechts(screen)) \
+            .rechts_oben_nachbar(GleisRechtsNachUnten(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisLinksNachOben(screen)) \
+            .rechts_oben_nachbar(GleisObenNachLinks(screen)) \
+            .oberer_nachbar(GleisUntenNachRechts(screen)) \
             .ende()
         return gleise
 
