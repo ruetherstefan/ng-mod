@@ -11,6 +11,39 @@ class Streckenplaner:
         # Hauptbahnhof
         gleise = Gleisschrauber().neu(gleis1) \
             .linker_nachbar(WeicheLinksNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisRechtsNachUnten(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(WeicheRechtsNachOben(screen)) \
+            .rechter_nachbar(WeicheLinksNachOben(screen)) \
+            .rechter_nachbar(GleisLinksNachUnten(screen)) \
+            .rechts_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
             .ende()
         return gleise
 
