@@ -4,6 +4,10 @@ from src.baustein.Baustein import Gleisschrauber
 
 class Streckenplaner:
 
+    def __init__(self):
+        self.strecke_y = 9
+        self.strecke_x = 23
+
     def plane_ennepetal(self, screen):
 
 
@@ -15,7 +19,7 @@ class Streckenplaner:
     def erstelle_haupt_und_schattenbahnhof(self, screen):
         # Hauptbahnhof und Schattenbahnhof
         haupt1 = GleisHorizontal(screen)
-        haupt1.set_position_index([23, 9])
+        haupt1.set_position_index([self.strecke_x, self.strecke_y])
         gleise = Gleisschrauber().neu(haupt1) \
             .linker_nachbar(WeicheLinksNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -170,7 +174,7 @@ class Streckenplaner:
     def erstelle_ebene1_hinten(self, screen):
         # Ebene1 hinten
         ebene1hintenbeginn = GleisObenNachLinks(screen)
-        ebene1hintenbeginn.set_position_index([25, 9])
+        ebene1hintenbeginn.set_position_index([self.strecke_x + 2, self.strecke_y])
 
         ebene1hinten = Gleisschrauber().neu(ebene1hintenbeginn)\
             .oberer_nachbar(GleisVertikal(screen)) \
