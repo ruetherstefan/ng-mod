@@ -5,11 +5,18 @@ from src.baustein.Baustein import Gleisschrauber
 class Streckenplaner:
 
     def plane_ennepetal(self, screen):
-        gleis1 = GleisHorizontal(screen)
-        gleis1.set_position_index([23, 9])
 
-        # Hauptbahnhof
-        gleise = Gleisschrauber().neu(gleis1) \
+
+        gleise = self.erstelle_haupt_und_schattenbahnhof(screen)
+        gleise.extend(self.erstelle_ebene1_hinten(screen))
+
+        return gleise
+
+    def erstelle_haupt_und_schattenbahnhof(self, screen):
+        # Hauptbahnhof und Schattenbahnhof
+        haupt1 = GleisHorizontal(screen)
+        haupt1.set_position_index([23, 9])
+        gleise = Gleisschrauber().neu(haupt1) \
             .linker_nachbar(WeicheLinksNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -38,7 +45,7 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(WeicheLinksNachOben(screen)) \
-        \
+ \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -63,7 +70,7 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-        \
+ \
             .rechter_nachbar(WeicheLinksNachOben(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisLinksNachOben(screen)) \
@@ -160,21 +167,9 @@ class Streckenplaner:
             .ende()
         return gleise
 
-
-
-
-
-
-
-
-
-
-
-
-
-#gleis2 = GleisVertikal(screen)
-#gleis2.set_position_index([gleis1.get_position_index()[0] + 1, gleis1.get_position_index()[1] + 1])
-
-#abschnitt2 = Gleisschrauber().neu(gleis2)\
-#    .unterer_nachbar(GleisObenNachLinks(screen))\
-#gleise.extend(abschnitt2)
+    def erstelle_ebene1_hinten(self, screen):
+        # Ebene1 hinten
+        ebene1hintenbeginn = GleisObenNachLinks(screen)
+        ebene1hintenbeginn.set_position_index([25, 9])
+        ebene1hinten = Gleisschrauber().neu(ebene1hintenbeginn).ende()
+        return ebene1hinten
