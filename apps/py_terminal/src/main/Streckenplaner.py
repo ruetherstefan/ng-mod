@@ -171,5 +171,27 @@ class Streckenplaner:
         # Ebene1 hinten
         ebene1hintenbeginn = GleisObenNachLinks(screen)
         ebene1hintenbeginn.set_position_index([25, 9])
-        ebene1hinten = Gleisschrauber().neu(ebene1hintenbeginn).ende()
+
+        ebene1hinten = Gleisschrauber().neu(ebene1hintenbeginn)\
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisUntenNachLinks(screen)) \
+            .links_oben_nachbar(GleisLinksNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksNachOben(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .links_unten_nachbar(GleisLinksNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(GleisUntenNachRechts(screen)) \
+            .unterer_nachbar(GleisVertikal(screen)) \
+            .unterer_nachbar(GleisObenNachLinks(screen)) \
+            .ende()
         return ebene1hinten
