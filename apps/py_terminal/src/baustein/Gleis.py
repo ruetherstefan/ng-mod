@@ -27,6 +27,20 @@ class GleisUntenNachRechts(Baustein):
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr2.xpm")
 
+class GleisUntenNachLinks(Baustein):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl2.xpm")
+
+class GleisObenNachRechts(Baustein):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl4.xpm")
+
 class GleisObenNachLinks(Baustein):
 
     def __init__(self, screen):
@@ -47,6 +61,12 @@ class GleisLinksNachUnten(Baustein):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr1.xpm")
+
+class GleisRechtsNachOben(Baustein):
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr3.xpm")
 
 class GleisRechtsNachUnten(Baustein):
     def __init__(self, screen):
@@ -110,6 +130,30 @@ class WeicheLinksNachOben(Weiche):
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_tl1.xpm")
 
 
+class WeicheRechtsObenNachUnten(Weiche):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_dbr.xpm")
+
+
+class WeicheRechtsUntenNachOben(Weiche):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_dtl.xpm")
+
+
+class WeicheLinksObenNachUnten(Weiche):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "spdritem_dbl.xpm")
+
+
 class WeicheLinksUntenNachOben(Weiche):
 
     def __init__(self, screen):
@@ -132,4 +176,4 @@ class WeicheYR(Weiche):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_syr.xpm").convert()
+        self.bild = pygame.image.load(Baustein.bilder_ordner + "spdritem_syr.xpm")

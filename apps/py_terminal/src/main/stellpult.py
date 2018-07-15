@@ -1,7 +1,7 @@
 import pygame
 
 from src.baustein.Gleis import *
-from src.baustein.Baustein import Gleisschrauber
+from src.main.Streckenplaner import Streckenplaner
 
 
 BLACK = (0, 0, 0)
@@ -18,46 +18,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Stellpult Prototyp")
 
 
-# load images
-gleis1 = GleisVertikal(screen)
-gleis1.set_position_index([25, 10])
-
-gleise = Gleisschrauber().neu(gleis1)\
-    .unterer_nachbar(GleisObenNachLinks(screen))\
-    .links_unten_nachbar(GleisLinksNachOben(screen))\
-    .linker_nachbar(WeicheLinksNachUnten(screen)) \
-    .linker_nachbar(WeicheRechtsNachOben(screen)) \
-    .links_oben_nachbar(GleisLinksNachUnten(screen)) \
-    .linker_nachbar(GleisHorizontal(screen)) \
-    .linker_nachbar(GleisHorizontal(screen)) \
-    .linker_nachbar(GleisRechtsNachUnten(screen)) \
-    .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
-    .rechter_nachbar(GleisHorizontal(screen)) \
-    .rechter_nachbar(GleisHorizontal(screen)) \
-    .rechter_nachbar(GleisHorizontal(screen)) \
-    .rechter_nachbar(GleisHorizontal(screen)) \
-    .ende()
-
-
-
-gleis2 = GleisVertikal(screen)
-gleis2.set_position_index([gleis1.get_position_index()[0] + 1, gleis1.get_position_index()[1] + 1])
-
-abschnitt2 = Gleisschrauber().neu(gleis2)\
-    .unterer_nachbar(GleisObenNachLinks(screen))\
-    .links_unten_nachbar(GleisLinksNachOben(screen))\
-    .linker_nachbar(WeicheRechtsNachOben(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(GleisHorizontal(screen))\
-    .linker_nachbar(WeicheLinksUntenNachOben(screen))\
-    .links_unten_nachbar(GleisUntenNachRechts(screen))\
-    .ende()
-gleise.extend(abschnitt2)
+gleise = Streckenplaner().plane_ennepetal(screen)
 
 
 

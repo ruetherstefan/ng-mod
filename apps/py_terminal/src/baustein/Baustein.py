@@ -62,7 +62,7 @@ class Gleisschrauber:
     def oberer_nachbar(self, baustein):
         self.bausteine.append(baustein)
         letzter_index = self.letzter_baustein.get_position_index()
-        baustein.set_position_index([letzter_index[0], letzter_index[1] + 1])
+        baustein.set_position_index([letzter_index[0], letzter_index[1] - 1])
 
         self.letzter_baustein = baustein
         return self
@@ -81,6 +81,22 @@ class Gleisschrauber:
         self.bausteine.append(baustein)
         letzter_index = self.letzter_baustein.get_position_index()
         baustein.set_position_index([letzter_index[0] - 1, letzter_index[1] - 1])
+
+        self.letzter_baustein = baustein
+        return self
+
+    def rechts_unten_nachbar(self, baustein):
+        self.bausteine.append(baustein)
+        letzter_index = self.letzter_baustein.get_position_index()
+        baustein.set_position_index([letzter_index[0] + 1, letzter_index[1] + 1])
+
+        self.letzter_baustein = baustein
+        return self
+
+    def rechts_oben_nachbar(self, baustein):
+        self.bausteine.append(baustein)
+        letzter_index = self.letzter_baustein.get_position_index()
+        baustein.set_position_index([letzter_index[0] + 1, letzter_index[1] - 1])
 
         self.letzter_baustein = baustein
         return self
