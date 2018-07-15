@@ -6,18 +6,18 @@ class Streckenplaner:
 
     def __init__(self):
         self.strecke_y = 9
-        self.strecke_x = 23
+        self.strecke_x = 20
 
     def plane_ennepetal(self, screen):
 
 
         gleise = self.erstelle_haupt_und_schattenbahnhof(screen)
         gleise.extend(self.erstelle_ebene1_hinten(screen))
+        gleise.extend(self.erstelle_ebene2(screen))
 
         return gleise
 
     def erstelle_haupt_und_schattenbahnhof(self, screen):
-        # Hauptbahnhof und Schattenbahnhof
         haupt1 = GleisHorizontal(screen)
         haupt1.set_position_index([self.strecke_x, self.strecke_y])
         gleise = Gleisschrauber().neu(haupt1) \
@@ -172,7 +172,6 @@ class Streckenplaner:
         return gleise
 
     def erstelle_ebene1_hinten(self, screen):
-        # Ebene1 hinten
         ebene1hintenbeginn = GleisObenNachLinks(screen)
         ebene1hintenbeginn.set_position_index([self.strecke_x + 2, self.strecke_y])
 
@@ -214,3 +213,63 @@ class Streckenplaner:
         ebene1hinten.extend(oberer_teil)
 
         return ebene1hinten
+
+    def erstelle_ebene2(self, screen):
+        ebene2beginn = GleisRechtsNachUnten(screen)
+        ebene2beginn.set_position_index([self.strecke_x - 5, self.strecke_y - 4])
+
+        ebene2 = Gleisschrauber().neu(ebene2beginn) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisLinksNachOben(screen)) \
+            .rechts_oben_nachbar(GleisObenNachLinks(screen)) \
+            .oberer_nachbar(GleisVertikal(screen)) \
+            .oberer_nachbar(GleisUntenNachLinks(screen)) \
+            .links_oben_nachbar(GleisLinksNachUnten(screen)) \
+            .linker_nachbar(WeicheRechtsNachOben(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .links_unten_nachbar(GleisLinksNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .links_oben_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechts_oben_nachbar(GleisLinksNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisRechtsNachUnten(screen)) \
+            .links_unten_nachbar(WeicheLinksNachOben(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .unterer_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisHorizontal(screen)) \
+            .rechter_nachbar(GleisLinksNachOben(screen)) \
+            .ende()
+
+        return ebene2
