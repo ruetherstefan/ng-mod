@@ -198,4 +198,19 @@ class Streckenplaner:
             .unterer_nachbar(GleisVertikal(screen)) \
             .unterer_nachbar(GleisObenNachLinks(screen)) \
             .ende()
+
+        oberer_teil_gleis1 = GleisHorizontal(screen)
+        oberer_teil_gleis1.set_position_index([self.strecke_x - 8, self.strecke_y - 3])
+        oberer_teil = Gleisschrauber().neu(oberer_teil_gleis1) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(WeicheRechtsNachOben(screen)) \
+            .linker_nachbar(GleisRechtsNachUnten(screen)) \
+            .oberer_nachbar(GleisLinksNachUnten(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .linker_nachbar(GleisHorizontal(screen)) \
+            .ende()
+
+        ebene1hinten.extend(oberer_teil)
+
         return ebene1hinten
