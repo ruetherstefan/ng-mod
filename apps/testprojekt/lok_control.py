@@ -6,13 +6,14 @@
 # 06.03.2016 - 1.01: Command Lok_stop() with realtime measurement
 # 16.03.2016 - 1.02: Command Lok_go(), Read & print of IB answers
 # 17.03.2016 - 1.03: Implementation of Hex commands variants
+#                    Achtung: Funktion lok_cmd() in Entwicklung und Fehlerhaft.
 
 import serial
 # import timeit
 import time
 
 # Global definition of the COM port
-ser = serial.Serial('COM4')  # open serial port
+ser = serial.Serial('COM3')  # open serial port
 CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
@@ -140,6 +141,7 @@ def lok_halt():
         print('Runtime of Lok_halt():', time.perf_counter() - timestamp, 'sec\n')
 
 
+
 # function lok_cmd()
 # Control of one Lok, with all relevant parameters
 #
@@ -211,11 +213,10 @@ def lok_cmd(addr_low, addr_high, speed, direction, frontlight, f1):
 #################
 
 initialisation()
-
 # --------------------------------------
 # Test 1:
 # Aus- und einschalten der Lokversorgung
-lok_halt()
+lok_stop_pwr_off()
 # nachfolgender Reset hat nicht die Auswirkung, dass restliche Bytes im Buffer gelöscht werden.
 # ser.reset_input_buffer()
 lok_go()
