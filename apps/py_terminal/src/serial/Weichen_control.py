@@ -19,23 +19,26 @@ import serial
 # import timeit
 import time
 
-# Global definition of the COM port
-ser = serial.Serial('COM3')  # open serial port
+ser = serial.Serial()
+
 CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
-
+CONF_OFFLINE = True
 
 def initialisation():
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
-    ser.bautrate = 9600
-    ser.stopbits = 2
-    ser.rtscts = False
+    if not CONF_OFFLINE:
+        # Global definition of the COM port
+        serial.port = 'COM3'
+        ser.bautrate = 9600
+        ser.stopbits = 2
+        ser.rtscts = False
 
-    if CONF_DEBUG:
-        print('Initialisation() -> Used COM Port', ser.name)  # check which port was really used
+        if CONF_DEBUG:
+            print('Initialisation() -> Used COM Port', ser.name)  # check which port was really used
 
     if CONF_RUNTIME:
         print('Runtime of Initialisation:', time.perf_counter() - timestamp, 'sec\n')
@@ -49,7 +52,8 @@ def de_initialisation():
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
-    ser.close()  # close serial port
+    if not CONF_OFFLINE:
+        ser.close()  # close serial port
 
     if CONF_RUNTIME:
         print('Runtime of De_Initialisation:', time.perf_counter() - timestamp, 'sec\n')
@@ -71,48 +75,49 @@ def turnout_set_for_route(str_addr_low, str_addr_high, bol_color):
         # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
     #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
 
-    if CONF_HEX:
-        # with this command we setting F1..F4 and
-        # forcing the cmd that PC and IB can work in parallel
-        #var_2nd_byte = 0x60 + addr_high
-        if bol_color:
-            string_2nd_byte = b'\xE0'
+    if not CONF_OFFLINE:
+        if CONF_HEX:
+            # with this command we setting F1..F4 and
+            # forcing the cmd that PC and IB can work in parallel
+            #var_2nd_byte = 0x60 + addr_high
+            if bol_color:
+                string_2nd_byte = b'\xE0'
+            else:
+                string_2nd_byte = b'\x60'
+
+            if CONF_DEBUG:
+                print('2nd byte', string_2nd_byte)
+
+            #string = addr_low + addr_high + var_2nd_byte
+            #if CONF_DEBUG:
+            #    print('sting', string)
+
+            # XTrnt (090h) + 2 Byte
+            string1 = b'\x90'
+            ser.write(string1)
+
+            ser.write(str_addr_low)
+
+            # string3 = b'\xE0'
+            ser.write(string_2nd_byte)
+
+            #ser.write(b'\xA7')
+            # ser.write(var_2nd_byte)
+
+            Answer = ser.read()
+            if CONF_DEBUG:
+                print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
         else:
-            string_2nd_byte = b'\x60'
+            # raise Exception('Cmd turnout_set_for_route not supported for ASCCI mode:')
+            print('Cmd turnout_set_for_route not supported for ASCCI mode:')
 
         if CONF_DEBUG:
-            print('2nd byte', string_2nd_byte)
+            print('turnout_set_for_route() finished')
 
-        #string = addr_low + addr_high + var_2nd_byte
-        #if CONF_DEBUG:
-        #    print('sting', string)
-
-        # XTrnt (090h) + 2 Byte
-        string1 = b'\x90'
-        ser.write(string1)
-
-        ser.write(str_addr_low)
-
-        # string3 = b'\xE0'
-        ser.write(string_2nd_byte)
-
-        #ser.write(b'\xA7')
-        # ser.write(var_2nd_byte)
-
-        Answer = ser.read()
-        if CONF_DEBUG:
-            print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
+        if CONF_RUNTIME:
+            print('Runtime of turnout_set_for_route():', time.perf_counter() - timestamp, 'sec\n')
     else:
-        # raise Exception('Cmd turnout_set_for_route not supported for ASCCI mode:')
-        print('Cmd turnout_set_for_route not supported for ASCCI mode:')
-
-    if CONF_DEBUG:
-        print('turnout_set_for_route() finished')
-
-    if CONF_RUNTIME:
-        print('Runtime of turnout_set_for_route():', time.perf_counter() - timestamp, 'sec\n')
-
-
+        print("demo stelle Weiche " + str(bol_color))
 
 
 
@@ -166,27 +171,3 @@ def turnout_free(str_addr_low, str_addr_high):
 
     if CONF_RUNTIME:
         print('Runtime of turnout_free():', time.perf_counter() - timestamp, 'sec\n')
-
-
-
-
-
-
-#################
-# Hauptprogramm:
-#################
-
-
-initialisation()
-
-# --------------------------------------
-# Weiche 1 der IB auf gruen = geradeaus
-turnout_set_for_route(b'\01', b'\00', True)
-
-# Weiche 1 der IB auf rot = abbiegen
-turnout_set_for_route(b'\01', b'\00', False)
-
-# Reservierung der Weiche für die Fahrstrasse zurueck nehmen.
-turnout_free(b'\01', b'\00')
-
-de_initialisation()

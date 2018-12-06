@@ -2,6 +2,8 @@ import pygame
 
 from src.baustein.Gleis import *
 from src.main.Streckenplaner import Streckenplaner
+from src.serial.Weichen_control import *
+
 
 
 BLACK = (0, 0, 0)
@@ -10,6 +12,9 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
 pygame.init()
+
+#setup serial port
+initialisation()#TODO Dependency Injection, Capsulation
 
 
 size = (1000, 800)
@@ -63,4 +68,7 @@ while not done:
 
 # Close the window and quit.
 pygame.quit()
+
+#tear down serial port
+de_initialisation()#TODO Dependency Injection, Capsulation
 
