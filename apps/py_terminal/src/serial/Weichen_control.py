@@ -132,42 +132,43 @@ def turnout_free(str_addr_low, str_addr_high):
 
     :rtype: object
     """
-    if CONF_RUNTIME:
-        timestamp = time.perf_counter()
+    if not CONF_OFFLINE:
+        if CONF_RUNTIME:
+            timestamp = time.perf_counter()
 
-    #if addr_high>0x07:
-        # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
-    #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
+        #if addr_high>0x07:
+            # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
+        #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
 
-    if CONF_HEX:
-       # NoCmd Bit setzten um die reservierung zurueck zu nehmen.
-        string_2nd_byte = b'\x10'
+        if CONF_HEX:
+           # NoCmd Bit setzten um die reservierung zurueck zu nehmen.
+            string_2nd_byte = b'\x10'
 
+
+            if CONF_DEBUG:
+                print('2nd byte', string_2nd_byte)
+
+            #string = addr_low + addr_high + var_2nd_byte
+            #if CONF_DEBUG:
+            #    print('sting', string)
+
+            # XTrnt (090h) + 2 Byte
+            string1 = b'\x90'
+            ser.write(string1)
+
+            ser.write(str_addr_low)
+
+            ser.write(string_2nd_byte)
+
+            Answer = ser.read()
+            if CONF_DEBUG:
+                print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
+        else:
+            # raise Exception('Cmd turnout_set_for_route not supported for ASCCI mode:')
+            print('Cmd turnout_free not supported for ASCCI mode:')
 
         if CONF_DEBUG:
-            print('2nd byte', string_2nd_byte)
+            print('turnout_free() finished')
 
-        #string = addr_low + addr_high + var_2nd_byte
-        #if CONF_DEBUG:
-        #    print('sting', string)
-
-        # XTrnt (090h) + 2 Byte
-        string1 = b'\x90'
-        ser.write(string1)
-
-        ser.write(str_addr_low)
-
-        ser.write(string_2nd_byte)
-
-        Answer = ser.read()
-        if CONF_DEBUG:
-            print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
-    else:
-        # raise Exception('Cmd turnout_set_for_route not supported for ASCCI mode:')
-        print('Cmd turnout_free not supported for ASCCI mode:')
-
-    if CONF_DEBUG:
-        print('turnout_free() finished')
-
-    if CONF_RUNTIME:
-        print('Runtime of turnout_free():', time.perf_counter() - timestamp, 'sec\n')
+        if CONF_RUNTIME:
+            print('Runtime of turnout_free():', time.perf_counter() - timestamp, 'sec\n')
