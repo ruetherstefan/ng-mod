@@ -16,6 +16,7 @@
 #                    Achtung: z.Zt. str_addr_high ohne Funktion. Deshalb nur Weichenadressen 1-255 unterstuetzt!
 
 import serial
+import serial.tools.list_ports
 # import timeit
 import time
 
@@ -24,7 +25,10 @@ ser = serial.Serial()
 CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
-CONF_OFFLINE = True
+CONF_OFFLINE = serial.tools.list_ports.comports() == []
+if CONF_OFFLINE:\
+    print("serial is in offline mode " + str(CONF_OFFLINE))
+
 
 def initialisation():
     if CONF_RUNTIME:
