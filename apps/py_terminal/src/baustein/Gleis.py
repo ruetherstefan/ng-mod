@@ -3,6 +3,7 @@ from enum import Enum
 
 from src.baustein.Baustein import Baustein
 from src.util.Bilder import *
+from src.serial.Weichen_control_bote import Weichencontrollerbote
 
 
 class GleisHorizontal(Baustein):
@@ -104,6 +105,7 @@ class Weiche(Baustein):
             self.weichenstellung = Weichenstellung.ABZWEIGEND
         else:
             self.weichenstellung = Weichenstellung.GERADE
+        Weichencontrollerbote().aendereWeichenstellung("Weicheenum1", self.weichenstellung)
 
     def draw(self):
         super().draw()
