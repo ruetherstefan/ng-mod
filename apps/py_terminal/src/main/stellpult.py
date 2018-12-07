@@ -5,7 +5,6 @@ from src.main.Streckenplaner import Streckenplaner
 from src.serial.Weichen_control import *
 
 
-
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
