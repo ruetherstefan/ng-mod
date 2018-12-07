@@ -105,7 +105,7 @@ class Weiche(Baustein):
             self.weichenstellung = Weichenstellung.ABZWEIGEND
         else:
             self.weichenstellung = Weichenstellung.GERADE
-        WeichenControlBote().aendereWeichenstellung("Weicheenum1", self.weichenstellung)
+        WeichenControlBote().aendere_weichenstellung("Weicheenum1", self.weichenstellung)
 
     def draw(self):
         super().draw()
