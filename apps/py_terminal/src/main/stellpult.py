@@ -2,7 +2,7 @@ import pygame
 
 from src.baustein.Gleis import *
 from src.main.Streckenplaner import Streckenplaner
-from src.serial.Weichen_control import *
+from src.serial.WeichenControl import *
 
 
 BLACK = (0, 0, 0)
