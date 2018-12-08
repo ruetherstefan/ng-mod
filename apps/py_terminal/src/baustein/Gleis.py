@@ -1,9 +1,7 @@
-import pygame
-from enum import Enum
-
 from src.baustein.Baustein import Baustein
-from src.util.Bilder import *
+from src.baustein.Weichenstellung import Weichenstellung
 from src.serial.WeichenControlBote import WeichenControlBote
+from src.util.Bilder import *
 
 
 class GleisHorizontal(Baustein):
@@ -78,11 +76,6 @@ class GleisRechtsNachUnten(Baustein):
 
 
 #Weichen
-
-class Weichenstellung(Enum):
-    GERADE = 1
-    ABZWEIGEND = 2
-
 
 
 class Weiche(Baustein):
