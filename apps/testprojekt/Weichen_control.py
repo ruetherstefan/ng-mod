@@ -88,8 +88,9 @@ def turnout_set_for_route(str_addr_low, str_addr_high, bol_color):
         #    print('sting', string)
 
         # XTrnt (090h) + 2 Byte
-        string1 = b'\x90'
-        ser.write(string1)
+        # send Command byte
+        str_cmd = b'\x90'
+        ser.write(str_cmd)
 
         ser.write(str_addr_low)
 
@@ -147,8 +148,9 @@ def turnout_free(str_addr_low, str_addr_high):
         #    print('sting', string)
 
         # XTrnt (090h) + 2 Byte
-        string1 = b'\x90'
-        ser.write(string1)
+        # send Command byte
+        str_cmd = b'\x90'
+        ser.write(str_cmd)
 
         ser.write(str_addr_low)
 
