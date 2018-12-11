@@ -20,14 +20,16 @@ import serial.tools.list_ports
 # import timeit
 import time
 
-ser = serial.Serial('COM3')
 
 CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
 CONF_OFFLINE = serial.tools.list_ports.comports() == []
+
 if CONF_OFFLINE:
     print("serial is in offline mode " + str(CONF_OFFLINE))
+else:
+    ser = serial.Serial('COM3')
 
 
 def initialisation():
