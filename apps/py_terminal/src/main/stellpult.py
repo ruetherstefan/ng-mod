@@ -2,7 +2,7 @@ import pygame
 
 from src.baustein.Gleis import *
 from src.main.Streckenplaner import Streckenplaner
-from src.serial.WeichenControl import *
+from src.serial.WeichenControlBote import weichen_control
 
 
 BLACK = (0, 0, 0)
@@ -13,7 +13,7 @@ RED = (255, 0, 0)
 pygame.init()
 
 #setup serial port
-initialisation()#TODO Dependency Injection, Capsulation
+weichen_control.initialisation()
 
 
 size = (1000, 800)
@@ -69,5 +69,5 @@ while not done:
 pygame.quit()
 
 #tear down serial port
-de_initialisation()#TODO Dependency Injection, Capsulation
+weichen_control.de_initialisation()
 
