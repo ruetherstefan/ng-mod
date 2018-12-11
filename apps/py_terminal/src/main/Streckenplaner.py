@@ -1,6 +1,7 @@
 from src.baustein.Gleis import *
 from src.baustein.Weiche import *
 from src.baustein.Baustein import Gleisschrauber
+from src.baustein.Weichenadresse import Weichenadresse
 
 
 class Streckenplaner:
@@ -21,23 +22,23 @@ class Streckenplaner:
         haupt1 = GleisHorizontal(screen)
         haupt1.set_position_index([self.strecke_x, self.strecke_y])
         gleise = Gleisschrauber().neu(haupt1) \
-            .linker_nachbar(WeicheLinksNachUnten(screen)) \
+            .linker_nachbar(WeicheLinksNachUnten(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisRechtsNachUnten(screen)) \
-            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsNachOben(screen)) \
-            .rechter_nachbar(WeicheLinksNachOben(screen)) \
+            .rechter_nachbar(WeicheRechtsNachOben(screen, Weichenadresse.Undefiniert)) \
+            .rechter_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisLinksNachUnten(screen)) \
-            .rechts_unten_nachbar(WeicheRechtsUntenNachOben(screen)) \
+            .rechts_unten_nachbar(WeicheRechtsUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -48,7 +49,7 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksNachOben(screen)) \
+            .linker_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
  \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -56,7 +57,7 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .links_unten_nachbar(GleisUntenNachRechts(screen)) \
             .unterer_nachbar(GleisVertikal(screen)) \
             .unterer_nachbar(GleisVertikal(screen)) \
@@ -75,10 +76,10 @@ class Streckenplaner:
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
  \
-            .rechter_nachbar(WeicheLinksNachOben(screen)) \
+            .rechter_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisLinksNachOben(screen)) \
-            .rechts_oben_nachbar(WeicheRechtsNachUnten(screen)) \
+            .rechts_oben_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
@@ -98,50 +99,50 @@ class Streckenplaner:
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisUntenNachLinks(screen)) \
             .links_oben_nachbar(GleisLinksNachUnten(screen)) \
-            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisRechtsNachUnten(screen)) \
-            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
-            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen, Weichenadresse.Undefiniert)) \
+            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
-            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
-            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen, Weichenadresse.Undefiniert)) \
+            .links_unten_nachbar(WeicheRechtsObenNachUnten(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
-            .links_unten_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
+            .links_unten_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
             .rechter_nachbar(GleisHorizontal(screen)) \
-            .rechter_nachbar(WeicheRechtsObenNachUnten(screen)) \
+            .rechter_nachbar(WeicheRechtsObenNachUnten(screen, Weichenadresse.Undefiniert)) \
             .links_unten_nachbar(GleisLinksNachOben(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
-            .links_unten_nachbar(WeicheLinksNachOben(screen)) \
-            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
+            .links_unten_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
  \
             .linker_nachbar(GleisRechtsNachOben(screen)) \
             .links_oben_nachbar(GleisObenNachRechts(screen)) \
@@ -185,14 +186,14 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksNachOben(screen)) \
-            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
             .links_unten_nachbar(GleisLinksNachOben(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheLinksUntenNachOben(screen)) \
+            .linker_nachbar(WeicheLinksUntenNachOben(screen, Weichenadresse.Undefiniert)) \
             .links_unten_nachbar(GleisUntenNachRechts(screen)) \
             .unterer_nachbar(GleisVertikal(screen)) \
             .unterer_nachbar(GleisObenNachLinks(screen)) \
@@ -203,7 +204,7 @@ class Streckenplaner:
         oberer_teil = Gleisschrauber().neu(oberer_teil_gleis1) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheRechtsNachOben(screen)) \
+            .linker_nachbar(WeicheRechtsNachOben(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisRechtsNachUnten(screen)) \
             .oberer_nachbar(GleisLinksNachUnten(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -234,8 +235,8 @@ class Streckenplaner:
             .oberer_nachbar(GleisVertikal(screen)) \
             .oberer_nachbar(GleisUntenNachLinks(screen)) \
             .links_oben_nachbar(GleisLinksNachUnten(screen)) \
-            .linker_nachbar(WeicheRechtsNachOben(screen)) \
-            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(WeicheRechtsNachOben(screen, Weichenadresse.Undefiniert)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
             .links_unten_nachbar(GleisLinksNachOben(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
@@ -254,12 +255,12 @@ class Streckenplaner:
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisRechtsNachUnten(screen)) \
-            .links_unten_nachbar(WeicheLinksNachOben(screen)) \
+            .links_unten_nachbar(WeicheLinksNachOben(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
-            .linker_nachbar(WeicheRechtsNachUnten(screen)) \
+            .linker_nachbar(WeicheRechtsNachUnten(screen, Weichenadresse.Undefiniert)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \
             .linker_nachbar(GleisHorizontal(screen)) \

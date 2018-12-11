@@ -6,8 +6,10 @@ from src.util.Bilder import get_image
 
 class Weiche(Baustein):
 
-    def __init__(self, screen):
+    def __init__(self, screen, weichenadresse):
         super().__init__(screen)
+
+        self.adresse = weichenadresse
 
         self.weichenstellung = Weichenstellung.GERADE
         self.weichenstellung_bild = {}
@@ -24,7 +26,7 @@ class Weiche(Baustein):
             self.weichenstellung = Weichenstellung.ABZWEIGEND
         else:
             self.weichenstellung = Weichenstellung.GERADE
-        WeichenControlBote().aendere_weichenstellung("Weicheenum1", self.weichenstellung)
+        WeichenControlBote().aendere_weichenstellung(self.adresse, self.weichenstellung)
 
     def draw(self):
         super().draw()
@@ -33,8 +35,8 @@ class Weiche(Baustein):
 
 class WeicheRechtsNachUnten(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_tl3.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_links_mitte
@@ -43,8 +45,8 @@ class WeicheRechtsNachUnten(Weiche):
 
 class WeicheRechtsNachOben(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_tr3.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_links_mitte
@@ -53,8 +55,8 @@ class WeicheRechtsNachOben(Weiche):
 
 class WeicheLinksNachUnten(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_tr1.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_rechts_mitte
@@ -63,8 +65,8 @@ class WeicheLinksNachUnten(Weiche):
 
 class WeicheLinksNachOben(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_tl1.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_rechts_oben
@@ -73,8 +75,8 @@ class WeicheLinksNachOben(Weiche):
 
 class WeicheRechtsObenNachUnten(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_dbr.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_links_mitte
@@ -83,8 +85,8 @@ class WeicheRechtsObenNachUnten(Weiche):
 
 class WeicheRechtsUntenNachOben(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_dtl.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_links_mitte
@@ -93,8 +95,8 @@ class WeicheRechtsUntenNachOben(Weiche):
 
 class WeicheLinksObenNachUnten(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_dbl.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_rechts_unten
@@ -103,8 +105,8 @@ class WeicheLinksObenNachUnten(Weiche):
 
 class WeicheLinksUntenNachOben(Weiche):
 
-    def __init__(self, screen):
-        super().__init__(screen)
+    def __init__(self, screen, weichenadresse):
+        super().__init__(screen, weichenadresse)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_dtr.xpm")
         self.weichenstellung_bild[Weichenstellung.GERADE] = self.markierung_rechts_oben
