@@ -11,7 +11,6 @@ class Streckenplaner:
 
     def plane_ennepetal(self, screen):
 
-
         gleise = self.erstelle_haupt_und_schattenbahnhof(screen)
         gleise.extend(self.erstelle_ebene1_hinten(screen))
         gleise.extend(self.erstelle_ebene2(screen))

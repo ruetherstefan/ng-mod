@@ -46,7 +46,7 @@ while not done:
             for gleis in gleise:
                 if gleis.bild.get_rect().move(gleis.get_position()).collidepoint(event.pos):
                     if isinstance(gleis, Weiche):
-                        gleis.aendereWeichenstellung()
+                        gleis.aendere_weichenstellung()
 
     # --- Game logic should go here
 

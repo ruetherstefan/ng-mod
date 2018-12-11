@@ -19,7 +19,7 @@ class Weiche(Baustein):
         self.markierung_rechts_oben = get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsOben.png")
         self.markierung_rechts_unten = get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsUnten.png")
 
-    def aendereWeichenstellung(self):
+    def aendere_weichenstellung(self):
         if self.weichenstellung == Weichenstellung.GERADE:
             self.weichenstellung = Weichenstellung.ABZWEIGEND
         else:
