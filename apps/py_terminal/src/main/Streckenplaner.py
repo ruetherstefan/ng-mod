@@ -1,4 +1,5 @@
 from src.baustein.Gleis import *
+from src.baustein.Weiche import *
 from src.baustein.Baustein import Gleisschrauber
 
 
