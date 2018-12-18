@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class Weichenadresse(Enum):
+    #Schattenbahnhof
     W1 = 1
     W2 = 2
     W3 = 3
