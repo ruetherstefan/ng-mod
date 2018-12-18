@@ -70,3 +70,10 @@ class GleisRechtsNachUnten(Baustein):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl3.xpm")
+
+class GleisLinksUntenNachOben(Baustein):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        self.bild = get_image(Baustein.bilder_ordner + "gleis_von_links_unten_nach_rechts_oben.png")
