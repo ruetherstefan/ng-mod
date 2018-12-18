@@ -15,7 +15,8 @@ class GleisVertikal(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
-        self.bild = get_image(Baustein.bilder_ordner + "spdritem_trv.xpm")
+        self.bild = get_image(Baustein.bilder_ordner + "gleis_vertical.png")
+
 
 class GleisUntenNachRechts(Baustein):
 
@@ -24,12 +25,14 @@ class GleisUntenNachRechts(Baustein):
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr2.xpm")
 
+
 class GleisUntenNachLinks(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl2.xpm")
+
 
 class GleisObenNachRechts(Baustein):
 
@@ -38,12 +41,14 @@ class GleisObenNachRechts(Baustein):
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl4.xpm")
 
+
 class GleisObenNachLinks(Baustein):
 
     def __init__(self, screen):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr4.xpm")
+
 
 class GleisLinksNachOben(Baustein):
 
@@ -52,6 +57,7 @@ class GleisLinksNachOben(Baustein):
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl1.xpm")
 
+
 class GleisLinksNachUnten(Baustein):
 
     def __init__(self, screen):
@@ -59,17 +65,20 @@ class GleisLinksNachUnten(Baustein):
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr1.xpm")
 
+
 class GleisRechtsNachOben(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cr3.xpm")
 
+
 class GleisRechtsNachUnten(Baustein):
     def __init__(self, screen):
         super().__init__(screen)
 
         self.bild = get_image(Baustein.bilder_ordner + "spdritem_cl3.xpm")
+
 
 class GleisLinksUntenNachOben(Baustein):
 
