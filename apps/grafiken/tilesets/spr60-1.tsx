@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="Modellbahntileset1" tilewidth="32" tileheight="32" tilecount="19" columns="0">
+<tileset name="Modellbahntileset1" tilewidth="32" tileheight="32" tilecount="20" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_horizontal.png"/>
@@ -57,5 +57,8 @@
  </tile>
  <tile id="24">
   <image width="32" height="32" source="../spr60/png/gleis_von_oben_nach_links_unten.png"/>
+ </tile>
+ <tile id="25">
+  <image width="32" height="32" source="../spr60/png/gleis_von_links_unten_nach_rechts_oben.png"/>
  </tile>
 </tileset>
