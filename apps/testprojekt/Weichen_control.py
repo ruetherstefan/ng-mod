@@ -14,6 +14,7 @@
 #                    Achtung: Die Funktionen erwarten Stings fuer die Adressbytes. Das koennte genauso wie die
 #                    Reihenfolge der Adressbytes geaendert werden.
 #                    Achtung: z.Zt. str_addr_high ohne Funktion. Deshalb nur Weichenadressen 1-255 unterstuetzt!
+# 29.04.2019 - 2.03: Auslagerung der main Funktion in Modul weichen_test.
 
 import serial
 # import timeit
@@ -25,6 +26,7 @@ CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
 
+# class Weichen_ctrl:
 
 def initialisation():
     if CONF_RUNTIME:
@@ -67,7 +69,7 @@ def turnout_set_for_route(str_addr_low, str_addr_high, bol_color):
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
-    #if addr_high>0x07:
+    # if addr_high>0x07:
         # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
     #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
 
@@ -178,17 +180,4 @@ def turnout_free(str_addr_low, str_addr_high):
 # Hauptprogramm:
 #################
 
-
-initialisation()
-
-# --------------------------------------
-# Weiche 1 der IB auf gruen = geradeaus
-turnout_set_for_route(b'\01', b'\00', True)
-
-# Weiche 1 der IB auf rot = abbiegen
-turnout_set_for_route(b'\01', b'\00', False)
-
-# Reservierung der Weiche für die Fahrstrasse zurueck nehmen.
-turnout_free(b'\01', b'\00')
-
-de_initialisation()
+# verlagert nach Weichen_test.py
