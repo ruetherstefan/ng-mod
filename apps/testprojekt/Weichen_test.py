@@ -21,18 +21,27 @@ from Weichen_control import turnout_free
 #################
 # Hauptprogramm:
 #################
-
+#def test():
 
 initialisation()
 
 # --------------------------------------
 # Weiche 1 der IB auf gruen = geradeaus
-turnout_set_for_route(b'\02', b'\00', True)
+# turnout_set_for_route(b'\02', b'\00', True)
+turnout_set_for_route(2, True)
 
 # Weiche 1 der IB auf rot = abbiegen
-turnout_set_for_route(b'\02', b'\00', False)
+# turnout_set_for_route(b'\02', b'\00', False)
+turnout_set_for_route(2, False)
 
 # Reservierung der Weiche für die Fahrstrasse zurueck nehmen.
 turnout_free(b'\02', b'\00')
 
 de_initialisation()
+
+#string = b'\x90'
+#str2 = hex(55)
+#str3 = "b'" + "\\" + str2[1:] + "'"
+#print(string)
+#print(str2)
+#print(str3)

@@ -16,9 +16,15 @@
 #                    Achtung: z.Zt. str_addr_high ohne Funktion. Deshalb nur Weichenadressen 1-255 unterstuetzt!
 # 29.04.2019 - 2.03: Auslagerung der main Funktion in Modul weichen_test.
 
+from _ctypes import *
+
 import serial
 # import timeit
 import time
+import ctypes
+
+
+
 
 # Global definition of the COM port
 ser = serial.Serial('COM3')  # open serial port
@@ -26,7 +32,7 @@ CONF_RUNTIME = True
 CONF_DEBUG = True
 CONF_HEX = True
 
-# class Weichen_ctrl:
+
 
 def initialisation():
     if CONF_RUNTIME:
@@ -57,15 +63,48 @@ def de_initialisation():
         print('Runtime of De_Initialisation:', time.perf_counter() - timestamp, 'sec\n')
 
 
-# -------------------------------------------------------------------------------------------
-# Ansteuerung einer Weiche (engl. turnouts)
-# fuer das Einstellen einer Fahrstrasse (route).
-# Waehrend die Fahrstrasse eingestellt ist, muss die Bedienung durch die IB verboten werden.
-# Deshalb wird in dieser Funktion die Weiche (fuer den PC) reserviert.
-# Die Reservierung muss spaeter wieder aufgegoben werden mit turnout_free().
-# -------------------------------------------------------------------------------------------
-def turnout_set_for_route(str_addr_low, str_addr_high, bol_color):
 
+def turnout_set_for_route(char_address, bol_color):
+    """
+    Ansteuerung einer Weiche (engl. turnouts)
+    fuer das Einstellen einer Fahrstrasse (route).
+    Waehrend die Fahrstrasse eingestellt ist, muss die Bedienung durch die IB verboten werden.
+    Deshalb wird in dieser Funktion die Weiche (fuer den PC) reserviert.
+    Die Reservierung muss spaeter wieder aufgehoben werden mit turnout_free().
+
+    Das folgende Format erwartet die IB:
+    ====================================
+    Byte1: Command XTrnt (090h) - length =
+    Bytes 1+2 als Parameter:
+    1st	low byte of Turnout address (A7..A0). Please note: turnout
+	address, NOT turnout *decoder* address!
+    2nd	high byte of Turnout address plus 'color' and status bits:
+
+	bit#   7     6     5     4     3     2     1     0
+	    +-----+-----+-----+-----+-----+-----+-----+-----+
+	    |Color| Sts | Res |NoCmd| n.u.| A10 |  A9 |  A8 |
+	    +-----+-----+-----+-----+-----+-----+-----+-----+
+
+	where:
+		Color	1 = closed (green), 0 = thrown (red)
+		Sts	turnout status (1 = on, 0 = off)
+		Res	set if this turnout is to be reserved
+			for exclusive PC control: this would imply
+			that non-PC commands to this turnout would
+			be discarded by the IB. An event would also
+			be generated (please check the XEvent cmd)
+		NoCmd	if set then no turnout cmd is actually sent
+			to the tracks. Setting this bit allows, e.g.,
+			to only set/reset the 'Res' bit of a turnout.
+			Besides, if NoCmd is set, not even the internal
+			IB status of this turnout is modified.
+		n.u.	not currently used (0)
+		A10..A8	top address bits of turnout address
+
+    :param char_address:     Address of turnout (Magnetartikel: Weiche) 0..255
+    :param bol_color:       1 = closed (green), 0 = thrown (red)
+    :return:
+    """
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
@@ -77,32 +116,61 @@ def turnout_set_for_route(str_addr_low, str_addr_high, bol_color):
         # with this command we setting F1..F4 and
         # forcing the cmd that PC and IB can work in parallel
         #var_2nd_byte = 0x60 + addr_high
+
+        int_addr_low = char_address & 0xFF                   # low byte von address
+        int_addr_high = (char_address & 0xFF00) % 0x100      # High byte von address per modulo
+
+        if CONF_DEBUG:
+            print('2nd byte', int_addr_low)
+            print('3rt byte', int_addr_high)
+
+#        if bol_color:
+#            int_addr_high = int_addr_high + 0x80            # MSB setzen
         if bol_color:
             string_2nd_byte = b'\xE0'
         else:
             string_2nd_byte = b'\x60'
 
-        if CONF_DEBUG:
-            print('2nd byte', string_2nd_byte)
+        #string_2nd_byte = ctypes.c_char(0x7f)          # unsigned char, 1 byte in python
+        #string_2nd_byte = int_addr_high
 
-        #string = addr_low + addr_high + var_2nd_byte
-        #if CONF_DEBUG:
-        #    print('sting', string)
+        if CONF_DEBUG:
+            print('3rt byte with color', string_2nd_byte)
+            print(repr(string_2nd_byte)),    # dieser Typ soll keine Größe haben?
+
+        # Wandlung in Hex  =>  0x2
+        #str_addr_low = hex(int_addr_low)
+        #string_2nd_byte = hex(int_addr_high)
+
+        # Erwartetes Format: b'\02'
+        #str_addr_low = "b'" + "\\" + str_addr_low[1:] + "'"
+        #string_2nd_byte = "b'" + "\\" + string_2nd_byte[1:] + "'"
+
+
+        if CONF_DEBUG:
+            #print('String 2nd byte', str_addr_low)
+            print('String 3rt byte', string_2nd_byte)
 
         # XTrnt (090h) + 2 Byte
         # send Command byte
         str_cmd = b'\x90'
         ser.write(str_cmd)
 
-        ser.write(str_addr_low)
+        if CONF_DEBUG:
+            print('Command', str_cmd)
 
-        # string3 = b'\xE0'
+        str_addr_low = b'\x02'
+        ser.write(str_addr_low)
+#        ser.write(char_address)
+
+        # int_addr_high = int_addr_high & 0xff
         ser.write(string_2nd_byte)
 
         #ser.write(b'\xA7')
         # ser.write(var_2nd_byte)
 
         Answer = ser.read()
+        #Answer = "ohne IB"
         if CONF_DEBUG:
             print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
     else:
