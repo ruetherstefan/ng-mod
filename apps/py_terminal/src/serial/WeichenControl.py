@@ -25,7 +25,7 @@ from src.serial.WeichenControlInterface import WeichenControlInterface
 class WeichenControl(WeichenControlInterface):
 
     CONF_RUNTIME = True
-    CONF_DEBUG = True
+    CONF_DEBUG = False
     CONF_HEX = True
 
     # Global definition of the COM port
@@ -40,7 +40,7 @@ class WeichenControl(WeichenControlInterface):
         self.ser.rtscts = False
 
         if self.CONF_DEBUG:
-            print('Initialisation() -> Used COM Port', ser.name)  # check which port was really used
+            print('Initialisation() -> Used COM Port', self.ser.name)  # check which port was really used
 
         if self.CONF_RUNTIME:
             print('Runtime of Initialisation:', time.perf_counter() - timestamp, 'sec\n')

@@ -38,7 +38,7 @@ class WeichenControlBote:
                                               Weichenstellung.GERADE == weichenstellung)
         weichen_control.turnout_free(self.weichenadresse_mapping.get(weichenadresse), b'\00')
 
-
+print(serial.tools.list_ports.comports()[0].device)
 offline = serial.tools.list_ports.comports() == []
 if offline:
     from src.serial.WeichenControlOffline import WeichenControlOffline
