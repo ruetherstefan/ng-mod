@@ -3,6 +3,9 @@ import serial.tools.list_ports
 from src.baustein.Weichenstellung import Weichenstellung
 from src.baustein.Weichenadresse import Weichenadresse
 
+NEGIERTE_WEICHEN = [Weichenadresse.W22,
+                    Weichenadresse.W23]
+
 
 class WeichenControlBote:
 
@@ -22,21 +25,31 @@ class WeichenControlBote:
                             Weichenadresse.W20: b'\01',
                             Weichenadresse.W21: b'\01',
                             Weichenadresse.W22: b'\02',
-                            Weichenadresse.W23: b'\03',
-                            Weichenadresse.W24: b'\04',
+                            Weichenadresse.W23: b'\04',
+                            Weichenadresse.W24: b'\01',
                             Weichenadresse.W25: b'\05',
                             Weichenadresse.W26: b'\06',
                             Weichenadresse.W27: b'\07',
                             Weichenadresse.W28: b'\08',
                             Weichenadresse.W29: b'\01',
                             Weichenadresse.W30: b'\01',
-                            }
+                            }#TODO Weiche 28 Problem mit 8
 
     def aendere_weichenstellung(self, weichenadresse, weichenstellung):
-        print(weichenadresse, self.weichenadresse_mapping.get(weichenadresse), str(Weichenstellung.GERADE == weichenstellung))
+        print(weichenadresse, self.weichenadresse_mapping.get(weichenadresse), str(
+            self.invertiere_weichenstellung(weichenstellung, weichenadresse)))
+
+
         weichen_control.turnout_set_for_route(self.weichenadresse_mapping.get(weichenadresse), b'\00',
-                                              Weichenstellung.GERADE == weichenstellung)
+                                              self.invertiere_weichenstellung(weichenstellung, weichenadresse))
         weichen_control.turnout_free(self.weichenadresse_mapping.get(weichenadresse), b'\00')
+
+    def invertiere_weichenstellung(self, weichenstellung, weichenadresse):
+        if weichenadresse in NEGIERTE_WEICHEN:
+            return not Weichenstellung.GERADE == weichenstellung
+        else:
+            return Weichenstellung.GERADE == weichenstellung
+
 
 print(serial.tools.list_ports.comports()[0].device)
 offline = serial.tools.list_ports.comports() == []
