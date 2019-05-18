@@ -7,6 +7,9 @@ NEGIERTE_WEICHEN = [Weichenadresse.W2,
                     Weichenadresse.W3,
                     Weichenadresse.W4,
                     Weichenadresse.W5,
+                    Weichenadresse.W8,
+                    Weichenadresse.W9,
+                    Weichenadresse.W10,
                     Weichenadresse.W22,
                     Weichenadresse.W23,
                     Weichenadresse.W28]
@@ -23,8 +26,8 @@ class WeichenControlBote:
                             Weichenadresse.W6: b'\17',
                             Weichenadresse.W7: b'\16',
                             Weichenadresse.W8: b'\15',
-                            Weichenadresse.W9: b'\23',
-                            Weichenadresse.W10: b'\24',
+                            Weichenadresse.W9: b'\24',
+                            Weichenadresse.W10: b'\23',
 
                             # Ebene 1
                             Weichenadresse.W20: b'\01',
