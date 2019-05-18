@@ -30,17 +30,17 @@ class WeichenControlBote:
                             Weichenadresse.W10: b'\23',
 
                             # Ebene 1
-                            Weichenadresse.W20: b'\01',
+                            Weichenadresse.W20: b'\55',
                             Weichenadresse.W21: b'\01',
                             Weichenadresse.W22: b'\02',
                             Weichenadresse.W23: b'\04',
-                            Weichenadresse.W24: b'\01',
+                            Weichenadresse.W24: b'\55',
                             Weichenadresse.W25: b'\05',
                             Weichenadresse.W26: b'\06',
                             Weichenadresse.W27: b'\07',
                             Weichenadresse.W28: b'\10',
-                            Weichenadresse.W29: b'\01',
-                            Weichenadresse.W30: b'\01',
+                            Weichenadresse.W29: b'\55',
+                            Weichenadresse.W30: b'\55',
                             }  # Die Adressen sind in oktal anzugeben.
 
     def aendere_weichenstellung(self, weichenadresse, weichenstellung):
