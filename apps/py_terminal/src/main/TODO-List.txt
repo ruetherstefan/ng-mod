@@ -15,4 +15,5 @@ Fahrstaße stellen
 - Demo Toggle
 
 Generell
+- github auf Token umstellen Visit https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
 - integriere pytest in Pycharm
