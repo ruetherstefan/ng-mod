@@ -1,7 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" source="spr60-1.tsx"/>
- <layer name="Kachelebene 1" width="40" height="32">
+ <tileset firstgid="1" name="Modellbahntileset1" tilewidth="32" tileheight="32" tilecount="20" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_horizontal.png"/>
+  </tile>
+  <tile id="1">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_vertical.png"/>
+  </tile>
+  <tile id="2">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_links_nach_rechts_oben.png"/>
+  </tile>
+  <tile id="3">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_links_nach_rechts_unten.png"/>
+  </tile>
+  <tile id="5">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_oben_nach_rechts_unten.png"/>
+  </tile>
+  <tile id="6">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_rechts_nach_links_oben.png"/>
+  </tile>
+  <tile id="7">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_rechts_nach_links_unten.png"/>
+  </tile>
+  <tile id="8">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_unten_nach_links_oben.png"/>
+  </tile>
+  <tile id="9">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/gleis_von_unten_nach_rechts_oben.png"/>
+  </tile>
+  <tile id="10">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/leer.png"/>
+  </tile>
+  <tile id="11">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_links_nach_rechts_oben.png"/>
+  </tile>
+  <tile id="12">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_links_nach_rechts_unten.png"/>
+  </tile>
+  <tile id="13">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_links_oben_nach_rechts_unten.png"/>
+  </tile>
+  <tile id="14">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_links_unten_nach_rechts_oben.png"/>
+  </tile>
+  <tile id="15">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_rechts_nach_links_oben.png"/>
+  </tile>
+  <tile id="16">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_rechts_nach_links_unten.png"/>
+  </tile>
+  <tile id="17">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_rechts_oben_nach_links_unten.png"/>
+  </tile>
+  <tile id="18">
+   <image width="32" height="32" source="../../../../P/Modellbahn/Dokumente/spdrs60 png/weiche_von_rechts_unten_nach_links_oben.png"/>
+  </tile>
+  <tile id="24">
+   <image width="32" height="32" source="../spr60/png/gleis_von_oben_nach_links_unten.png"/>
+  </tile>
+  <tile id="25">
+   <image width="32" height="32" source="../spr60/png/gleis_von_links_unten_nach_rechts_oben.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="27" source="spr60Markierungen-1.tsx"/>
+ <layer name="Schienen 1" width="40" height="32">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -35,6 +98,42 @@
 0,0,0,0,0,0,0,2,0,0,0,0,6,0,0,0,15,12,1,1,1,1,3,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,6,0,0,0,0,0,7,17,12,17,1,1,1,1,1,1,1,1,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,7,1,1,1,1,12,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Ausleuchtung" width="40" height="32">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,39,0,39,36,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
 </map>

@@ -1,0 +1,16 @@
+Big Topics:
+- Fahrstraße stellen / anzeigen / aufheben
+- Besetztmeldung Prototyp / anzeigen / in Fahrstraße verarbeiten
+- Züge fahren Prototyp / auf Anlage
+
+aktueller Topic : Fahrstraße anzeigen
+- Icon herausfinden / Demo
+- Icon Gleis mit Fahrstraße
+- Icon einprogramieren Weiche status?
+- TDD Beispiel
+
+
+
+Fahrstaße stellen
+- Icon finden - Toggle
+- Demo Toggle
