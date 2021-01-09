@@ -59,7 +59,7 @@ class WeichenControlBote:
             return Weichenstellung.GERADE == weichenstellung
 
 
-print(serial.tools.list_ports.comports()[0].device)
+#print(serial.tools.list_ports.comports()[0].device)
 offline = serial.tools.list_ports.comports() == []
 if offline:
     from src.serial.WeichenControlOffline import WeichenControlOffline
