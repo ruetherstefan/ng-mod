@@ -4,7 +4,6 @@ Big Topics:
 - Züge fahren Prototyp / auf Anlage
 
 aktueller Topic : Fahrstraße anzeigen
-- Unittests von pygame auf nativetests umbauen
 - Weiche mit Tests versehen
 - Weiche mit Status versehen
 - Je nach Status Bild anzeigen
@@ -14,4 +13,6 @@ aktueller Topic : Fahrstraße anzeigen
 Fahrstaße stellen
 - Icon finden - Toggle
 - Demo Toggle
-- TDD Beispiel
+
+Generell
+- integriere pytest in Pycharm
