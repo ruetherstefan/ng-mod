@@ -12,9 +12,8 @@ def screen(monkeypatch):
     import pygame
     pygame_screen = Mock(spec=pygame.display)
 
-    monkeypatch.setattr('src.baustein.Weiche.get_image', MagicMock(return_value=""))
 
-
+@patch('src.baustein.Weiche.Bilder')
 @patch('src.baustein.Weiche.WeichenControlBote')
 def test_aendere_weichenstellung_weicheadresse_weitergabe(weichen_control_bote_mock, screen):
     weiche = WeicheRechtsNachUnten(screen, Weichenadresse.W1)
@@ -22,6 +21,7 @@ def test_aendere_weichenstellung_weicheadresse_weitergabe(weichen_control_bote_m
     weichen_control_bote_mock().aendere_weichenstellung.assert_called_with(Weichenadresse.W1, ANY)
 
 
+@patch('src.baustein.Weiche.Bilder')
 @patch('src.baustein.Weiche.WeichenControlBote')
 def test_aendere_weichenstellung_gerade_zu_abzweigend(weichen_control_bote_mock, screen):
     weiche = WeicheRechtsNachUnten(screen, Weichenadresse.W1)
@@ -30,6 +30,7 @@ def test_aendere_weichenstellung_gerade_zu_abzweigend(weichen_control_bote_mock,
     weichen_control_bote_mock().aendere_weichenstellung.assert_called_with(ANY, Weichenstellung.ABZWEIGEND)
 
 
+@patch('src.baustein.Weiche.Bilder')
 @patch('src.baustein.Weiche.WeichenControlBote')
 def test_aendere_weichenstellung_abzweigend_zu_gerade(weichen_control_bote_mock, screen):
     weiche = WeicheRechtsNachUnten(screen, Weichenadresse.W1)

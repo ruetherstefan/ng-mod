@@ -3,6 +3,8 @@ from src.baustein.Weiche import Weiche
 from src.main.Streckenplaner import Streckenplaner
 from src.serial.WeichenControlBote import weichen_control
 
+import pygame
+
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

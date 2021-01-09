@@ -1,0 +1,11 @@
+from unittest.mock import *
+
+from src.baustein.WeichenstellungBildLookup import *
+from src.baustein.Weichenbelegung import Weichenbelegung
+from src.baustein.Baustein import Baustein
+
+
+@patch('src.baustein.WeichenstellungBildLookup.Bilder')
+def test_lookupFrei(bilder_mock):
+    WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
+    bilder_mock().get_image.assert_called_with(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
