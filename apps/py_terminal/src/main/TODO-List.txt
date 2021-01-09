@@ -4,13 +4,14 @@ Big Topics:
 - Züge fahren Prototyp / auf Anlage
 
 aktueller Topic : Fahrstraße anzeigen
-- Icon herausfinden / Demo
-- Icon Gleis mit Fahrstraße
-- Icon einprogramieren Weiche status?
-- TDD Beispiel
+- Unittests von pygame auf nativetests umbauen
+- Weiche mit Tests versehen
+- Weiche mit Status versehen
+- Je nach Status Bild anzeigen
 
 
 
 Fahrstaße stellen
 - Icon finden - Toggle
 - Demo Toggle
+- TDD Beispiel
