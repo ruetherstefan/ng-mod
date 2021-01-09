@@ -5,6 +5,7 @@ Big Topics:
 
 aktueller Topic : Fahrstraße anzeigen
 - Weiche mit Tests versehen
+- Bilderpfad nach Bilder verschieben
 - Weiche mit Status versehen
 - Je nach Status Bild anzeigen
 
