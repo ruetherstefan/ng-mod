@@ -19,11 +19,16 @@ class Markierungsart(Enum):
 
 class WeichenstellungBildLookup:
     def lookup(markierungsart, weichenbelegung):
-        return Bilder().get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
+        return Bilder().get_image(Baustein.bilder_ordner + "Markierungen/"
+                                  + WeichenstellungBildLookup.get_bildname_zu_markierung(markierungsart))
 
-    #self.markierung_links_mitte = get_image(Baustein.bilder_ordner + "Markierungen/WeicheLinksMitte.png")
-        #self.markierung_links_oben = get_image(Baustein.bilder_ordner + "Markierungen/WeicheLinksOben.png")
-        #self.markierung_links_unten = get_image(Baustein.bilder_ordner + "Markierungen/WeicheLinksUnten.png")
-        #self.markierung_rechts_mitte = get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
-        #self.markierung_rechts_oben = get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsOben.png")
-        #self.markierung_rechts_unten = get_image(Baustein.bilder_ordner + "Markierungen/WeicheRechtsUnten.png")
+    @staticmethod
+    def get_bildname_zu_markierung(markierungsart):
+        bildername_zu_markierungsart = {Markierungsart.LINKS_MITTE : 'WeicheLinksMitte.png',
+                                        Markierungsart.LINKS_OBEN: 'WeicheLinksOben.png',
+                                        Markierungsart.LINKS_UNTEN: 'WeicheLinksUnten.png',
+                                        Markierungsart.RECHTS_MITTE: 'WeicheRechtsMitte.png',
+                                        Markierungsart.RECHTS_OBEN: 'WeicheRechtsOben.png',
+                                        Markierungsart.RECHTS_UNTEN: 'WeicheRechtsUnten.png'}
+
+        return bildername_zu_markierungsart[markierungsart]
