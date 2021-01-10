@@ -8,13 +8,17 @@ aktueller Topic : Fahrstraße anzeigen
 - Bilderpfad nach Bilder verschieben
 - Weiche mit Status versehen
 - Je nach Status Bild anzeigen
-
+- Status per Maus setzen und aufheben
 
 
 Fahrstaße stellen
 - Icon finden - Toggle
 - Demo Toggle
+- Aufteilung Buttons
+- Fahrstraße stellen
+- Fahrstraße kollision
 
 Generell
+- Weichenumstellung blinken
 - github auf Token umstellen Visit https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
 - integriere pytest in Pycharm
