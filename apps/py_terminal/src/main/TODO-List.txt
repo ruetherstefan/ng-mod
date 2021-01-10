@@ -7,9 +7,8 @@ aktueller Topic : Fahrstraße anzeigen
 - Bilderpfad nach Bilder verschieben
 - Weichenbelegung auf Gleisbelegung umbenennen
 - Weiche mit Status versehen
-- Je nach Status Bild anzeigen
 - Status per Maus setzen und aufheben
-- WeicheLogisch von WeicheOptisch trennen
+- WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
 
 
 Fahrstaße stellen
