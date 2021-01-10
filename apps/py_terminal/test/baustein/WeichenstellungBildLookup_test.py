@@ -9,3 +9,8 @@ from src.baustein.Baustein import Baustein
 def test_lookupFrei(bilder_mock):
     WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
     bilder_mock().get_image.assert_called_with(Baustein.bilder_ordner + "Markierungen/WeicheRechtsMitte.png")
+
+@patch('src.baustein.WeichenstellungBildLookup.Bilder')
+def test_lookupFrei_andereMarkierungsant(bilder_mock):
+    WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Weichenbelegung.FREI)
+    bilder_mock().get_image.assert_called_with(Baustein.bilder_ordner + "Markierungen/WeicheRechtsUnten.png")
