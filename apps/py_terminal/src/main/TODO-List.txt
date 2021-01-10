@@ -6,6 +6,7 @@ Big Topics:
 aktueller Topic : Fahrstraße anzeigen
 - Weiche mit Tests versehen
 - Bilderpfad nach Bilder verschieben
+- Weichenbelegung auf Gleisbelegung umbenennen
 - Weiche mit Status versehen
 - Je nach Status Bild anzeigen
 - Status per Maus setzen und aufheben

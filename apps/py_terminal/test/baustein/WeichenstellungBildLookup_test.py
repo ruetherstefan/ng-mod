@@ -18,4 +18,4 @@ def test_lookupFrei_andereMarkierungsant(bilder_mock):
 @patch('src.baustein.WeichenstellungBildLookup.Bilder')
 def test_lookupFrei_weichenbelegung(bilder_mock):
     WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Weichenbelegung.FAHRSTRASSE)
-    bilder_mock().get_image.assert_called_with(Baustein.bilder_ordner + "Markierungen/WeicheRechtsUnten.png")
+    bilder_mock().get_image.assert_called_with(Baustein.bilder_ordner + "Markierungen/FahrstrasseWeicheRechtsUnten.png")

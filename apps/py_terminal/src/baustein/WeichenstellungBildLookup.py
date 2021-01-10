@@ -1,4 +1,5 @@
 from src.baustein.Baustein import Baustein
+from src.baustein.Weichenbelegung import Weichenbelegung
 
 from enum import Enum
 
@@ -19,6 +20,7 @@ class Markierungsart(Enum):
 class WeichenstellungBildLookup:
     def lookup(markierungsart, weichenbelegung):
         return Bilder().get_image(Baustein.bilder_ordner + "Markierungen/"
+                                  + WeichenstellungBildLookup.get_bildmodiefier_weichenbelegung(weichenbelegung)
                                   + WeichenstellungBildLookup.get_bildname_zu_markierung(markierungsart))
 
     @staticmethod
@@ -31,3 +33,13 @@ class WeichenstellungBildLookup:
                                         Markierungsart.RECHTS_UNTEN: 'WeicheRechtsUnten.png'}
 
         return bildername_zu_markierungsart[markierungsart]
+
+    @staticmethod
+    def get_bildmodiefier_weichenbelegung(weichenbelegung):
+        if weichenbelegung == Weichenbelegung.FREI:
+            return ""
+        elif weichenbelegung == Weichenbelegung.FAHRSTRASSE:
+            return "Fahrstrasse"
+        elif weichenbelegung == Weichenbelegung.BLOCKIERT:
+            return "Blockiert"
+        else: raise ValueError(weichenbelegung + " ist keine bekannte Weichenstellung")
