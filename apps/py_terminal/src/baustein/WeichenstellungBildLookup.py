@@ -4,6 +4,7 @@ from enum import Enum
 
 from src.util.Bilder import Bilder
 
+
 class Markierungsart(Enum):
     LINKS_MITTE = 1
     LINKS_OBEN = 2
@@ -13,8 +14,6 @@ class Markierungsart(Enum):
     RECHTS_UNTEN = 6
     MITTE_HORIZONTAL = 7
     MITTE_VERTIKAL = 8
-
-
 
 
 class WeichenstellungBildLookup:
