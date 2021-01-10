@@ -11,7 +11,7 @@ from src.baustein.Weichenbelegung import Weichenbelegung
 def screen(monkeypatch):
     import pygame
 
-    monkeypatch.setattr('src.baustein.Weiche.get_image', MagicMock(return_value="EinBild"))
+    #monkeypatch.setattr('src.baustein.Weiche.get_image', MagicMock(return_value="EinBild"))
 
     def fake_blit(bildadresse, position):
         return
@@ -20,9 +20,10 @@ def screen(monkeypatch):
     srceen.blit = fake_blit
     return srceen
 
-@pytest.mark.skip(reason="no way of currently testing this")
+
+@patch('src.baustein.Weiche.Bilder')
 @patch('src.baustein.Weiche.WeichenstellungBildLookup')
-def test_draw_WeichenStellungGerade(weichenstellung_bild_lookup_mock, screen):
+def test_draw_WeichenStellungGerade(weichenstellung_bild_lookup_mock, bilder, screen):
     weiche = WeicheRechtsNachUnten(screen, Weichenadresse.W1)
     weiche.set_position_index([42,42])
     weiche.draw()

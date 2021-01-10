@@ -4,12 +4,12 @@ Big Topics:
 - Züge fahren Prototyp / auf Anlage
 
 aktueller Topic : Fahrstraße anzeigen
-- Weiche mit Tests versehen
 - Bilderpfad nach Bilder verschieben
 - Weichenbelegung auf Gleisbelegung umbenennen
 - Weiche mit Status versehen
 - Je nach Status Bild anzeigen
 - Status per Maus setzen und aufheben
+- WeicheLogisch von WeicheOptisch trennen
 
 
 Fahrstaße stellen
@@ -23,3 +23,4 @@ Generell
 - Weichenumstellung blinken
 - github auf Token umstellen Visit https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
 - integriere pytest in Pycharm
+- Logs beim Weichenschalten entfernen
