@@ -10,10 +10,16 @@ Generell
 - github auf Token umstellen Visit https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
 - integriere pytest in Pycharm
 - Logs beim Weichenschalten entfernen
+- Tests für Stellpult
+- Aufräumen in Stellpult
+- Jedes Mal Bildlookup für Belegung bei Belegungswechselt ist uncool
 
 
 aktueller Topic : Fahrstraße anzeigen
-- Status per Maus setzen und aufheben
+- Stellpult: Konstanten für 1 und 3
+- Stellpult: Methoden statt Schleifen
+- Tests für toggleFahrstrasse
+
 - Bilderpfad nach Bilder verschieben
 - WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
 

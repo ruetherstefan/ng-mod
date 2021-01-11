@@ -47,8 +47,13 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for gleis in gleise:
                 if gleis.bild.get_rect().move(gleis.get_position()).collidepoint(event.pos):
-                    if isinstance(gleis, Weiche):
-                        gleis.aendere_weichenstellung()
+                    if 1 == event.button:
+                        if isinstance(gleis, Weiche):
+                            gleis.aendere_weichenstellung()
+                    elif 3 == event.button:
+                        if isinstance(gleis, Weiche):
+                            gleis.toggleFahrstrasse()
+
 
     # --- Game logic should go here
 
