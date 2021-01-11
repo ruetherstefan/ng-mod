@@ -4,10 +4,10 @@ Big Topics:
 - Züge fahren Prototyp / auf Anlage
 
 aktueller Topic : Fahrstraße anzeigen
-- Bilderpfad nach Bilder verschieben
-- Weichenbelegung auf Gleisbelegung umbenennen
 - Weiche mit Status versehen
 - Status per Maus setzen und aufheben
+- Bilderpfad nach Bilder verschieben
+- Weichenbelegung auf Gleisbelegung umbenennen
 - WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
 
 

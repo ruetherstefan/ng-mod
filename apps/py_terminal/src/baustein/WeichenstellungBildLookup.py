@@ -1,5 +1,5 @@
 from src.baustein.Baustein import Baustein
-from src.baustein.Weichenbelegung import Weichenbelegung
+from src.baustein.Gleisbelegung import Gleisbelegung
 
 from enum import Enum
 
@@ -36,10 +36,10 @@ class WeichenstellungBildLookup:
 
     @staticmethod
     def get_bildmodiefier_weichenbelegung(weichenbelegung):
-        if weichenbelegung == Weichenbelegung.FREI:
+        if weichenbelegung == Gleisbelegung.FREI:
             return ""
-        elif weichenbelegung == Weichenbelegung.FAHRSTRASSE:
+        elif weichenbelegung == Gleisbelegung.FAHRSTRASSE:
             return "Fahrstrasse"
-        elif weichenbelegung == Weichenbelegung.BLOCKIERT:
+        elif weichenbelegung == Gleisbelegung.BLOCKIERT:
             return "Blockiert"
         else: raise ValueError(weichenbelegung + " ist keine bekannte Weichenstellung")

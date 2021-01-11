@@ -15,6 +15,7 @@ class Weiche(Baustein):
         self.weichenstellung = Weichenstellung.GERADE
         self.weichenstellung_bild = {}
 
+
     def aendere_weichenstellung(self):
         if self.weichenstellung == Weichenstellung.GERADE:
             self.weichenstellung = Weichenstellung.ABZWEIGEND
@@ -33,8 +34,8 @@ class WeicheRechtsNachUnten(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_tl3.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_UNTEN, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_UNTEN, Gleisbelegung.FREI)
 
 
 class WeicheRechtsNachOben(Weiche):
@@ -43,8 +44,8 @@ class WeicheRechtsNachOben(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_tr3.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_OBEN, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_OBEN, Gleisbelegung.FREI)
 
 
 class WeicheLinksNachUnten(Weiche):
@@ -53,8 +54,8 @@ class WeicheLinksNachUnten(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_tr1.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Gleisbelegung.FREI)
 
 
 class WeicheLinksNachOben(Weiche):
@@ -63,8 +64,8 @@ class WeicheLinksNachOben(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_tl1.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_OBEN, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_OBEN, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Gleisbelegung.FREI)
 
 
 class WeicheRechtsObenNachUnten(Weiche):
@@ -73,8 +74,8 @@ class WeicheRechtsObenNachUnten(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_dbr.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_UNTEN, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_UNTEN, Gleisbelegung.FREI)
 
 
 class WeicheRechtsUntenNachOben(Weiche):
@@ -83,8 +84,8 @@ class WeicheRechtsUntenNachOben(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_dtl.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_OBEN, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_MITTE, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.LINKS_OBEN, Gleisbelegung.FREI)
 
 
 class WeicheLinksObenNachUnten(Weiche):
@@ -93,8 +94,8 @@ class WeicheLinksObenNachUnten(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_dbl.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_UNTEN, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Gleisbelegung.FREI)
 
 
 class WeicheLinksUntenNachOben(Weiche):
@@ -103,5 +104,5 @@ class WeicheLinksUntenNachOben(Weiche):
         super().__init__(screen, weichenadresse)
 
         self.bild = Bilder().get_image(Baustein.bilder_ordner + "spdritem_dtr.xpm")
-        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_OBEN, Weichenbelegung.FREI)
-        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Weichenbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.GERADE] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_OBEN, Gleisbelegung.FREI)
+        self.weichenstellung_bild[Weichenstellung.ABZWEIGEND] = WeichenstellungBildLookup.lookup(Markierungsart.RECHTS_MITTE, Gleisbelegung.FREI)

@@ -4,7 +4,7 @@ import pytest
 
 from src.baustein.Weiche import *
 from src.baustein.Weichenadresse import Weichenadresse
-from src.baustein.Weichenbelegung import Weichenbelegung
+from src.baustein.Gleisbelegung import Gleisbelegung
 
 
 @pytest.fixture
@@ -27,4 +27,4 @@ def test_draw_WeichenStellungGerade(weichenstellung_bild_lookup_mock, bilder, sc
     weiche = WeicheRechtsNachUnten(screen, Weichenadresse.W1)
     weiche.set_position_index([42,42])
     weiche.draw()
-    weichenstellung_bild_lookup_mock.lookup.assert_called_with(ANY, Weichenbelegung.FREI)
+    weichenstellung_bild_lookup_mock.lookup.assert_called_with(ANY, Gleisbelegung.FREI)
