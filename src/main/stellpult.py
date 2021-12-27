@@ -4,7 +4,11 @@ from src.baustein.Weiche import Weiche
 from src.main.Streckenplaner import Streckenplaner
 from src.serial.WeichenControlBote import weichen_control
 
+MOUSE_CLICK_LEFT = 1
+MOUSE_CLICK_RIGHT = 3
+
 WHITE = (255, 255, 255)
+
 
 pygame.init()
 
@@ -32,10 +36,10 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for gleis in gleise:
                 if gleis.bild.get_rect().move(gleis.get_position()).collidepoint(event.pos):
-                    if 1 == event.button:
+                    if MOUSE_CLICK_LEFT == event.button:
                         if isinstance(gleis, Weiche):
                             gleis.aendere_weichenstellung()
-                    elif 3 == event.button:
+                    elif MOUSE_CLICK_RIGHT == event.button:
                         if isinstance(gleis, Weiche):
                             gleis.toggleFahrstrasse()
 
