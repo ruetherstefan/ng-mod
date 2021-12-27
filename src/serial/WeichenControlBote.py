@@ -60,7 +60,10 @@ class WeichenControlBote:
 
 
 #print(serial.tools.list_ports.comports()[0].device)
+#print(serial.tools.list_ports.comports()[0])
 offline = serial.tools.list_ports.comports() == []
+offline = True
+#print("offline: " + str(offline))
 if offline:
     from src.serial.WeichenControlOffline import WeichenControlOffline
     weichen_control = WeichenControlOffline()
