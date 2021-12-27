@@ -2,7 +2,7 @@
 class Baustein:
 
     image_size = 32
-    bilder_ordner = "../../pixmaps/"
+    bilder_ordner = "../../resource/"
 
     def __init__(self, screen):
         super().__init__()

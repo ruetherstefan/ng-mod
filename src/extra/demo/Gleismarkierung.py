@@ -56,10 +56,10 @@ while not done:
 
     # --- Drawing code should go here
 
-    screen.blit(get_image("../../../pixmaps/" + "poc/Bild.png"), [100, 300])
+    screen.blit(get_image("../../resource/" + "poc/Bild.png"), [100, 300])
 
-    screen.blit(get_image("../../../pixmaps/" + "poc/Bild.png"), [100, 400])
-    screen.blit(get_image("../../../pixmaps/" + "poc/WeicheRechtsMitte.png"), [100, 400])
+    screen.blit(get_image("../../resource/" + "poc/Bild.png"), [100, 400])
+    screen.blit(get_image("../../resource/" + "poc/WeicheRechtsMitte.png"), [100, 400])
 
 
     # --- Go ahead and update the screen with what we've drawn.
