@@ -2,7 +2,7 @@ from unittest.mock import *
 
 import pytest
 
-from src.baustein.Baustein import Baustein
+from src.view.Baustein import Baustein
 
 
 @pytest.fixture

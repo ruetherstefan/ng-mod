@@ -2,7 +2,7 @@ from unittest.mock import *
 
 import pytest
 
-from src.baustein.Weiche import *
+from src.view.Weiche import *
 from src.baustein.Weichenadresse import Weichenadresse
 from src.baustein.Gleisbelegung import Gleisbelegung
 

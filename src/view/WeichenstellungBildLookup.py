@@ -1,4 +1,4 @@
-from src.baustein.Baustein import Baustein
+from src.view.Baustein import Baustein
 from src.baustein.Gleisbelegung import Gleisbelegung
 
 from enum import Enum

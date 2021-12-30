@@ -1,8 +1,8 @@
 from unittest.mock import *
 
-from src.baustein.WeichenstellungBildLookup import *
+from src.view.WeichenstellungBildLookup import *
 from src.baustein.Gleisbelegung import Gleisbelegung
-from src.baustein.Baustein import Baustein
+from src.view.Baustein import Baustein
 
 
 @patch('src.baustein.WeichenstellungBildLookup.Bilder')

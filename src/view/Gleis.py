@@ -1,4 +1,4 @@
-from src.baustein.Baustein import Baustein
+from src.view.Baustein import Baustein
 from src.util.Bilder import Bilder
 
 

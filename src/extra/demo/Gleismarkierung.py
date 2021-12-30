@@ -1,10 +1,6 @@
 import pygame
 import os
 
-from src.baustein.Gleis import *
-from src.baustein.Baustein import Gleisschrauber
-
-
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)

@@ -1,6 +1,6 @@
-from src.baustein.Gleis import *
-from src.baustein.Weiche import *
-from src.baustein.Baustein import Gleisschrauber
+from src.view.Gleis import *
+from src.view.Weiche import *
+from src.view.Gleisschrauber import Gleisschrauber
 from src.baustein.Weichenadresse import Weichenadresse
 
 

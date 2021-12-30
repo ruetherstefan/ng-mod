@@ -1,6 +1,5 @@
-from src.baustein.Baustein import Baustein
 from src.baustein.Weichenstellung import Weichenstellung
-from src.baustein.WeichenstellungBildLookup import *
+from src.view.WeichenstellungBildLookup import *
 from src.serial.WeichenControlBote import WeichenControlBote
 from src.util.Bilder import Bilder
 

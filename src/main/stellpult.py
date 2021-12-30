@@ -1,6 +1,6 @@
 import pygame
 
-from src.baustein.Weiche import Weiche
+from src.view.Weiche import Weiche
 from src.main.Streckenplaner import Streckenplaner
 from src.serial.WeichenControlBote import weichen_control
 
