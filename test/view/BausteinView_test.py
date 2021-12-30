@@ -2,14 +2,14 @@ from unittest.mock import *
 
 import pytest
 
-from src.view.Baustein import Baustein
+from src.view.BausteinView import BausteinView
 
 
 @pytest.fixture
 def baustein():
     import pygame
     pygame_screen = Mock(spec=pygame.display)
-    return Baustein(pygame_screen)
+    return BausteinView(pygame_screen)
 
 
 def test_get_position__0_0(baustein):

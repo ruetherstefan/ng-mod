@@ -7,20 +7,24 @@ Big Topics:
 
 Generell
 - Weichenumstellung blinken
-- github auf Token umstellen Visit https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
 - integriere pytest in Pycharm
 - Logs beim Weichenschalten entfernen
 - Tests für Stellpult
 - Jedes Mal Bildlookup für Belegung bei Belegungswechselt ist uncool
+- bei Tests beim setup copy paste reduzieren
 
 
 aktueller Topic : Fahrstraße anzeigen
 - Stellpult: Methoden statt Schleifen
-- Tests für toggleFahrstrasse
 
-- Bilderpfad nach Bilder verschieben
 - WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
 
+ - Tests für toggleFahrstrasse
+ - weiche view toggle bzw. aendere_weichenstellung besser model übergeben ?
+ - aendere_weichenstellung und toggleFahrstrasse nach controller
+
+ - was machen mit Weichenadresse undefined? -> alle definen?
+ -> undefined logik im Streckenplaner + test löschen
 
 Fahrstaße stellen
 - Icon finden - Toggle

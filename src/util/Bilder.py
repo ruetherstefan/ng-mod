@@ -2,10 +2,12 @@ import pygame
 import os
 
 _image_library = {}
+bilder_ordner = "../../resource/"
 
 
 class Bilder:
     def get_image(self, path):
+        path = bilder_ordner + path
         global _image_library
         image = _image_library.get(path)
         if image == None:

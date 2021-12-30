@@ -1,7 +1,8 @@
 import pygame
 
-from src.view.Weiche import Weiche
-from src.main.Streckenplaner import Streckenplaner
+from src.controller.Streckenplaner import Streckenplaner
+from src.view.WeicheView import WeicheView
+from src.view.Streckenmaler import Streckenmaler
 from src.serial.WeichenControlBote import weichen_control
 
 MOUSE_CLICK_LEFT = 1
@@ -20,7 +21,8 @@ screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Stellpult Prototyp")
 
-gleise = Streckenplaner().plane_ennepetal(screen)
+ennepetal_model = Streckenplaner().plane_ennepetal_model()
+ennepetal_view = Streckenmaler(ennepetal_model).plane_ennepetal_view(screen)
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -34,14 +36,14 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            for gleis in gleise:
-                if gleis.bild.get_rect().move(gleis.get_position()).collidepoint(event.pos):
+            for gleis_view in ennepetal_view:
+                if gleis_view.bild.get_rect().move(gleis_view.get_position()).collidepoint(event.pos):
                     if MOUSE_CLICK_LEFT == event.button:
-                        if isinstance(gleis, Weiche):
-                            gleis.aendere_weichenstellung()
+                        if isinstance(gleis_view, WeicheView):
+                            gleis_view.aendere_weichenstellung()
                     elif MOUSE_CLICK_RIGHT == event.button:
-                        if isinstance(gleis, Weiche):
-                            gleis.toggleFahrstrasse()
+                        if isinstance(gleis_view, WeicheView):
+                            gleis_view.toggle_fahrstrasse()
 
     # --- Game logic should go here
 
@@ -49,8 +51,8 @@ while not done:
     screen.fill(WHITE)
 
     # --- Drawing code should go here
-    for gleis in gleise:
-        gleis.draw()
+    for gleis_view in ennepetal_view:
+        gleis_view.draw()
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

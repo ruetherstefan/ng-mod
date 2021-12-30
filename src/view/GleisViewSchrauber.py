@@ -1,4 +1,4 @@
-class Gleisschrauber:
+class GleisViewSchrauber:
 
     def __init__(self):
         self.bausteine = []
