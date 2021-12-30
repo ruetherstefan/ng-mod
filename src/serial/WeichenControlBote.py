@@ -1,7 +1,7 @@
 import serial.tools.list_ports
 
-from src.baustein.Weichenstellung import Weichenstellung
-from src.baustein.Weichenadresse import Weichenadresse
+from src.model.Weichenstellung import Weichenstellung
+from src.model.Weichenadresse import Weichenadresse
 
 NEGIERTE_WEICHEN = [Weichenadresse.W2,
                     Weichenadresse.W3,

@@ -1,4 +1,4 @@
-from src.baustein.Weichenstellung import Weichenstellung
+from src.model.Weichenstellung import Weichenstellung
 from src.view.WeichenstellungBildLookup import *
 from src.serial.WeichenControlBote import WeichenControlBote
 from src.util.Bilder import Bilder

@@ -3,8 +3,8 @@ from unittest.mock import *
 import pytest
 
 from src.view.Weiche import *
-from src.baustein.Weichenadresse import Weichenadresse
-from src.baustein.Gleisbelegung import Gleisbelegung
+from src.model.Weichenadresse import Weichenadresse
+from src.model.Gleisbelegung import Gleisbelegung
 
 
 @pytest.fixture

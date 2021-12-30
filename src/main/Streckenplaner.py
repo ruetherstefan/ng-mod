@@ -1,7 +1,7 @@
 from src.view.Gleis import *
 from src.view.Weiche import *
 from src.view.Gleisschrauber import Gleisschrauber
-from src.baustein.Weichenadresse import Weichenadresse
+from src.model.Weichenadresse import Weichenadresse
 
 
 class Streckenplaner:

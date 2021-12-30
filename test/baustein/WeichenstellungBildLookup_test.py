@@ -1,7 +1,7 @@
 from unittest.mock import *
 
 from src.view.WeichenstellungBildLookup import *
-from src.baustein.Gleisbelegung import Gleisbelegung
+from src.model.Gleisbelegung import Gleisbelegung
 from src.view.Baustein import Baustein
 
 

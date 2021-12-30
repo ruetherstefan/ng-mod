@@ -1,8 +1,8 @@
 from unittest.mock import *
 
 from src.serial.WeichenControlBote import WeichenControlBote
-from src.baustein.Weichenstellung import Weichenstellung
-from src.baustein.Weichenadresse import Weichenadresse
+from src.model.Weichenstellung import Weichenstellung
+from src.model.Weichenadresse import Weichenadresse
 
 @patch('src.serial.WeichenControlBote.weichen_control')
 def test_aendere_weichenstellung__ruft_serial_gerade(weichen_control):
