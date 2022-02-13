@@ -1,6 +1,7 @@
 import pygame
 
 from src.controller.Streckenplaner import Streckenplaner
+from src.controller.Weichenstellungcontroller import Weichenstellungscontroller
 from src.view.WeicheView import WeicheView
 from src.view.Streckenmaler import Streckenmaler
 from src.serial.WeichenControlBote import weichen_control
@@ -30,6 +31,7 @@ clock = pygame.time.Clock()
 
 # -------- Main Program Loop -----------
 done = False
+
 while not done:
     # --- Main event loop
     for event in pygame.event.get():
@@ -38,11 +40,12 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for gleis_view in ennepetal_view:
                 if gleis_view.bild.get_rect().move(gleis_view.get_position()).collidepoint(event.pos):
+                    model = gleis_view.model
                     if MOUSE_CLICK_LEFT == event.button:
-                        if isinstance(gleis_view, WeicheView):
-                            gleis_view.aendere_weichenstellung()
+                        if isinstance(gleis_view, WeicheView): #weg
+                            Weichenstellungscontroller().aendere_weichenstellung(model)
                     elif MOUSE_CLICK_RIGHT == event.button:
-                        if isinstance(gleis_view, WeicheView):
+                        if isinstance(gleis_view, WeicheView): #weg
                             gleis_view.toggle_fahrstrasse()
 
     # --- Game logic should go here

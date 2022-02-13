@@ -22,6 +22,8 @@ aktueller Topic : Fahrstraße anzeigen
  - Tests für toggleFahrstrasse
  - weiche view toggle bzw. aendere_weichenstellung besser model übergeben ?
  - aendere_weichenstellung und toggleFahrstrasse nach controller
+ - Nullpointer kein modell aendere_weichenstellung
+ - if isinstance(gleis_view, WeicheView): #weg in stellpult
 
  - was machen mit Weichenadresse undefined? -> alle definen?
  -> undefined logik im Streckenplaner + test löschen

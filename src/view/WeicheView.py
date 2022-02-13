@@ -12,13 +12,6 @@ class WeicheView(BausteinView):
         self.model = model
         self.markierungsart = {}
 
-    def aendere_weichenstellung(self):
-        if self.model.weichenstellung == Weichenstellung.GERADE:
-            self.model.weichenstellung = Weichenstellung.ABZWEIGEND
-        else:
-            self.model.weichenstellung = Weichenstellung.GERADE
-        WeichenControlBote().aendere_weichenstellung(self.model.adresse, self.model.weichenstellung)
-
     def toggle_fahrstrasse(self):
         if Gleisbelegung.FREI == self.model.gleisbelegung:
             self.model.gleisbelegung = Gleisbelegung.FAHRSTRASSE

@@ -10,13 +10,6 @@ class Weiche:
         self.weichenstellung = Weichenstellung.GERADE
         self.gleisbelegung = Gleisbelegung.FREI
 
-    def aendere_weichenstellung(self):
-        if self.weichenstellung == Weichenstellung.GERADE:
-            self.weichenstellung = Weichenstellung.ABZWEIGEND
-        else:
-            self.weichenstellung = Weichenstellung.GERADE
-        WeichenControlBote().aendere_weichenstellung(self.adresse, self.weichenstellung)
-
     def toggleFahrstrasse(self):
         if Gleisbelegung.FREI == self.gleisbelegung:
             self.gleisbelegung = Gleisbelegung.FAHRSTRASSE
