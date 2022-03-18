@@ -1,12 +1,14 @@
-# Module:
-# Communication with Intellibox (IB) via serial COM port
-#
-#
-# History:
-# 06.03.2016 - 1.01: Command Lok_stop() with realtime measurement
-# 16.03.2016 - 1.02: Command Lok_go(), Read & print of IB answers
-# 17.03.2016 - 1.03: Implementation of Hex commands variants
-#                    Achtung: Funktion lok_cmd() in Entwicklung und Fehlerhaft.
+"""
+Module:  Communication with Intellibox (IB) via serial COM port
+
+History:
+06.03.2016 - 1.01: Command Lok_stop() with realtime measurement
+16.03.2016 - 1.02: Command Lok_go(), Read & print of IB answers
+17.03.2016 - 1.03: Implementation of Hex commands variants
+                   Achtung: Funktion lok_cmd() in Entwicklung und Fehlerhaft.
+18.03.2022 - 2.03: Überarbeitung der Kommentare.
+                   ser.bautrate in ser.baudrate  geändert aber noch nicht geprüft.
+"""
 
 import serial
 # import timeit
@@ -23,7 +25,8 @@ def initialisation():
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
-    ser.bautrate = 9600
+    # ser.bautrate = 9600
+    ser.baudrate = 9600
     ser.stopbits = 2
     ser.rtscts = False
 
@@ -44,30 +47,33 @@ def de_initialisation():
         print('Runtime of De_Initialisation:', time.perf_counter() - timestamp, 'sec\n')
 
 
-# Alle Loks werden nach Nothalt wieder mit Fahrspannung versorgt.
-# Identisch mit der Funktionstaste 'go" an der IB
+
 def lok_go():
+    """
+    Alle Loks werden nach Nothalt wieder mit Fahrspannung versorgt.
+    Identisch mit der Funktionstaste 'go' an der IB
+    """
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
     if not CONF_HEX:
         ser.write(b'go\r')
-        Answer = ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
+        answer = ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
         if CONF_DEBUG:
-            print('Answer IB Lok_go(ASCCI): ', Answer, '\n')
+            print('answer IB Lok_go(ASCII): ', answer, '\n')
 
     if CONF_HEX:
         ser.write(b'\xA7')
-        Answer = ser.read()
+        answer = ser.read()
         if CONF_DEBUG:
-            print('Answer IB Lok_go(HEX)(0 = OK)', Answer)
+            print('answer IB Lok_go(HEX)(0 = OK)', answer)
 
     if CONF_DEBUG:
         print('Lok_go() finished')
@@ -78,8 +84,8 @@ def lok_go():
 
 def lok_stop_pwr_off():
     """
-    # Stop aller Loks, Nothalt durch abschalten der Fahrspannung.
-    # Identisch mit der Funktionstaste 'stop" an der IB
+    Stop aller Loks, Nothalt durch Abschalten der Fahrspannung.
+    Identisch mit der Funktionstaste 'stop' an der IB
     """
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
@@ -94,25 +100,25 @@ def lok_stop_pwr_off():
         # Bisher keine Lösung gefunden.
 
         # Der Versuch, den Input Buffer auszulesen, bis dieser geleert ist, scheint nicht möglich.
-        # Answer = ser.iread_until(ser, '\r', 10)
-        # print('Answer_S: ', bytes())
-        Answer = ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
-        Answer = Answer + ser.read()
+        # answer = ser.iread_until(ser, '\r', 10)
+        # print('answer_S: ', bytes())
+        answer = ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
+        answer = answer + ser.read()
         if CONF_DEBUG:
-            print('Answer IB Lok_stop(ASCCI): ', Answer)
+            print('answer IB Lok_stop(ASCCI): ', answer)
 
     if CONF_HEX:
         ser.write(b'\xA6')
-        Answer = ser.read()
+        answer = ser.read()
         if CONF_DEBUG:
-            print('Answer IB Lok_stop(HEX)(0 = OK)', Answer)
+            print('answer IB Lok_stop(HEX)(0 = OK)', answer)
 
     if CONF_DEBUG:
         print('Lok_stop() finished')
@@ -128,11 +134,11 @@ def lok_halt():
 
     if CONF_HEX:
         ser.write(b'\xA5')
-        Answer = ser.read()
+        answer = ser.read()
         if CONF_DEBUG:
-            print('Answer IB Lok_halt(HEX)(0 = OK)', Answer)
+            print('answer IB Lok_halt(HEX)(0 = OK)', answer)
     else:
-        raise Exception("Cmd lok_halt not supported for ASCCI mode:")
+        raise Exception("Cmd lok_halt not supported for ASCII mode:")
 
     if CONF_DEBUG:
         print('Lok_halt() finished')
@@ -141,42 +147,43 @@ def lok_halt():
         print('Runtime of Lok_halt():', time.perf_counter() - timestamp, 'sec\n')
 
 
+"""
+function lok_cmd()
+Control of one Lok, with all relevant parameters
 
-# function lok_cmd()
-# Control of one Lok, with all relevant parameters
-#
-# Parameters (byte)
-# 1st	low byte of Lok address
-# 2nd	high byte of Lok address
-# 3rd	speed (0..127: 0 = Stop, 1 = Stop/Em.Stop)
-# 	N.B. bit #7 is reserved for future use!
-# 4th	this byte has the following format:
-#
-# 	bit#   7     6     5     4     3     2     1     0
-#	    +-----+-----+-----+-----+-----+-----+-----+-----+
-#	    |ChgF |Force| Dir | FL  | F4  | F3  | F2  | F1  |
-#	    +-----+-----+-----+-----+-----+-----+-----+-----+
-#
-# 	where:
-# 		ChgF	set if F1..F4 to be used for setting F1..F4 of
-#			Lok (otherwise F1..F4 are ignored)
-# 		Force	if set (1), then the XLok command is 'forced'
-# 			even in case of a Lok already controlled by a
-# 			non-PC device
-# 		Dir	Lok direction: 1 = forward, 0 = reverse
-# 		FL	Lok light status: 1 = on, 0 = off
-# 		F4..F1	Lok F4..F1 status (if ChgF is set)
-#
-# N.B.	Address must be in range 0..9999
-# 	(depending on protocol, not every address is legal!)
-#
-# Remark:  F2..F4 are not supported here, because no lok with this functions avaliable
+Parameters (byte)
+1st	low byte of Lok address
+2nd	high byte of Lok address
+3rd	speed (0..127: 0 = Stop, 1 = Stop/Em.Stop)
+N.B. bit #7 is reserved for future use!
+4th	this byte has the following format:
+
+bit    7     6     5     4     3     2     1     0
+    +-----+-----+-----+-----+-----+-----+-----+-----+
+    |ChgF |Force| Dir | FL  | F4  | F3  | F2  | F1  |
+    +-----+-----+-----+-----+-----+-----+-----+-----+
+
+where:
+ChgF	set if F1..F4 to be used for setting F1..F4 of
+        Lok (otherwise F1..F4 are ignored)
+Force	if set (1), then the XLok command is 'forced'
+        even in case of a Lok already controlled by a
+        non-PC device
+Dir	Lok direction: 1 = forward, 0 = reverse
+FL	Lok light status: 1 = on, 0 = off
+F4..F1	Lok F4..F1 status (if ChgF is set)
+
+N.B.	Address must be in range 0..9999
+(depending on protocol, not every address is legal!)
+
+Remark:  F2...F4 are not supported here, because no lok with this functions available.
+"""
 def lok_cmd(addr_low, addr_high, speed, direction, frontlight, f1):
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
     if CONF_HEX:
-        # with this command we setting F1..F4 and
+        # with this command we're setting F1...F4 and
         # forcing the cmd that PC and IB can work in parallel
         var_4th_byte = 0xc0
         if direction:
@@ -195,11 +202,11 @@ def lok_cmd(addr_low, addr_high, speed, direction, frontlight, f1):
 
         # XLok (080h) + 4 Byte
         # ser.write(b'\x80')
-        Answer = ser.read()
+        answer = ser.read()
         # if CONF_DEBUG:
-            # print('Answer IB Lok_cmd(HEX)(0 = OK)', Answer)
+            # print('answer IB Lok_cmd(HEX)(0 = OK)', answer)
     else:
-        raise Exception("Cnd lok_cmd not supported for ASCCI mode:")
+        raise Exception("Cnd lok_cmd not supported for ASCII mode:")
 
     if CONF_DEBUG:
         print('Lok_cmd() finished')
@@ -208,9 +215,9 @@ def lok_cmd(addr_low, addr_high, speed, direction, frontlight, f1):
         print('Runtime of Lok_cmd():', time.perf_counter() - timestamp, '\n')
 
 
-#################
-# Hauptprogramm:
-#################
+"""
+Hauptprogramm:
+"""
 
 initialisation()
 # --------------------------------------
