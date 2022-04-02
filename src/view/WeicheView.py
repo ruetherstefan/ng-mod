@@ -12,12 +12,6 @@ class WeicheView(BausteinView):
         self.model = model
         self.markierungsart = {}
 
-    def toggle_fahrstrasse(self):
-        if Gleisbelegung.FREI == self.model.gleisbelegung:
-            self.model.gleisbelegung = Gleisbelegung.FAHRSTRASSE
-        elif Gleisbelegung.FAHRSTRASSE == self.model.gleisbelegung:
-            self.model.gleisbelegung = Gleisbelegung.FREI
-
     def draw(self):
         super().draw()
         self.screen.blit(

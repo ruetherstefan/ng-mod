@@ -1,7 +1,8 @@
 import pygame
 
 from src.controller.Streckenplaner import Streckenplaner
-from src.controller.Weichenstellungcontroller import Weichenstellungscontroller
+from src.controller.WeichenstellungController import WeichenstellungController
+from src.model.Weiche import Weiche
 from src.view.WeicheView import WeicheView
 from src.view.Streckenmaler import Streckenmaler
 from src.serial.WeichenControlBote import weichen_control
@@ -42,8 +43,8 @@ while not done:
                 if gleis_view.bild.get_rect().move(gleis_view.get_position()).collidepoint(event.pos):
                     model = gleis_view.model
                     if MOUSE_CLICK_LEFT == event.button:
-                        if isinstance(gleis_view, WeicheView): #weg
-                            Weichenstellungscontroller().aendere_weichenstellung(model)
+                        if isinstance(model, Weiche):
+                            WeichenstellungController().aendere_weichenstellung(model)
                     elif MOUSE_CLICK_RIGHT == event.button:
                         if isinstance(gleis_view, WeicheView): #weg
                             gleis_view.toggle_fahrstrasse()

@@ -1,6 +1,5 @@
 from src.model.Gleisbelegung import Gleisbelegung
 from src.model.Weichenstellung import Weichenstellung
-from src.serial.WeichenControlBote import WeichenControlBote
 
 
 class Weiche:

@@ -14,19 +14,19 @@ Generell
 - bei Tests beim setup copy paste reduzieren
 
 
-aktueller Topic : Fahrstraße anzeigen
+aktueller Topic : MVC & Refactoring
 - Stellpult: Methoden statt Schleifen
 
 - WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
-
- - Tests für toggleFahrstrasse
  - weiche view toggle bzw. aendere_weichenstellung besser model übergeben ?
- - aendere_weichenstellung und toggleFahrstrasse nach controller
+ - toggleFahrstrasse nach controller + Tests für toggleFahrstrasse
  - Nullpointer kein modell aendere_weichenstellung
  - if isinstance(gleis_view, WeicheView): #weg in stellpult
+ - pytest reparieren
 
  - was machen mit Weichenadresse undefined? -> alle definen?
  -> undefined logik im Streckenplaner + test löschen
+
 
 Fahrstaße stellen
 - Icon finden - Toggle
