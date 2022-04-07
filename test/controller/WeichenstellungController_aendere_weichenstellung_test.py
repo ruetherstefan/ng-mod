@@ -29,3 +29,5 @@ def test_aendere_weichenstellung_abzweigend_zu_gerade(weichen_control_bote_mock)
     WeichenstellungController().aendere_weichenstellung(weiche)
     assert Weichenstellung.GERADE == weiche.weichenstellung
     weichen_control_bote_mock().aendere_weichenstellung.assert_called_with(ANY, Weichenstellung.GERADE)
+
+
