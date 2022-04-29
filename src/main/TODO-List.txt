@@ -27,6 +27,12 @@ aktueller Topic : MVC & Refactoring
  - was machen mit Weichenadresse undefined? -> alle definen?
  -> undefined logik im Streckenplaner + test löschen
 
+Serial Lok mit Dirk
+- Lok model logik: Adresse über 9999 oder unter 1 gibt Exception
+- Lok model logik: speed (0..127: 0 = Stop,
+- Lok model logik: speed 1 = Stop/Em.Stop) testen und evtl programmieren
+
+
 
 Fahrstaße stellen
 - Icon finden - Toggle
