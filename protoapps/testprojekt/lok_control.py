@@ -180,67 +180,41 @@ Remark:  F2...F4 are not supported here, because no lok with this functions avai
 """
 
 
-class Lok:
+def lok_cmd(address, speed, forward: bool, frontlight: bool, f1: bool):
+    if CONF_RUNTIME:
+        timestamp = time.perf_counter()
 
-    def __init__(self, lokadresse):
-        self.adresse: int = lokadresse
-        self.speed: int = 0
-        self.forwaerts: bool= True
-        self.frontlicht: bool = True
-
-        self.f1: bool = False
-        self.f2: bool = False
-        self.f3: bool = False
-        self.f4: bool = False
-
-
-class LokControlBote:
-    def lok_fahre(lok: Lok):
-
-        ser.write(self.get_low_byte_adresse(lok.adresse))
-        answer = ser.read()
-
-
-    def get_low_byte_adresse(self, adresse: int):
-        my_byte = adresse & 0xFF
-        return my_byte
-
-
-    def lok_cmd(address, speed, forward: bool, frontlight: bool, f1: bool):
-        if CONF_RUNTIME:
-            timestamp = time.perf_counter()
-
-        if CONF_HEX:
-            # with this command we're setting F1...F4 and
-            # forcing the cmd that PC and IB can work in parallel
-            var_4th_byte = 0xc0
-            if forward:
-                var_4th_byte = var_4th_byte + 0x20
-            if frontlight:
-                var_4th_byte = var_4th_byte + 0x10
-            if f1:
-                var_4th_byte = var_4th_byte + 0x01
-            # Remark:  F2..F4 are not supported here, because no lok with this functions available
-            if CONF_DEBUG:
-                print('4th byte', var_4th_byte)
-
-            string = addr_low + addr_high + speed + var_4th_byte
-            if CONF_DEBUG:
-                print('string', string)
-
-            # XLok (080h) + 4 Byte
-            # ser.write(b'\x80')
-            answer = ser.read()
-            # if CONF_DEBUG:
-                # print('answer IB Lok_cmd(HEX)(0 = OK)', answer)
-        else:
-            raise Exception("Cnd lok_cmd not supported for ASCII mode:")
-
+    if CONF_HEX:
+        # with this command we're setting F1...F4 and
+        # forcing the cmd that PC and IB can work in parallel
+        var_4th_byte = 0xc0
+        if forward:
+            var_4th_byte = var_4th_byte + 0x20
+        if frontlight:
+            var_4th_byte = var_4th_byte + 0x10
+        if f1:
+            var_4th_byte = var_4th_byte + 0x01
+        # Remark:  F2..F4 are not supported here, because no lok with this functions available
         if CONF_DEBUG:
-            print('Lok_cmd() finished')
+            print('4th byte', var_4th_byte)
 
-        if CONF_RUNTIME:
-            print('Runtime of Lok_cmd():', time.perf_counter() - timestamp, '\n')
+        string = addr_low + addr_high + speed + var_4th_byte
+        if CONF_DEBUG:
+            print('string', string)
+
+        # XLok (080h) + 4 Byte
+        # ser.write(b'\x80')
+        answer = ser.read()
+        # if CONF_DEBUG:
+            # print('answer IB Lok_cmd(HEX)(0 = OK)', answer)
+    else:
+        raise Exception("Cnd lok_cmd not supported for ASCII mode:")
+
+    if CONF_DEBUG:
+        print('Lok_cmd() finished')
+
+    if CONF_RUNTIME:
+        print('Runtime of Lok_cmd():', time.perf_counter() - timestamp, '\n')
 
 
 """
