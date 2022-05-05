@@ -1,7 +1,7 @@
 from src.model.Lok import Lok
 
 
-class LokControlBote:
+class LokControl:
     def lok_fahre(self, lok: Lok):
         ser.write(self.get_adresse_low_byte(lok.adresse))
         answer = ser.read()
