@@ -1,18 +1,74 @@
+from serial import Serial
+
 from src.model.Lok import Lok
 
+"""
+function lok_cmd()
+Control of one Lok, with all relevant parameters
 
+XLok (080h) + 4 Byte
+Parameters (byte)
+1st	low byte of Lok address
+2nd	high byte of Lok address
+3rd	speed (0..127: 0 = Stop, 1 = Stop/Em.Stop)
+N.B. bit #7 is reserved for future use!
+4th	this byte has the following format:
+
+bit    7     6     5     4     3     2     1     0
+    +-----+-----+-----+-----+-----+-----+-----+-----+
+    |ChgF |Force| Dir | FL  | F4  | F3  | F2  | F1  |
+    +-----+-----+-----+-----+-----+-----+-----+-----+
+
+where:
+ChgF	set if F1..F4 to be used for setting F1..F4 of
+        Lok (otherwise F1..F4 are ignored)
+Force	if set (1), then the XLok command is 'forced'
+        even in case of a Lok already controlled by a
+        non-PC device
+Dir	Lok direction: 1 = forward, 0 = reverse
+FL	Lok light status: 1 = on, 0 = off
+F4..F1	Lok F4..F1 status (if ChgF is set)
+
+N.B.	Address must be in range 0..9999
+(depending on protocol, not every address is legal!)
+
+Reply:
+1st	either 00h (cmd Ok) or error code.
+
+Error/warning codes:
+XBADPRM (02h)	illegal parameter value
+XNOLSPC (08h)	there is no space in the Lok cmd buffer, please try later!
+XNOSLOT (0Bh)	there is no slot available
+XBADLNP (0Ch)	Lok# is illegal for this protocol
+XLKBUSY (0Dh)	Lok already controlled by another device
+XLKHALT (41h)	Command accepted (Lok status updated), but IB in 'Halt' mode!
+XLkPOFF (42h)	Command accepted (Lok status updated), but IB in Power Off!
+
+Remark:  F2...F4 are not supported here, because no lok with this functions available.
+"""
 class LokControl:
-    def lok_fahre(self, lok: Lok):
-        ser.write(self.get_adresse_low_byte(lok.adresse))
-        answer = ser.read()
+    def lok_fahre(self, lok: Lok,  ser: Serial):
+        cmd = b'\x80'
+        print(cmd)
+        ser.write(cmd)
+        b1 = self.get_adresse_low_byte(lok.adresse).to_bytes(1, 'little')
+        print(b1)
+        ser.write(b1)
+        #answer = ser.read()
 
-        ser.write(self.get_adresse_high_byte(lok.adresse))
-        answer = ser.read()
+        b2 = self.get_adresse_high_byte(lok.adresse).to_bytes(1, 'little')
+        print(b2)
+        ser.write(b2)
+        #answer = ser.read()
 
-        ser.write(lok.speed)
-        answer = ser.read()
+        bspeed = lok.speed.to_bytes(1, 'little')
+        print(bspeed)
+        ser.write(bspeed)
+        #answer = ser.read()
 
-        ser.write(self.get_byte_funktionen(lok))
+        bspezial = self.get_byte_funktionen(lok).to_bytes(1, 'little')
+        print(bspezial)
+        ser.write(bspezial)
         answer = ser.read()
 
     def get_adresse_low_byte(self, adresse: int):

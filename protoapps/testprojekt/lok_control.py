@@ -233,6 +233,6 @@ lok_go()
 
 # --------------------------------------
 # Test 2:
-LokControlBote().lok_cmd(10, 00, 15, True, False, False)
+#LokControlBote().lok_cmd(10, 00, 15, True, False, False)
 
 de_initialisation()
