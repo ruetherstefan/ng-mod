@@ -9,8 +9,7 @@ def initialisation():
     if CONF_RUNTIME:
         timestamp = time.perf_counter()
 
-    # ser.bautrate = 9600
-    ser.baudrate = 4800
+    ser.bautrate = 9600
     ser.stopbits = 2
     ser.rtscts = False
 
@@ -44,8 +43,14 @@ CONF_HEX = True
 ser = serial.Serial('COM3')
 initialisation()
 
-lok: Lok = Lok(200)
-lok.speed = 20
+lok: Lok = Lok(1000)
+lok.speed = 60
+lok.f1 = True
+lok.f2 = False
+lok.f3 = True
+lok.f4 = True
+lok.forwaerts = False
+lok.frontlicht = False
 LokControl().lok_fahre(lok, ser)
 
 
