@@ -33,6 +33,7 @@ aktueller Topic : MVC & Refactoring
 Serial Lok mit Dirk
 - Lok model logik: Adresse über 9999 oder unter 1 gibt Exception
 - Lok model logik: speed (0..127: 0 = Stop,
+  https://www.geeksforgeeks.org/getter-and-setter-in-python/
 - Lok model logik: speed 1 = Stop/Em.Stop) testen und evtl programmieren
 
 
