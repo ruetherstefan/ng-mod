@@ -12,6 +12,9 @@ Generell
 - Tests für Stellpult
 - Jedes Mal Bildlookup für Belegung bei Belegungswechselt ist uncool
 - bei Tests beim setup copy paste reduzieren
+- Fehlerhandling
+  - bei Programmierfehlern
+  - bei Betriebsfehlern - IntelliBox reagiert nicht, lok ist weg, Zug geteilt
 
 
 aktueller Topic : MVC & Refactoring
