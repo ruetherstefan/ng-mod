@@ -94,3 +94,26 @@ class LokControl:
         if lok.f1:
             byte_funktion += 0x01      # funktion F1 bit 0 setzen
         return byte_funktion
+
+
+"""
+XStatus (0xA2)- Länge = 1 Byte
+
+Befehlsbytes:
+        0: 0xA2 XStatus (Statusabfrage für Spannung, Zustand usw.)
+
+Antwort: Bitfeld, folgende Zuordnung:
+         Bit 7:  Erweiterungsbit, wenn 1, kommt noch ein weiteres Byte als Antwort.
+                 (momentan immer 0)
+         Bit 6:  VREG: 1: Spannungsregelung (N Spur) ist aktiviert (ist bei bei uns der Fall)
+                       0: keine Spannungsregelung
+         Bit 5:  I2C   1: externes I2C Gerät vorhanden
+                       0: nichts angeschlossen (unser Standard)
+         Bit 4:  HALT  1: Loks angehalten, aber Gleisspannung vorhanden
+         Bit 3:  PWR:  1: Zustand "EIN", grüne LED leuchtet.
+                       0: Zustand "AUS", rot leuchtet.
+         Bit 2:  HOT   1: zu heiss
+                       0: (OpenDCC)
+         Bit 1:  GO    1: falls gerade der grüne Taster an externer I2C Zentrale betätigt. (keine Entprellung)
+         Bit 0:  STOP  1: falls gerade der rote Taster an externer I2C Zentrale betätigt. (keine Entprellung)
+"""

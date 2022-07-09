@@ -45,3 +45,6 @@ Fahrstaße stellen
 - Fahrstraße stellen
 - Fahrstraße kollision
 
+zu class Gleisbelegung(Enum)  (Dirk)
+- Eigentlich gehört der Status Fahrstraße nicht zur Gleisbelegung.
+- Wenn die Fahrstraße aktiv ist, kann das Gleis besetzt oder nicht besetzt sein.
