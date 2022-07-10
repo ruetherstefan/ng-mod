@@ -1,8 +1,9 @@
-
+from serial import Serial
 
 """
+-> Diese Funktion sollte aufgerufen werden, um die erwartete Konfiguration der IB zu prüfen.
+   Diese sollte manuell in der IB konfiguriert werden.
 XP88Get (0x9C)- Länge = 1+1 Bytes
-
 Befehlsbytes:
         0: 0x9C XP88Get (Einlesen der S88 Konfiguration)
         1: Parameternummer:
@@ -31,6 +32,7 @@ N.B. S88 parameter shall only be modified up to the next IB reset.
 """
 
 """
+-> Wichtigste Funktion um die an der IB angeschlossenen S88-Module von der IB einzulesen.
 XSensor (0x98)- Länge = 1+1 Bytes
 
 Befehlsbytes:
