@@ -15,6 +15,7 @@ Generell
 - Fehlerhandling
   - bei Programmierfehlern
   - bei Betriebsfehlern - IntelliBox reagiert nicht, lok ist weg, Zug geteilt
+- Beim Zugriff auf serial immer über SerialConnector gehen
 
 
 aktueller Topic : MVC & Refactoring
