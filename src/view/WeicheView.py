@@ -1,10 +1,13 @@
+from src.controller.GleisbelegungController import GleisbelegungController
+from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.Weichenstellung import Weichenstellung
 from src.view.WeichenstellungBildLookup import *
-from src.serial.WeichenControlBote import WeichenControlBote
 from src.util.Bilder import Bilder
 
 
 class WeicheView(BausteinView):
+    MOUSE_CLICK_LEFT = 1
+    MOUSE_CLICK_RIGHT = 3
 
     def __init__(self, screen, model):
         super().__init__(screen)
@@ -17,6 +20,12 @@ class WeicheView(BausteinView):
         self.screen.blit(
             WeichenstellungBildLookup.lookup(self.markierungsart[self.model.weichenstellung], self.model.gleisbelegung),
             self.get_position())
+
+    def click(self, event):
+        if self.MOUSE_CLICK_LEFT == event.button:
+            WeichenstellungController().aendere_weichenstellung(self.model)
+        elif self.MOUSE_CLICK_RIGHT == event.button:
+            GleisbelegungController().toggle_fahrstrasse(self.model)
 
 
 class WeicheViewRechtsNachUnten(WeicheView):
