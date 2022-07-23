@@ -16,6 +16,13 @@ Generell
   - bei Programmierfehlern
   - bei Betriebsfehlern - IntelliBox reagiert nicht, lok ist weg, Zug geteilt
 - Beim Zugriff auf serial immer über SerialConnector gehen
+ - testen
+- SerialConnector auch in Offline und Online trennen (Wieder Vererbung?)
+- Dirks Konstanten auslagern
+    CONF_RUNTIME = True
+    CONF_DEBUG = False
+    CONF_HEX = True
+- Weichencontrol mit Tests versehen, wie Lokcontrol
 
 
 

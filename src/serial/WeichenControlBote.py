@@ -1,5 +1,3 @@
-import serial.tools.list_ports
-
 from src.serial import SerialConnector
 
 from src.model.Weichenstellung import Weichenstellung

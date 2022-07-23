@@ -1,6 +1,7 @@
 import pygame
 
 from src.controller.Streckenplaner import Streckenplaner
+from src.serial import SerialConnector
 from src.view.Streckenmaler import Streckenmaler
 from src.serial.WeichenControlBote import weichen_control
 
@@ -11,7 +12,7 @@ WHITE = (255, 255, 255)
 pygame.init()
 
 # setup serial port
-weichen_control.initialisation()
+SerialConnector.initialisation()
 
 size = (1000, 800)
 screen = pygame.display.set_mode(size)
@@ -57,4 +58,4 @@ while not done:
 pygame.quit()
 
 # tear down serial port
-weichen_control.de_initialisation()
+SerialConnector.de_initialisation()
