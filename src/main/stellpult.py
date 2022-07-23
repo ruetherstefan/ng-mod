@@ -1,14 +1,10 @@
 import pygame
 
 from src.controller.Streckenplaner import Streckenplaner
-from src.controller.WeichenstellungController import WeichenstellungController
-from src.model.Weiche import Weiche
-from src.view.WeicheView import WeicheView
+from src.serial import SerialConnector
 from src.view.Streckenmaler import Streckenmaler
 from src.serial.WeichenControlBote import weichen_control
 
-MOUSE_CLICK_LEFT = 1
-MOUSE_CLICK_RIGHT = 3
 
 WHITE = (255, 255, 255)
 
@@ -16,7 +12,7 @@ WHITE = (255, 255, 255)
 pygame.init()
 
 # setup serial port
-weichen_control.initialisation()
+SerialConnector.initialisation()
 
 size = (1000, 800)
 screen = pygame.display.set_mode(size)
@@ -39,15 +35,9 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            for gleis_view in ennepetal_view:
-                if gleis_view.bild.get_rect().move(gleis_view.get_position()).collidepoint(event.pos):
-                    model = gleis_view.model
-                    if MOUSE_CLICK_LEFT == event.button:
-                        if isinstance(model, Weiche):
-                            WeichenstellungController().aendere_weichenstellung(model)
-                    elif MOUSE_CLICK_RIGHT == event.button:
-                        if isinstance(gleis_view, WeicheView): #weg
-                            gleis_view.toggle_fahrstrasse()
+            for baustein_view in ennepetal_view:
+                if baustein_view.bild.get_rect().move(baustein_view.get_position()).collidepoint(event.pos):
+                    baustein_view.click(event)
 
     # --- Game logic should go here
 
@@ -55,8 +45,8 @@ while not done:
     screen.fill(WHITE)
 
     # --- Drawing code should go here
-    for gleis_view in ennepetal_view:
-        gleis_view.draw()
+    for baustein_view in ennepetal_view:
+        baustein_view.draw()
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
@@ -68,4 +58,4 @@ while not done:
 pygame.quit()
 
 # tear down serial port
-weichen_control.de_initialisation()
+SerialConnector.de_initialisation()

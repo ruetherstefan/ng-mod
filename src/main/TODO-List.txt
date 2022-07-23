@@ -15,17 +15,16 @@ Generell
 - Fehlerhandling
   - bei Programmierfehlern
   - bei Betriebsfehlern - IntelliBox reagiert nicht, lok ist weg, Zug geteilt
+- Beim Zugriff auf serial immer über SerialConnector gehen
+ - testen
+- SerialConnector auch in Offline und Online trennen (Wieder Vererbung?)
+- Dirks Konstanten auslagern
+    CONF_RUNTIME = True
+    CONF_DEBUG = False
+    CONF_HEX = True
+- Weichencontrol mit Tests versehen, wie Lokcontrol
 
 
-aktueller Topic : MVC & Refactoring
-- Stellpult: Methoden statt Schleifen
-
-- WeicheLogisch von WeicheOptisch trennen oder noch besser MVC
- - weiche view toggle bzw. aendere_weichenstellung besser model übergeben ?
- - toggleFahrstrasse nach controller + Tests für toggleFahrstrasse
- - Nullpointer kein modell aendere_weichenstellung
- - if isinstance(gleis_view, WeicheView): #weg in stellpult
- - pytest reparieren
 
  - was machen mit Weichenadresse undefined? -> alle definen?
  -> undefined logik im Streckenplaner + test löschen

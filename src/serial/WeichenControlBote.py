@@ -1,4 +1,4 @@
-import serial.tools.list_ports
+from src.serial import SerialConnector
 
 from src.model.Weichenstellung import Weichenstellung
 from src.model.Weichenadresse import Weichenadresse
@@ -59,14 +59,11 @@ class WeichenControlBote:
             return Weichenstellung.GERADE == weichenstellung
 
 
-#print(serial.tools.list_ports.comports()[0].device)
-#print(serial.tools.list_ports.comports()[0])
-offline = serial.tools.list_ports.comports() == []
-#offline = True
-print("offline: " + str(offline))
-if offline:
+if SerialConnector.is_offline():
     from src.serial.WeichenControlOffline import WeichenControlOffline
+
     weichen_control = WeichenControlOffline()
 else:
     from src.serial.WeichenControl import WeichenControl
+
     weichen_control = WeichenControl()

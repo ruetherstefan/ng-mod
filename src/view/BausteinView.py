@@ -20,4 +20,5 @@ class BausteinView:
     def draw(self):
         self.screen.blit(self.bild, self.get_position())
 
-
+    def click(self, event):
+        pass

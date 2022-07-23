@@ -15,10 +15,10 @@ History:
 18.03.2022 - 2.03: Überarbeitung der Kommentare.
                    ser.bautrate in ser.baudrate  geändert aber noch nicht geprüft.
 """
-import serial
 import timeit
 import time
 
+from src.serial import SerialConnector
 from src.serial.WeichenControlInterface import WeichenControlInterface
 
 
@@ -27,41 +27,6 @@ class WeichenControl(WeichenControlInterface):
     CONF_RUNTIME = True
     CONF_DEBUG = False
     CONF_HEX = True
-
-    # Global definition of the COM port
-    ser = serial.Serial('COM3')
-
-    def initialisation(self):
-        if self.CONF_RUNTIME:
-            timestamp = time.perf_counter()
-
-        # self.ser.bautrate = 9600
-        self.ser.baudrate = 9600
-        self.ser.stopbits = 2
-        self.ser.rtscts = False
-
-        if self.CONF_DEBUG:
-            print('Initialisation() -> Used COM Port', self.ser.name)  # check which port was really used
-
-        if self.CONF_RUNTIME:
-            print('Runtime of Initialisation:', time.perf_counter() - timestamp, 'sec\n')
-
-
-    def de_initialisation(self):
-        """
-
-        :rtype: object
-        """
-        if self.CONF_RUNTIME:
-            timestamp = time.perf_counter()
-
-        if not self.CONF_OFFLINE:
-            self.ser.close()  # close serial port
-
-        if self.CONF_RUNTIME:
-            print('Runtime of De_Initialisation:', time.perf_counter() - timestamp, 'sec\n')
-
-
 
     """
     Ansteuerung einer Weiche (eng. turnouts)
@@ -97,17 +62,17 @@ class WeichenControl(WeichenControlInterface):
 
             # XTrnt (090h) + 2 Byte
             string1 = b'\x90'
-            self.ser.write(string1)
+            SerialConnector.ser.write(string1)
 
-            self.ser.write(str_addr_low)
+            SerialConnector.ser.write(str_addr_low)
 
             # string3 = b'\xE0'
-            self.ser.write(string_2nd_byte)
+            SerialConnector.ser.write(string_2nd_byte)
 
             # ser.write(b'\xA7')
             # ser.write(var_2nd_byte)
 
-            Answer = self.ser.read()
+            Answer = SerialConnector.ser.read()
             if self.CONF_DEBUG:
                 print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
         else:
@@ -152,13 +117,13 @@ class WeichenControl(WeichenControlInterface):
 
             # XTrnt (090h) + 2 Byte
             string1 = b'\x90'
-            self.ser.write(string1)
+            SerialConnector.ser.write(string1)
 
-            self.ser.write(str_addr_low)
+            SerialConnector.ser.write(str_addr_low)
 
-            self.ser.write(string_2nd_byte)
+            SerialConnector.ser.write(string_2nd_byte)
 
-            Answer = self.ser.read()
+            Answer = SerialConnector.ser.read()
             if self.CONF_DEBUG:
                 print('Answer IB turnout_set_for_route(HEX)(0 = OK)', Answer)
         else:
