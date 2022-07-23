@@ -3,11 +3,10 @@ from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.Weichenstellung import Weichenstellung
 from src.view.WeichenstellungBildLookup import *
 from src.util.Bilder import Bilder
+from src.view.util import PygameConstant
 
 
 class WeicheView(BausteinView):
-    MOUSE_CLICK_LEFT = 1
-    MOUSE_CLICK_RIGHT = 3
 
     def __init__(self, screen, model):
         super().__init__(screen)
@@ -22,9 +21,9 @@ class WeicheView(BausteinView):
             self.get_position())
 
     def click(self, event):
-        if self.MOUSE_CLICK_LEFT == event.button:
+        if PygameConstant.MOUSE_CLICK_LEFT == event.button:
             WeichenstellungController().aendere_weichenstellung(self.model)
-        elif self.MOUSE_CLICK_RIGHT == event.button:
+        elif PygameConstant.MOUSE_CLICK_RIGHT == event.button:
             GleisbelegungController().toggle_fahrstrasse(self.model)
 
 
