@@ -1,4 +1,15 @@
+"""
+Module:  Signal(S)88Control
+Import der extern an S88-Hardware-Module angeschlossenen Signale.
+Ein Modul besteht aus 2x8 (88) digitalen Eingängen.
+Communication with Intellibox (IB) via serial COM port
+
+History:
+"""
+
 from serial import Serial
+
+class Signal88Control:
 
 """
 -> Diese Funktion sollte aufgerufen werden, um die erwartete Konfiguration der IB zu prüfen.
@@ -13,6 +24,21 @@ Befehlsbytes:
 Antwort: 1. Byte: 0 = Ok, accepted oder Fehlercode
          2. Byte: Wert des abgefragten Parameters
 """
+    def GetConfiguration(self):
+        cmd = b'\x9C'
+        print(cmd)
+        ser.write(cmd)
+        parameter = b'\0'
+        print (parameter)
+        ser.write(parameter)
+        errorcode = ser.read()
+        if errorcode <>0 then
+            print('Signal88Configuration Error Code: ' + errorcode)
+        answer = ser.read()
+        print(answer)
+        # Anzahl der in der IB konfigurierten 2-Byte Module
+        return answer
+
 
 """
 X88PSet (0x9D)- Länge = 1+2 Bytes
@@ -30,6 +56,7 @@ N.B. S88 parameter shall only be modified up to the next IB reset.
      values specified by the user (per IB menus) and stored in the
      corresponding Special Option.
 """
+
 
 """
 -> Wichtigste Funktion um die an der IB angeschlossenen S88-Module von der IB einzulesen.
@@ -53,6 +80,19 @@ s88 commands), for the s88 module or LocoNet sensor being read.
 Reading an s88 module with the XSensor cmd removes any
 eventually pending sensor event for that module.
 """
+def GetS88Module(self, modulenumber: int):
+    cmd = b'\x98'
+    print(cmd)
+    ser.write(cmd)
+    #parameter = b'\0'
+    print(modulenumber)
+    ser.write(modulenumber)
+    errorcode = ser.read()
+    if errorcode <> 0 then
+        print('GetS88Module Error Code: ' + errorcode)
+    byte1 = ser.read()      # Eingänge 1..8 dieses Moduls (Bits 7..0)
+    byte2 = ser.read()      # Eingänge 9..16 dieses Moduls
+
 
 """
 XSensOff (0x99)- Länge = 1 Byte
