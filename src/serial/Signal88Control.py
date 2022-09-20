@@ -88,9 +88,9 @@ class Signal88Control:
         SerialConnector.ser.write(cmd)
 
         print("modulnummer: " + str(modulenumber))
-        SerialConnector.ser.write(modulenumber)
+        SerialConnector.ser.write(modulenumber.to_bytes(1, 'little'))
         errorcode = SerialConnector.ser.read()
-        if errorcode != 0:
+        if errorcode != b'\x00':
             print('GetS88Module Error Code: ' + str(errorcode))
             return  # Abbruch anders programmieren
         byte1 = SerialConnector.ser.read()      # Eingänge 1..8 dieses Moduls (Bits 7..0)
@@ -114,3 +114,16 @@ class Signal88Control:
     Sinnvoll bei Programmstart, wenn mit Events gearbeitet wird. 
     Daraufhin lösen alle aktiven Eingänge das S88 Event aus. 
     """
+
+    def encode_booleans(bool_lst):
+        res = 0
+        for i, bval in enumerate(bool_lst):
+            res += int(bval) << i
+        return res
+
+    def decode_booleans(intval, bits):
+        res = []
+        for bit in xrange(bits):
+            mask = 1 << bit
+            res.append((intval & mask) == mask)
+        return res
