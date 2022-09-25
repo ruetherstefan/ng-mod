@@ -1,6 +1,7 @@
 from serial import Serial
 
 from src.model.Lok import Lok
+from src.serial import SerialConnector
 
 """
 function lok_cmd()
@@ -47,29 +48,29 @@ XLkPOFF (42h)	Command accepted (Lok status updated), but IB in Power Off!
 Remark:  F2...F4 are not supported here, because no lok with this functions available.
 """
 class LokControl:
-    def lok_fahre(self, lok: Lok,  ser: Serial):
+    def lok_fahre(self, lok: Lok):
         cmd = b'\x80'
         print(cmd)
-        ser.write(cmd)
+        SerialConnector.ser.write(cmd)
         b1 = self.get_adresse_low_byte(lok.adresse).to_bytes(1, 'little')
         print(b1)
-        ser.write(b1)
-        #answer = ser.read()
+        SerialConnector.ser.write(b1)
+        #answer = SerialConnector.ser.read()
 
         b2 = self.get_adresse_high_byte(lok.adresse).to_bytes(1, 'little')
         print(b2)
-        ser.write(b2)
-        #answer = ser.read()
+        SerialConnector.ser.write(b2)
+        #answer = SerialConnector.ser.read()
 
         bspeed = lok.speed.to_bytes(1, 'little')
         print(bspeed)
-        ser.write(bspeed)
-        #answer = ser.read()
+        SerialConnector.ser.write(bspeed)
+        #answer = SerialConnector.ser.read()
 
         bspezial = self.get_byte_funktionen(lok).to_bytes(1, 'little')
         print(bspezial)
-        ser.write(bspezial)
-        answer = ser.read()
+        SerialConnector.ser.write(bspezial)
+        answer = SerialConnector.ser.read()
 
     def get_adresse_low_byte(self, adresse: int):
         my_byte = adresse & 0xFF
