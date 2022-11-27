@@ -96,8 +96,8 @@ class Signal88Control:
         byte1 = SerialConnector.ser.read()      # Eingänge 1..8 dieses Moduls (Bits 7..0)
         byte2 = SerialConnector.ser.read()      # Eingänge 9..16 dieses Moduls
 
-        print("Byte1: " + self.decode_bytes_to_boolarray(byte1))
-        print("Byte2: " + self.decode_bytes_to_boolarray(byte2))
+        print("Byte1: " + str(self.decode_bytes_to_boolarray(byte1)))
+        print("Byte2: " + str(self.decode_bytes_to_boolarray(byte2)))
         return self.decode_bytes_to_boolarray(byte1) + self.decode_bytes_to_boolarray(byte2)
 
     def decode_bytes_to_boolarray(self, b: bytes):
