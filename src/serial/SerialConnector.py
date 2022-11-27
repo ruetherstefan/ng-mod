@@ -49,4 +49,4 @@ def de_initialisation():
 
 
 if not is_offline():
-    ser = serial.Serial('COM3')
+    ser = serial.Serial('COM5')
