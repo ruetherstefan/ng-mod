@@ -27,6 +27,7 @@ Generell
 - Dirk Code erklären
 - Uhrzeit Komponente fps zu Wartezeit
 - Integrationstests mit fake serial input
+- WeichenstellungBildLookup: Anpassen an neue Gleisbelegungen Gesperrt und Besetzt
 
 
 

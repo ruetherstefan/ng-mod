@@ -1,8 +1,6 @@
-from src.view.BausteinView import BausteinView
-from src.model.Gleisbelegung import Gleisbelegung
-
 from enum import Enum
 
+from src.model.Gleisbelegung import Gleisbelegung
 from src.util.Bilder import Bilder
 
 
@@ -19,6 +17,7 @@ class Markierungsart(Enum):
 
 class WeichenstellungBildLookup:
 
+    @staticmethod
     def lookup(markierungsart, weichenbelegung):
         return Bilder().get_image("Markierungen/"
                                   + WeichenstellungBildLookup.get_bildmodiefier_weichenbelegung(weichenbelegung)
@@ -41,7 +40,7 @@ class WeichenstellungBildLookup:
             return ""
         elif weichenbelegung == Gleisbelegung.FAHRSTRASSE:
             return "Fahrstrasse"
-        elif weichenbelegung == Gleisbelegung.BLOCKIERT:
-            return "Blockiert"
+        elif weichenbelegung == Gleisbelegung.GESPRERRT:
+            return "Blockiert"  # TODO Anpassen an neue Gleisbelegungen Gesperrt und Besetzt
         else:
             raise ValueError(weichenbelegung + " ist keine bekannte Weichenstellung")
