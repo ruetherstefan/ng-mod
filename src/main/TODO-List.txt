@@ -23,6 +23,10 @@ Generell
     CONF_DEBUG = False
     CONF_HEX = True
 - Weichencontrol mit Tests versehen, wie Lokcontrol
+- Test für bytes to bool-list
+- Dirk Code erklären
+- Uhrzeit Komponente fps zu Wartezeit
+- Integrationstests mit fake serial input
 
 
 

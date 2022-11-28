@@ -3,8 +3,6 @@ import pygame
 from src.controller.Streckenplaner import Streckenplaner
 from src.serial import SerialConnector
 from src.view.Streckenmaler import Streckenmaler
-from src.serial.WeichenControlBote import weichen_control
-
 
 WHITE = (255, 255, 255)
 
