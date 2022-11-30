@@ -100,7 +100,8 @@ class Signal88Control:
         print("Byte2: " + str(self.decode_bytes_to_boolarray(byte2)))
         return self.decode_bytes_to_boolarray(byte1) + self.decode_bytes_to_boolarray(byte2)
 
-    def decode_bytes_to_boolarray(self, b: bytes):
+    @staticmethod
+    def decode_bytes_to_boolarray(b: bytes):
         scale = 16  ## equals to hexadecimal
         num_of_bits = 8
 
@@ -119,16 +120,3 @@ class Signal88Control:
     Sinnvoll bei Programmstart, wenn mit Events gearbeitet wird. 
     Daraufhin lösen alle aktiven Eingänge das S88 Event aus. 
     """
-
-    def encode_booleans(bool_lst):
-        res = 0
-        for i, bval in enumerate(bool_lst):
-            res += int(bval) << i
-        return res
-
-    def decode_booleans(intval, bits):
-        res = []
-        for bit in xrange(bits):
-            mask = 1 << bit
-            res.append((intval & mask) == mask)
-        return res
