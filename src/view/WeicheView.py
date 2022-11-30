@@ -1,6 +1,7 @@
 from src.controller.GleisbelegungController import GleisbelegungController
 from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.Weichenstellung import Weichenstellung
+from src.view.BausteinView import BausteinView
 from src.view.WeichenstellungBildLookup import *
 from src.util.Bilder import Bilder
 from src.view.util import PygameConstant
