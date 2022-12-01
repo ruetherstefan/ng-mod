@@ -44,9 +44,8 @@ class WeichenControlBote:
                             }  # Die Adressen sind in oktal anzugeben.
 
     def aendere_weichenstellung(self, weichenadresse, weichenstellung):
-        print(weichenadresse, self.weichenadresse_mapping.get(weichenadresse), str(
-            self.invertiere_weichenstellung(weichenstellung, weichenadresse)))
-
+        # print(weichenadresse, self.weichenadresse_mapping.get(weichenadresse), str(
+        #     self.invertiere_weichenstellung(weichenstellung, weichenadresse)))
 
         weichen_control.turnout_set_for_route(self.weichenadresse_mapping.get(weichenadresse), b'\00',
                                               self.invertiere_weichenstellung(weichenstellung, weichenadresse))
