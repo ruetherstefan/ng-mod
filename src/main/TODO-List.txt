@@ -39,14 +39,11 @@ Serial Lok mit Dirk
 - Lok model logik: speed 1 = Stop/Em.Stop) testen und evtl programmieren
 
 
-
 Fahrstaße stellen
 - Icon finden - Toggle
+- Wo wird die Fahrstrasse angezeigt beim Besetztmodul
+- (Wo wird besetzt angezeigt)
 - Demo Toggle
 - Aufteilung Buttons
 - Fahrstraße stellen
-- Fahrstraße kollision
-
-zu class Gleisbelegung(Enum)  (Dirk)
-- Eigentlich gehört der Status Fahrstraße nicht zur Gleisbelegung.
-- Wenn die Fahrstraße aktiv ist, kann das Gleis besetzt oder nicht besetzt sein.
+- Fahrstraße kollision anzeigen

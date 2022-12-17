@@ -1,10 +1,10 @@
-from src.controller.GleisbelegungController import GleisbelegungController
 from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.Weichenstellung import Weichenstellung
 from src.view.BausteinView import BausteinView
 from src.view.WeichenstellungBildLookup import *
 from src.util.Bilder import Bilder
 from src.view.util import PygameConstant
+from src.controller.FahrstrasseController import FahrstrasseController
 
 
 class WeicheView(BausteinView):
@@ -18,14 +18,14 @@ class WeicheView(BausteinView):
     def draw(self):
         super().draw()
         self.screen.blit(
-            WeichenstellungBildLookup.lookup(self.markierungsart[self.model.weichenstellung], self.model.gleisbelegung),
+            WeichenstellungBildLookup.lookup(self.markierungsart[self.model.weichenstellung], self.model.gleisbelegung()),
             self.get_position())
 
     def click(self, event):
         if PygameConstant.MOUSE_CLICK_LEFT == event.button:
             WeichenstellungController().aendere_weichenstellung(self.model)
         elif PygameConstant.MOUSE_CLICK_RIGHT == event.button:
-            GleisbelegungController().toggle_fahrstrasse(self.model)
+            FahrstrasseController().toggle_fahrstrasse(self.model)
 
 
 class WeicheViewRechtsNachUnten(WeicheView):

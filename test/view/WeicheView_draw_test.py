@@ -2,7 +2,9 @@ from unittest.mock import *
 
 import pytest
 
+from src.model.BesetztModul import BesetztModul
 from src.model.Weiche import Weiche
+from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.view.WeicheView import *
 from src.model.Weichenadresse import Weichenadresse
 from src.model.Gleisbelegung import Gleisbelegung
@@ -25,7 +27,7 @@ def screen(monkeypatch):
 @patch('src.view.WeicheView.Bilder')
 @patch('src.view.WeicheView.WeichenstellungBildLookup')
 def test_draw_WeichenStellungGerade(weichenstellung_bild_lookup_mock, bilder, screen):
-    weiche = WeicheViewRechtsNachUnten(screen, Weiche(Weichenadresse.W1))
+    weiche: Weiche = WeicheViewRechtsNachUnten(screen, Weiche(Weichenadresse.W1, BesetztModul(BesetztModulAdresse.H1)))
     weiche.set_position_index([42, 42])
     weiche.draw()
     weichenstellung_bild_lookup_mock.lookup.assert_called_with(ANY, Gleisbelegung.FREI)

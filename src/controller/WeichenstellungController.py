@@ -3,9 +3,15 @@ from src.serial.WeichenControlBote import WeichenControlBote
 
 
 class WeichenstellungController:
-    def aendere_weichenstellung(self, weiche):
+    @staticmethod
+    def aendere_weichenstellung(weiche):
         if Weichenstellung.GERADE == weiche.weichenstellung:
-            weiche.weichenstellung = Weichenstellung.ABZWEIGEND
+            WeichenstellungController.set_weichenstellung(weiche, Weichenstellung.ABZWEIGEND)
         else:
-            weiche.weichenstellung = Weichenstellung.GERADE
+            WeichenstellungController.set_weichenstellung(weiche, Weichenstellung.GERADE)
+
+    @staticmethod
+    def set_weichenstellung(weiche, wunsch_weichenstellung):
+        weiche.weichenstellung = wunsch_weichenstellung
         WeichenControlBote().aendere_weichenstellung(weiche.adresse, weiche.weichenstellung)
+
