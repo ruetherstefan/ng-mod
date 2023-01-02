@@ -1,8 +1,4 @@
-from unittest.mock import *
-
-import pytest
-
-from src.model.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenadresse import Weichenadresse
 
 
 from src.controller.Streckenplaner import Streckenplaner

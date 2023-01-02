@@ -13,4 +13,3 @@ class BesetztModul:
             return Gleisbelegung.FAHRSTRASSE
         else:
             return Gleisbelegung.FREI
-

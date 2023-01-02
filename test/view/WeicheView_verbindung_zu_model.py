@@ -1,5 +1,5 @@
-from src.model.Weiche import Weiche
-from src.model.Weichenadresse import Weichenadresse
+from src.model.weiche.Weiche import Weiche
+from src.model.weiche.Weichenadresse import Weichenadresse
 from src.view.WeicheView import WeicheView
 
 

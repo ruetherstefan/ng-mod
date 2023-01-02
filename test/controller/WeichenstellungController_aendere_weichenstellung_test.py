@@ -2,10 +2,10 @@ from unittest.mock import *
 
 from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.BesetztModul import BesetztModul
-from src.model.Weiche import Weiche
+from src.model.weiche.Weiche import Weiche
 from src.model.BesetztModulAdresse import BesetztModulAdresse
-from src.model.Weichenadresse import Weichenadresse
-from src.model.Weichenstellung import Weichenstellung
+from src.model.weiche.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenstellung import Weichenstellung
 
 
 @patch('src.controller.WeichenstellungController.WeichenControlBote')

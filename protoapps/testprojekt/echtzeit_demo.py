@@ -1,6 +1,6 @@
 import pygame
 
-from src.model.Lok import Lok
+from src.model.zug.Lok import Lok
 from src.serial import SerialConnector
 from src.serial.LokControl import LokControl
 from src.serial.Signal88Control import Signal88Control

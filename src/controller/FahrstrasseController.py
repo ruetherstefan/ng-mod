@@ -1,8 +1,8 @@
 from src.controller.WeichenstellungController import WeichenstellungController
 from src.model.BesetztModul import BesetztModul
 from src.model.Gleisbelegung import Gleisbelegung
-from src.model.Weiche import Weiche
-from src.model.Weichenstellung import Weichenstellung
+from src.model.weiche.Weiche import Weiche
+from src.model.weiche.Weichenstellung import Weichenstellung
 
 
 class FahrstrasseController:

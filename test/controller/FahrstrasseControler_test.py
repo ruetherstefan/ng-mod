@@ -1,11 +1,11 @@
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.Gleisbelegung import Gleisbelegung
 from src.model.BesetztModul import BesetztModul
-from src.model.Weiche import Weiche
-from src.model.Weichenadresse import Weichenadresse
-from src.model.Weichenstellung import Weichenstellung
+from src.model.weiche.Weiche import Weiche
+from src.model.weiche.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenstellung import Weichenstellung
 from src.controller.FahrstrasseController import FahrstrasseController
-from src.model.Fahrstrecke import Fahrstrecke
+from src.model.zug.Fahrstrecke import Fahrstrecke
 
 
 def test_fahrstrasse_stellen():

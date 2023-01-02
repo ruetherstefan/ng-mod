@@ -1,4 +1,4 @@
-from src.model.Weichenstellung import Weichenstellung
+from src.model.weiche.Weichenstellung import Weichenstellung
 from src.serial.WeichenControlBote import WeichenControlBote
 
 

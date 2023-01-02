@@ -1,7 +1,7 @@
 from src.serial import SerialConnector
 
-from src.model.Weichenstellung import Weichenstellung
-from src.model.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenstellung import Weichenstellung
+from src.model.weiche.Weichenadresse import Weichenadresse
 
 NEGIERTE_WEICHEN = [Weichenadresse.W2,
                     Weichenadresse.W3,

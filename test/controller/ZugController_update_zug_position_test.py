@@ -1,33 +1,8 @@
 from src.model.BesetztModul import BesetztModul
 from src.model.BesetztModulAdresse import BesetztModulAdresse
-from src.model.Fahrstrecke import Fahrstrecke
-
-
-class Zug:
-    def __init__(self):
-        self.ende = None
-        self.anfang = None
-
-
-class ZugController:
-    @staticmethod
-    def update_zug_position(zug, fahrstrecke):
-        zug_anfang_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.anfang)
-        while zug_anfang_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
-                and fahrstrecke.besetzt_module[zug_anfang_modul_nummer + 1].besetzt:
-            zug_anfang_modul_nummer += 1
-        zug.anfang = fahrstrecke.besetzt_module[zug_anfang_modul_nummer]
-        if not zug.anfang.besetzt:
-            zug.anfang = None
-
-        zug_ende_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.ende)
-        while zug_ende_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
-                and not fahrstrecke.besetzt_module[zug_ende_modul_nummer].besetzt:
-            zug_ende_modul_nummer += 1
-
-        zug.ende = fahrstrecke.besetzt_module[zug_ende_modul_nummer]
-        if not zug.ende.besetzt:
-            zug.ende = None
+from src.model.zug.Fahrstrecke import Fahrstrecke
+from src.model.zug.Zug import Zug
+from src.controller.ZugController import ZugController
 
 
 def gegeben_fahrstrecke_mit_3_bereichen():

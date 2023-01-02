@@ -1,7 +1,7 @@
 from src.model.BesetztModul import BesetztModul
 from src.model.Gleisbelegung import Gleisbelegung
-from src.model.Weichenadresse import Weichenadresse
-from src.model.Weichenstellung import Weichenstellung
+from src.model.weiche.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenstellung import Weichenstellung
 
 
 class Weiche:

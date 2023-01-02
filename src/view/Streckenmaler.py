@@ -1,7 +1,7 @@
 from src.view.GleisView import *
 from src.view.WeicheView import *
 from src.view.GleisViewSchrauber import GleisViewSchrauber
-from src.model.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenadresse import Weichenadresse
 
 
 class Streckenmaler:

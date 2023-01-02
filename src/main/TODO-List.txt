@@ -47,3 +47,9 @@ Fahrstaße stellen
 - Aufteilung Buttons
 - Fahrstraße stellen
 - Fahrstraße kollision anzeigen
+
+Zug fährt ohne Anzeige
+- Besetztmeldungsabfrage und Update der Besetztmodule
+- Hauptroutine: besetzabfrage -> position -> geschwindigkeit -> Am Ende löschen der Route
+- Route und Fahrstrasse immer wieder setzten
+- Uhr Komponente

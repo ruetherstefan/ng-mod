@@ -3,10 +3,10 @@ from unittest.mock import *
 import pytest
 
 from src.model.BesetztModul import BesetztModul
-from src.model.Weiche import Weiche
+from src.model.weiche.Weiche import Weiche
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.view.WeicheView import *
-from src.model.Weichenadresse import Weichenadresse
+from src.model.weiche.Weichenadresse import Weichenadresse
 from src.model.Gleisbelegung import Gleisbelegung
 
 
