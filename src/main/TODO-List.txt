@@ -50,6 +50,9 @@ Fahrstaße stellen
 
 Zug fährt ohne Anzeige
 - Besetztmeldungsabfrage und Update der Besetztmodule
+ - Konkretes Mapping
+ - Alle ControlBoten auf Mocking umstellen
+ - Annotationen sollen Compilefehler auslösen
 - Hauptroutine: besetzabfrage -> position -> geschwindigkeit -> Am Ende löschen der Route
 - Route und Fahrstrasse immer wieder setzten
 - Uhr Komponente
