@@ -27,10 +27,14 @@ Generell
 - Integrationstests mit fake serial input
 - WeichenstellungBildLookup: Anpassen an neue Gleisbelegungen Gesperrt und Besetzt
 
+Später
+- Signal88Control
+ - fehlerausgabe, wenn mehr, weniger oder Mappings, als Module
+ - erweiterung auf mehrere Module
+- Annotationen sollen Compilefehler auslösen
+- was machen mit Weichenadresse undefined? -> alle definen?
+-> undefined logik im Streckenplaner + test löschen
 
-
- - was machen mit Weichenadresse undefined? -> alle definen?
- -> undefined logik im Streckenplaner + test löschen
 
 Serial Lok mit Dirk
 - Lok model logik: Adresse über 9999 oder unter 1 gibt Exception
@@ -49,10 +53,7 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Zug fährt ohne Anzeige
-- Besetztmeldungsabfrage und Update der Besetztmodule
- - Konkretes Mapping
- - Alle ControlBoten auf Mocking umstellen
- - Annotationen sollen Compilefehler auslösen
+- Alle ControlBoten auf Mocking umstellen
 - Hauptroutine: besetzabfrage -> position -> geschwindigkeit -> Am Ende löschen der Route
 - Route und Fahrstrasse immer wieder setzten
 - Uhr Komponente
