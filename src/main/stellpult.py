@@ -1,3 +1,5 @@
+from copy import copy
+
 import pygame
 
 from src.controller.Streckenplaner import Streckenplaner
@@ -5,13 +7,13 @@ from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModul
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.zug.Fahrstrecke import Fahrstrecke
+from src.model.zug.SpeedModifier import SpeedModifier
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
 from src.serial.Signal88ControlBote import Signal88ControlBote
 from src.view.Streckenmaler import Streckenmaler
 
 WHITE = (255, 255, 255)
-
 
 pygame.init()
 
@@ -35,14 +37,25 @@ besetzt_module: [BesetztModul] = [BesetztModul(BesetztModulAdresse.H1),
 zug: Zug = Zug()
 zug.ende = besetzt_module[0]
 zug.anfang = besetzt_module[0]
+zug.speeds = {SpeedModifier.STRECKE_GERADE: 15,
+              SpeedModifier.BAHNHOF_FAHRT: 8}
+#TODO define Lok
 
 # Test Fahrstrecke definition
-fahrstrecken: [Fahrstrecke] = []
-#TODO init fahrstrecke hin
+DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
+DEMO_FAHRSTRECKE_HIN.besetzt_module = besetzt_module
+DEMO_FAHRSTRECKE_HIN.speed_modifier = {DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+                                       DEMO_FAHRSTRECKE_HIN.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
+
+DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
+DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(reversed(besetzt_module))
+DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+                                           DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
+
+fahrstrecken: [Fahrstrecke] = [copy(DEMO_FAHRSTRECKE_HIN)]
 
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
-
 
 # -------- Main Program Loop -----------
 done = False
@@ -67,14 +80,19 @@ while not done:
         ZugController.update_zug_position(zug, fahrstrecke)
         ZugController.update_zug_speed(zug, fahrstrecke)
 
-    # falls in Anfang oder Zielposition
-    #if zug.anfang is besetzt_module[0]:
-        #setzte hin
-    #if zug.anfang is besetzt_module[-1]:
-        # setzte zurück
+        zug_hat_ende_der_strecke_erreicht = zug.anfang is fahrstrecke.besetzt_module[-1]
+        if zug_hat_ende_der_strecke_erreicht:
+            fahrstrecken.remove(fahrstrecke)
 
-    # Route löschen, falls existiert
-    # neue Route stellen, hin oder zurück
+    #lok Geschwindigkeit Signal geben
+
+    # Demo: neue Strecke setzen
+    if zug.anfang is besetzt_module[0]:
+        assert 0 == len(fahrstrecken)
+        fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
+    elif zug.anfang is besetzt_module[-1]:
+        assert 0 == len(fahrstrecken)
+        fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
 
 
     # --- Screen-clearing code goes here
