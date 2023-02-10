@@ -55,6 +55,7 @@ Fahrstaße stellen
 Zug fährt ohne Anzeige
 - Alle ControlBoten auf Mocking umstellen
 - Hauptroutine: besetzabfrage -> position -> geschwindigkeit -> Am Ende löschen der Route
+- Route löschen wenn am Ende - durch iteration über Indizes mit enumerate
 - Route und Fahrstrasse immer wieder setzten
 - Fahrstrasse setzen und fortwährend aufheben
  - update zug position gibt fahrstrasse frei

@@ -26,7 +26,7 @@ pygame.display.set_caption("Stellpult Prototyp")
 ennepetal_model = Streckenplaner().plane_ennepetal_model()
 ennepetal_view = Streckenmaler(ennepetal_model).plane_ennepetal_view(screen)
 
-# Besetztmodule init
+# Test Besetztmodule init
 besetzt_module: [BesetztModul] = [BesetztModul(BesetztModulAdresse.H1),
                                   BesetztModul(BesetztModulAdresse.H2),
                                   BesetztModul(BesetztModulAdresse.H3)]
@@ -64,7 +64,7 @@ while not done:
     Signal88ControlBote().update_module(besetzt_module)
 
     for fahrstrecke in fahrstrecken:
-        ZugController().update_zug_position(zug, fahrstrecke)
+        ZugController.update_zug_position(zug, fahrstrecke)
         ZugController.update_zug_speed(zug, fahrstrecke)
 
     # falls in Anfang oder Zielposition
