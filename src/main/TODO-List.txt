@@ -60,7 +60,16 @@ Notwendig
 - lok befehle senden
 - Richtungswechsel - zumindest faken - besser in Fahrstrasse oder Zug unterbringen
 
+- update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
+
+Integrationstests
+- Stellpult als class, für einfaches Testen und Wuppertal Demo Setup
+- Integrationstests mit spy anstatt mock
+- Durchlauf fahrstrecke start bis ziel
+
 Refactoring - Erweiterungen
+- Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
+- In Kommunikation/ fahrstrecke Adresse anstatt BesetzModul-Object verwenden
 - speedmodifier setter needed
 - Bei einer Strecke ist immer der letzte Bahnhof halt und vermutlich immer der erste bahnhof fahrt
   -> factory mit

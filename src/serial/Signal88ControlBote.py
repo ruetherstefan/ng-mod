@@ -8,14 +8,18 @@ from src.serial.Signal88Control import Signal88Control
 
 class Signal88ControlBote:
     def __init__(self):
-        self.besetzt_modul_adress_mappings__module1: {BesetztModulAdresse: int} = {}
+        self.besetzt_modul_adress_mappings__module1: {BesetztModulAdresse: int} = {BesetztModulAdresse.H1: 0,
+                                                                                   BesetztModulAdresse.H2: 1,
+                                                                                   BesetztModulAdresse.H3: 3}
 
         self.signal_88_control = Signal88Control()
         if SerialConnector.is_offline():
             self.signal_88_control = Mock(spec=Signal88Control)
+            self.signal_88_control.lese_signale = Mock(return_value=[True, False, False, False, False, False, False, False])
 
     def update_module(self, besetzt_module: [BesetztModul]):
-        besetzt_module_map: {BesetztModulAdresse: BesetztModul} = self.erstelle_besetzt_modul_map_zur_adresse(besetzt_module)
+        besetzt_module_map: {BesetztModulAdresse: BesetztModul} = self.erstelle_besetzt_modul_map_zur_adresse(
+            besetzt_module)
         aenderungs_flag = False
 
         modul1 = self.signal_88_control.lese_signale(1)
@@ -34,4 +38,3 @@ class Signal88ControlBote:
         for modul in besetzt_module:
             besetzt_module_map.update({modul.adresse: modul})
         return besetzt_module_map
-

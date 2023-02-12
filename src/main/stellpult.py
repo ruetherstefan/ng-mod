@@ -7,6 +7,7 @@ from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModul
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.zug.Fahrstrecke import Fahrstrecke
+from src.model.zug.Lok import Lok
 from src.model.zug.SpeedModifier import SpeedModifier
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
@@ -39,7 +40,8 @@ zug.ende = besetzt_module[0]
 zug.anfang = besetzt_module[0]
 zug.speeds = {SpeedModifier.STRECKE_GERADE: 15,
               SpeedModifier.BAHNHOF_FAHRT: 8}
-#TODO define Lok
+zug.lok = Lok(215)
+
 
 # Test Fahrstrecke definition
 DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
@@ -87,12 +89,11 @@ while not done:
     #lok Geschwindigkeit Signal geben
 
     # Demo: neue Strecke setzen
-    if zug.anfang is besetzt_module[0]:
-        assert 0 == len(fahrstrecken)
-        fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
-    elif zug.anfang is besetzt_module[-1]:
-        assert 0 == len(fahrstrecken)
-        fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
+    if 0 == len(fahrstrecken):
+        if zug.anfang is besetzt_module[0]:
+            fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
+        elif zug.anfang is besetzt_module[-1]:
+            fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
 
 
     # --- Screen-clearing code goes here
