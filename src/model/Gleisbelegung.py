@@ -1,8 +1,8 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class Gleisbelegung(Enum):
-    FREI = 1
-    FAHRSTRASSE = 2
-    BESETZT = 3
-    GESPRERRT = 4
+    FREI = auto()
+    FAHRSTRASSE = auto()
+    BESETZT = auto()
+    GESPRERRT = auto()

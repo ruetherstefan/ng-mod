@@ -9,15 +9,15 @@ from src.controller.FahrstrasseController import FahrstrasseController
 
 class WeicheView(BausteinView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen)
+    def __init__(self, model):
+        super().__init__()
 
         self.model = model
         self.markierungsart = {}
 
-    def draw(self):
-        super().draw()
-        self.screen.blit(
+    def draw(self, screen):
+        super().draw(screen)
+        screen.blit(
             WeichenstellungBildLookup.lookup(self.markierungsart[self.model.weichenstellung], self.model.gleisbelegung()),
             self.get_position())
 
@@ -30,8 +30,8 @@ class WeicheView(BausteinView):
 
 class WeicheViewRechtsNachUnten(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_tl3.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.LINKS_MITTE
@@ -40,8 +40,8 @@ class WeicheViewRechtsNachUnten(WeicheView):
 
 class WeicheViewRechtsNachOben(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_tr3.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.LINKS_MITTE
@@ -50,8 +50,8 @@ class WeicheViewRechtsNachOben(WeicheView):
 
 class WeicheViewLinksNachUnten(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_tr1.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.RECHTS_MITTE
@@ -60,8 +60,8 @@ class WeicheViewLinksNachUnten(WeicheView):
 
 class WeicheViewLinksNachOben(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_tl1.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.RECHTS_OBEN
@@ -70,8 +70,8 @@ class WeicheViewLinksNachOben(WeicheView):
 
 class WeicheViewRechtsObenNachUnten(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_dbr.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.LINKS_MITTE
@@ -80,8 +80,8 @@ class WeicheViewRechtsObenNachUnten(WeicheView):
 
 class WeicheViewRechtsUntenNachOben(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_dtl.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.LINKS_MITTE
@@ -90,8 +90,8 @@ class WeicheViewRechtsUntenNachOben(WeicheView):
 
 class WeicheViewLinksObenNachUnten(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_dbl.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.RECHTS_UNTEN
@@ -100,8 +100,8 @@ class WeicheViewLinksObenNachUnten(WeicheView):
 
 class WeicheViewLinksUntenNachOben(WeicheView):
 
-    def __init__(self, screen, model):
-        super().__init__(screen, model)
+    def __init__(self, model):
+        super().__init__(model)
 
         self.bild = Bilder().get_image("spdritem_dtr.xpm")
         self.markierungsart[Weichenstellung.GERADE] = Markierungsart.RECHTS_OBEN

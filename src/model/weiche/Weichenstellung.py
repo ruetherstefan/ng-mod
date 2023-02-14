@@ -1,6 +1,6 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class Weichenstellung(Enum):
-    GERADE = 1
-    ABZWEIGEND = 2
+    GERADE = auto()
+    ABZWEIGEND = auto()

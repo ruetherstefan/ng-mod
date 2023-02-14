@@ -1,11 +1,11 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class BesetztModulAdresse(Enum):
-    H1 = 1
-    H2 = 2
-    H3 = 3
-    H4 = 4
-    H5 = 5
-    H6 = 6
-    NOCH_NICHT_BESTIMMT = 9999
+    H1 = auto()
+    H2 = auto()
+    H3 = auto()
+    H4 = auto()
+    H5 = auto()
+    H6 = auto()
+    NOCH_NICHT_BESTIMMT = auto()

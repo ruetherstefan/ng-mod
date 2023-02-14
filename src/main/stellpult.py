@@ -2,115 +2,113 @@ from copy import copy
 
 import pygame
 
-from src.controller.Streckenplaner import Streckenplaner
 from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModul
-from src.model.BesetztModulAdresse import BesetztModulAdresse
+from src.model.weiche.Weiche import Weiche
 from src.model.zug.Fahrstrecke import Fahrstrecke
-from src.model.zug.Lok import Lok
 from src.model.zug.SpeedModifier import SpeedModifier
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
 from src.serial.Signal88ControlBote import Signal88ControlBote
-from src.view.Streckenmaler import Streckenmaler
-
-WHITE = (255, 255, 255)
-
-pygame.init()
-
-# setup serial port
-SerialConnector.initialisation()
-
-size = (1000, 800)
-screen = pygame.display.set_mode(size)
-
-pygame.display.set_caption("Stellpult Prototyp")
-
-ennepetal_model = Streckenplaner().plane_ennepetal_model()
-ennepetal_view = Streckenmaler(ennepetal_model).plane_ennepetal_view(screen)
-
-# Test Besetztmodule init
-besetzt_module: [BesetztModul] = [BesetztModul(BesetztModulAdresse.H1),
-                                  BesetztModul(BesetztModulAdresse.H2),
-                                  BesetztModul(BesetztModulAdresse.H3)]
-
-# Test Züge init
-zug: Zug = Zug()
-zug.ende = besetzt_module[0]
-zug.anfang = besetzt_module[0]
-zug.speeds = {SpeedModifier.STRECKE_GERADE: 15,
-              SpeedModifier.BAHNHOF_FAHRT: 8}
-zug.lok = Lok(215)
+from src.view.BausteinView import BausteinView
 
 
-# Test Fahrstrecke definition
-DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
-DEMO_FAHRSTRECKE_HIN.besetzt_module = besetzt_module
-DEMO_FAHRSTRECKE_HIN.speed_modifier = {DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
-                                       DEMO_FAHRSTRECKE_HIN.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
+class Stellpult:
+    WHITE = (255, 255, 255)
 
-DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
-DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(reversed(besetzt_module))
-DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
-                                           DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
+    # Test Fahrstrecke definition
+    DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
+    DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
 
-fahrstrecken: [Fahrstrecke] = [copy(DEMO_FAHRSTRECKE_HIN)]
+    def __init__(self, model, view, besetztmodule, zug) -> None:
+        super().__init__()
 
-# Used to manage how fast the screen updates
-clock = pygame.time.Clock()
+        self.model: [Weiche] = model
+        self.view: [BausteinView] = view
 
-# -------- Main Program Loop -----------
-done = False
+        # Test Besetztmodule init
+        self.besetzt_module: [BesetztModul] = besetztmodule
 
-while not done:
-    # --- Main event loop
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            for baustein_view in ennepetal_view:
-                if baustein_view.bild.get_rect().move(baustein_view.get_position()).collidepoint(event.pos):
-                    baustein_view.click(event)
+        # Test Züge init
+        self.zug: Zug = zug
 
-    # --- Game logic should go here
+        Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module = self.besetzt_module
+        Stellpult.DEMO_FAHRSTRECKE_HIN.speed_modifier = {
+            Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+            Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
 
-    # Besetztabfrage
-    # TODO Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
-    Signal88ControlBote().update_module(besetzt_module)
+        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(reversed(self.besetzt_module))
+        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {
+            Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+            Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
 
-    for fahrstrecke in fahrstrecken:
-        ZugController.update_zug_position(zug, fahrstrecke)
-        ZugController.update_zug_speed(zug, fahrstrecke)
+        self.fahrstrecken: [Fahrstrecke] = [copy(Stellpult.DEMO_FAHRSTRECKE_HIN)]
 
-        zug_hat_ende_der_strecke_erreicht = zug.anfang is fahrstrecke.besetzt_module[-1]
-        if zug_hat_ende_der_strecke_erreicht:
-            fahrstrecken.remove(fahrstrecke)
+    def run(self):
 
-    #lok Geschwindigkeit Signal geben
+        pygame.init()
 
-    # Demo: neue Strecke setzen
-    if 0 == len(fahrstrecken):
-        if zug.anfang is besetzt_module[0]:
-            fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
-        elif zug.anfang is besetzt_module[-1]:
-            fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
+        # setup serial port
+        SerialConnector.initialisation()
 
+        size = (1000, 800)
+        screen = pygame.display.set_mode(size)
 
-    # --- Screen-clearing code goes here
-    screen.fill(WHITE)
+        pygame.display.set_caption("Stellpult")
 
-    # --- Drawing code should go here
-    for baustein_view in ennepetal_view:
-        baustein_view.draw()
+        # Used to manage how fast the screen updates
+        clock = pygame.time.Clock()
 
-    # --- Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+        # -------- Main Program Loop -----------
+        done = False
 
-    # --- Limit to 60 frames per second
-    clock.tick(60)
+        while not done:
+            # --- Main event loop
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    done = True
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    for baustein_view in self.view:
+                        if baustein_view.bild.get_rect().move(baustein_view.get_position()).collidepoint(event.pos):
+                            baustein_view.click(event)
 
-# Close the window and quit.
-pygame.quit()
+            # --- Game logic should go here
 
-# tear down serial port
-SerialConnector.de_initialisation()
+            # Besetztabfrage
+            Signal88ControlBote().update_module(self.besetzt_module)
+
+            for fahrstrecke in self.fahrstrecken:
+                ZugController.update_zug_position(self.zug, fahrstrecke)
+                ZugController.update_zug_speed(self.zug, fahrstrecke)
+
+                zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
+                if zug_hat_ende_der_strecke_erreicht:
+                    self.fahrstrecken.remove(fahrstrecke)
+
+            # lok Geschwindigkeit Signal geben
+
+            # Demo: neue Strecke setzen
+            if 0 == len(self.fahrstrecken):
+                if self.zug.anfang is self.besetzt_module[0]:
+                    self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_HIN))
+                elif self.zug.anfang is self.besetzt_module[-1]:
+                    self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_ZURUECK))
+
+            # --- Screen-clearing code goes here
+            screen.fill(Stellpult.WHITE)
+
+            # --- Drawing code should go here
+            for baustein_view in self.view:
+                baustein_view.draw(screen)
+
+            # --- Go ahead and update the screen with what we've drawn.
+            pygame.display.flip()
+
+            # --- Limit to 60 frames per second
+            clock.tick(60)
+
+        # Close the window and quit.
+        pygame.quit()
+
+        # tear down serial port
+        SerialConnector.de_initialisation()

@@ -1,11 +1,11 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class SpeedModifier(Enum):
-    STRECKE_GERADE = 1
-    STRECKE_ABWAERTS = 2
-    STRECKE_AUFWAERTS = 3
+    STRECKE_GERADE = auto()
+    STRECKE_ABWAERTS = auto()
+    STRECKE_AUFWAERTS = auto()
 
-    BAHNHOF_FAHRT = 4
-    BAHNHOF_STOP = 5
-    BAHNHOF_DURCHFAHRT = 6
+    BAHNHOF_FAHRT = auto()
+    BAHNHOF_STOP = auto()
+    BAHNHOF_DURCHFAHRT = auto()

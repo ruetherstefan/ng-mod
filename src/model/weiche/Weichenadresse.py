@@ -1,30 +1,30 @@
-from enum import Enum
+from enum import Enum, auto
 
 
 class Weichenadresse(Enum):
-    #Schattenbahnhof
-    W1 = 1
-    W2 = 2
-    W3 = 3
-    W4 = 4
-    W5 = 5
-    W6 = 6
-    W7 = 7
-    W8 = 8
-    W9 = 9
-    W10 = 10
+    # Schattenbahnhof
+    W1 = auto()
+    W2 = auto()
+    W3 = auto()
+    W4 = auto()
+    W5 = auto()
+    W6 = auto()
+    W7 = auto()
+    W8 = auto()
+    W9 = auto()
+    W10 = auto()
 
-    #Ebene 1
-    W20 = 20
-    W21 = 21
-    W22 = 22
-    W23 = 23
-    W24 = 24
-    W25 = 25
-    W26 = 26
-    W27 = 27
-    W28 = 28
-    W29 = 29
-    W30 = 30
+    # Ebene 1
+    W20 = auto()
+    W21 = auto()
+    W22 = auto()
+    W23 = auto()
+    W24 = auto()
+    W25 = auto()
+    W26 = auto()
+    W27 = auto()
+    W28 = auto()
+    W29 = auto()
+    W30 = auto()
 
-    Undefiniert = 9999
+    Undefiniert = auto()

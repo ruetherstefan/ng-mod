@@ -14,20 +14,18 @@ from src.model.Gleisbelegung import Gleisbelegung
 def screen(monkeypatch):
     import pygame
 
-    #monkeypatch.setattr('src.baustein.Weiche.get_image', MagicMock(return_value="EinBild"))
-
     def fake_blit(bildadresse, position):
         return
 
-    srceen = Mock(spec=pygame.display)
-    srceen.blit = fake_blit
-    return srceen
+    screen = Mock(spec=pygame.display)
+    screen.blit = fake_blit
+    return screen
 
 
 @patch('src.view.WeicheView.Bilder')
 @patch('src.view.WeicheView.WeichenstellungBildLookup')
 def test_draw_WeichenStellungGerade(weichenstellung_bild_lookup_mock, bilder, screen):
-    weiche: Weiche = WeicheViewRechtsNachUnten(screen, Weiche(Weichenadresse.W1, BesetztModul(BesetztModulAdresse.H1)))
+    weiche: Weiche = WeicheViewRechtsNachUnten(Weiche(Weichenadresse.W1, BesetztModul(BesetztModulAdresse.H1)))
     weiche.set_position_index([42, 42])
-    weiche.draw()
+    weiche.draw(screen)
     weichenstellung_bild_lookup_mock.lookup.assert_called_with(ANY, Gleisbelegung.FREI)

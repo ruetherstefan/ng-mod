@@ -7,9 +7,7 @@ from src.view.BausteinView import BausteinView
 
 @pytest.fixture
 def baustein():
-    import pygame
-    pygame_screen = Mock(spec=pygame.display)
-    return BausteinView(pygame_screen)
+    return BausteinView()
 
 
 def test_get_position__0_0(baustein):

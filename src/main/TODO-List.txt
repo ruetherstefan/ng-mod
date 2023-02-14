@@ -63,13 +63,18 @@ Notwendig
 - update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
 
 Integrationstests
-- Stellpult als class, für einfaches Testen und Wuppertal Demo Setup
+- In Kommunikation/ fahrstrecke Adresse anstatt BesetzModul-Object verwenden
 - Integrationstests mit spy anstatt mock
+- Integrationstests laufen nicht über pycharm
 - Durchlauf fahrstrecke start bis ziel
+- Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
+-> ins setup von Ennepetal und wuppertal
+
 
 Refactoring - Erweiterungen
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
-- In Kommunikation/ fahrstrecke Adresse anstatt BesetzModul-Object verwenden
+- besetztmodule init bei den models
+- Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
 - speedmodifier setter needed
 - Bei einer Strecke ist immer der letzte Bahnhof halt und vermutlich immer der erste bahnhof fahrt
   -> factory mit
@@ -89,7 +94,6 @@ Refactoring - Erweiterungen
 
 Schönheit - pip8 und Refactoring
 - autoformatter black
-- auto() id in enums
 - rename modules / pythonfiles
 - logging framework
 - Alle ControlBoten auf Mocking umstellen
