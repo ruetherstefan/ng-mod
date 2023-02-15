@@ -56,10 +56,8 @@ Fahrstaße stellen
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
-- Richtungswechsel - zumindest faken - besser in Fahrstrasse oder Zug unterbringen
-- Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
-
 - update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
+- Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben -> im Integrationstest mit altem Stand überschreiben
 
 Integrationstests
 - Integrationstests mit spy anstatt mock
@@ -79,7 +77,6 @@ Refactoring - Erweiterungen
   -> factory mit
   -> setter nummer -> Modifier
   -> construktor mit modulen, der dies setzt
-- Route und Fahrstrasse immer wieder setzten
 - Fahrstrasse setzen und fortwährend aufheben
  - update zug position gibt fahrstrasse frei
 - auf verlorenen Wagen reagieren

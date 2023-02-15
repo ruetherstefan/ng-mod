@@ -72,8 +72,10 @@ class Stellpult:
             if 0 == len(self.fahrstrecken):
                 if self.zug.anfang is BesetztModulAdresse.H1:
                     self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
+                    self.zug.lok.forwaerts = not self.zug.lok.forwaerts
                 elif self.zug.anfang is BesetztModulAdresse.H3:
                     self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
+                    self.zug.lok.forwaerts = not self.zug.lok.forwaerts
 
             # --- Screen-clearing code goes here
             screen.fill(Stellpult.WHITE)
