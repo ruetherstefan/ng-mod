@@ -55,7 +55,6 @@ Fahrstaße stellen
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
-- Fahrstrecken aus stellpult raus
 - Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
 - lok define      - aus demo
 - lok befehle senden

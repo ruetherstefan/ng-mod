@@ -6,8 +6,7 @@ from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModulVerwalter
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weiche import Weiche
-from src.model.zug.Fahrstrecke import Fahrstrecke
-from src.model.zug.SpeedModifier import SpeedModifier
+from src.model.zug.Fahrstrecke import Fahrstrecke, DEMO_FAHRSTRECKE_HIN, DEMO_FAHRSTRECKE_ZURUECK
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
 from src.serial.Signal88ControlBote import Signal88ControlBote
@@ -17,35 +16,15 @@ from src.view.BausteinView import BausteinView
 class Stellpult:
     WHITE = (255, 255, 255)
 
-    # Test Fahrstrecke definition
-    DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
-    DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
-
     def __init__(self, model, view, besetzt_modul_verwalter, zug) -> None:
         super().__init__()
 
         self.model: [Weiche] = model
         self.view: [BausteinView] = view
-
-        # Test Besetztmodule init
         self.besetzt_modul_verwalter: BesetztModulVerwalter = besetzt_modul_verwalter
-
-        # Test Züge init
         self.zug: Zug = zug
 
-        Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module = [BesetztModulAdresse.H1, BesetztModulAdresse.H2,
-                                                         BesetztModulAdresse.H3]
-        Stellpult.DEMO_FAHRSTRECKE_HIN.speed_modifier = {
-            Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
-            Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
-
-        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(
-            reversed(Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module))
-        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {
-            Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
-            Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
-
-        self.fahrstrecken: [Fahrstrecke] = [copy(Stellpult.DEMO_FAHRSTRECKE_HIN)]
+        self.fahrstrecken: [Fahrstrecke] = [copy(DEMO_FAHRSTRECKE_HIN)]
 
     def run(self):
 
@@ -93,9 +72,9 @@ class Stellpult:
             # Demo: neue Strecke setzen
             if 0 == len(self.fahrstrecken):
                 if self.zug.anfang is BesetztModulAdresse.H1:
-                    self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_HIN))
+                    self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
                 elif self.zug.anfang is BesetztModulAdresse.H3:
-                    self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_ZURUECK))
+                    self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
 
             # --- Screen-clearing code goes here
             screen.fill(Stellpult.WHITE)

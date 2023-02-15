@@ -9,3 +9,17 @@ class Fahrstrecke:
         self.besetzt_module: [BesetztModulAdresse] = []
         self.weichenstellungen: {Weiche: Weichenstellung} = {}
         self.speed_modifier: {BesetztModulAdresse: SpeedModifier} = {}
+
+
+DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
+DEMO_FAHRSTRECKE_HIN.besetzt_module = [BesetztModulAdresse.H1, BesetztModulAdresse.H2, BesetztModulAdresse.H3]
+DEMO_FAHRSTRECKE_HIN.speed_modifier = {
+    DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+    DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]: SpeedModifier.BAHNHOF_STOP}
+
+DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
+DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(
+    reversed(DEMO_FAHRSTRECKE_HIN.besetzt_module))
+DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {
+    DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
+    DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[-1]: SpeedModifier.BAHNHOF_STOP}
