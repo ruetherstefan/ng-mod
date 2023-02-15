@@ -13,3 +13,11 @@ class BesetztModul:
             return Gleisbelegung.FAHRSTRASSE
         else:
             return Gleisbelegung.FREI
+
+
+class BesetztModulVerwalter:
+    def __init__(self, module):
+        self.module: {BesetztModul} = module
+
+    def get(self, adresse):
+        return list(filter(lambda a: a.adresse is adresse, self.module))[0]

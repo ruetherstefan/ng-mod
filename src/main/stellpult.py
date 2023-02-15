@@ -3,7 +3,8 @@ from copy import copy
 import pygame
 
 from src.controller.ZugController import ZugController
-from src.model.BesetztModul import BesetztModul
+from src.model.BesetztModul import BesetztModulVerwalter
+from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weiche import Weiche
 from src.model.zug.Fahrstrecke import Fahrstrecke
 from src.model.zug.SpeedModifier import SpeedModifier
@@ -20,24 +21,26 @@ class Stellpult:
     DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
     DEMO_FAHRSTRECKE_ZURUECK = Fahrstrecke()
 
-    def __init__(self, model, view, besetztmodule, zug) -> None:
+    def __init__(self, model, view, besetzt_modul_verwalter, zug) -> None:
         super().__init__()
 
         self.model: [Weiche] = model
         self.view: [BausteinView] = view
 
         # Test Besetztmodule init
-        self.besetzt_module: [BesetztModul] = besetztmodule
+        self.besetzt_modul_verwalter: BesetztModulVerwalter = besetzt_modul_verwalter
 
         # Test Züge init
         self.zug: Zug = zug
 
-        Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module = self.besetzt_module
+        Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module = [BesetztModulAdresse.H1, BesetztModulAdresse.H2,
+                                                         BesetztModulAdresse.H3]
         Stellpult.DEMO_FAHRSTRECKE_HIN.speed_modifier = {
             Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
             Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
 
-        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(reversed(self.besetzt_module))
+        Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(
+            reversed(Stellpult.DEMO_FAHRSTRECKE_HIN.besetzt_module))
         Stellpult.DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {
             Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
             Stellpult.DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[2]: SpeedModifier.BAHNHOF_STOP}
@@ -75,10 +78,10 @@ class Stellpult:
             # --- Game logic should go here
 
             # Besetztabfrage
-            Signal88ControlBote().update_module(self.besetzt_module)
+            Signal88ControlBote().update_module(self.besetzt_modul_verwalter)
 
             for fahrstrecke in self.fahrstrecken:
-                ZugController.update_zug_position(self.zug, fahrstrecke)
+                ZugController.update_zug_position(self.zug, fahrstrecke, self.besetzt_modul_verwalter)
                 ZugController.update_zug_speed(self.zug, fahrstrecke)
 
                 zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
@@ -89,9 +92,9 @@ class Stellpult:
 
             # Demo: neue Strecke setzen
             if 0 == len(self.fahrstrecken):
-                if self.zug.anfang is self.besetzt_module[0]:
+                if self.zug.anfang is BesetztModulAdresse.H1:
                     self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_HIN))
-                elif self.zug.anfang is self.besetzt_module[-1]:
+                elif self.zug.anfang is BesetztModulAdresse.H3:
                     self.fahrstrecken.append(copy(Stellpult.DEMO_FAHRSTRECKE_ZURUECK))
 
             # --- Screen-clearing code goes here

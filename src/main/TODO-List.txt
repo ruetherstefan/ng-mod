@@ -55,6 +55,7 @@ Fahrstaße stellen
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
+- Fahrstrecken aus stellpult raus
 - Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
 - lok define      - aus demo
 - lok befehle senden
@@ -63,7 +64,6 @@ Notwendig
 - update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
 
 Integrationstests
-- In Kommunikation/ fahrstrecke Adresse anstatt BesetzModul-Object verwenden
 - Integrationstests mit spy anstatt mock
 - Integrationstests laufen nicht über pycharm
 - Durchlauf fahrstrecke start bis ziel
@@ -72,6 +72,7 @@ Integrationstests
 
 
 Refactoring - Erweiterungen
+- fahrstrecke an den Zug oder anders herum hängen?
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models
 - Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
@@ -94,6 +95,7 @@ Refactoring - Erweiterungen
 
 Schönheit - pip8 und Refactoring
 - autoformatter black
+- Type Annotations scharf stellen
 - rename modules / pythonfiles
 - logging framework
 - Alle ControlBoten auf Mocking umstellen

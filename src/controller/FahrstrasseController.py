@@ -1,15 +1,18 @@
 from src.controller.WeichenstellungController import WeichenstellungController
-from src.model.BesetztModul import BesetztModul
+from src.model.BesetztModul import BesetztModulVerwalter
+from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.Gleisbelegung import Gleisbelegung
 from src.model.weiche.Weiche import Weiche
 from src.model.weiche.Weichenstellung import Weichenstellung
+from src.model.zug.Fahrstrecke import Fahrstrecke
 
 
 class FahrstrasseController:
     @staticmethod
-    def alles_frei(besetzt_module: [BesetztModul]):
-        for besetzt_modul in besetzt_module:
-            if besetzt_modul.besetzt or besetzt_modul.gleisbelegung() != Gleisbelegung.FREI:
+    def alles_frei(besetzt_module: [BesetztModulAdresse], verwalter: BesetztModulVerwalter):
+        for adresse in besetzt_module:
+            modul = verwalter.get(adresse)
+            if modul.besetzt or modul.gleisbelegung() != Gleisbelegung.FREI:
                 return False
         return True
 
@@ -21,11 +24,11 @@ class FahrstrasseController:
         return True
 
     @staticmethod
-    def stelle_fahrstrasse(fahrstrecke):
-        if FahrstrasseController().alles_frei(fahrstrecke.besetzt_module) and \
-           FahrstrasseController().keine_weiche_gesperrt(fahrstrecke.weichenstellungen):
-            for besetztmodel in fahrstrecke.besetzt_module:
-                besetztmodel.fahrstrasse = True
+    def stelle_fahrstrasse(fahrstrecke: Fahrstrecke, verwalter: BesetztModulVerwalter):
+        if FahrstrasseController().alles_frei(fahrstrecke.besetzt_module, verwalter) and \
+                FahrstrasseController().keine_weiche_gesperrt(fahrstrecke.weichenstellungen):
+            for adresse in fahrstrecke.besetzt_module:
+                verwalter.get(adresse).fahrstrasse = True
             for weiche in fahrstrecke.weichenstellungen:
                 WeichenstellungController().set_weichenstellung(weiche, fahrstrecke.weichenstellungen[weiche])
             return True
