@@ -28,6 +28,7 @@ Generell
 - WeichenstellungBildLookup: Anpassen an neue Gleisbelegungen Gesperrt und Besetzt
 
 Später
+- mit der über frames sprechen - Demo hat 5 als minimum gesetzt - Oberfläche fühlt sich mit 30 besser an
 - Signal88Control
  - fehlerausgabe, wenn mehr, weniger oder Mappings, als Module
  - erweiterung auf mehrere Module
@@ -55,10 +56,8 @@ Fahrstaße stellen
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
-- Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
-- lok define      - aus demo
-- lok befehle senden
 - Richtungswechsel - zumindest faken - besser in Fahrstrasse oder Zug unterbringen
+- Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben
 
 - update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
 
@@ -95,6 +94,7 @@ Refactoring - Erweiterungen
 Schönheit - pip8 und Refactoring
 - autoformatter black
 - Type Annotations scharf stellen
+- Andere Tastaturlayouts entfernen
 - rename modules / pythonfiles
 - logging framework
 - Alle ControlBoten auf Mocking umstellen

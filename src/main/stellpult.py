@@ -9,6 +9,7 @@ from src.model.weiche.Weiche import Weiche
 from src.model.zug.Fahrstrecke import Fahrstrecke, DEMO_FAHRSTRECKE_HIN, DEMO_FAHRSTRECKE_ZURUECK
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
+from src.serial.LokControlBote import LokControlBote
 from src.serial.Signal88ControlBote import Signal88ControlBote
 from src.view.BausteinView import BausteinView
 
@@ -28,14 +29,12 @@ class Stellpult:
 
     def run(self):
 
-        pygame.init()
-
-        # setup serial port
         SerialConnector.initialisation()
+
+        pygame.init()
 
         size = (1000, 800)
         screen = pygame.display.set_mode(size)
-
         pygame.display.set_caption("Stellpult")
 
         # Used to manage how fast the screen updates
@@ -43,7 +42,6 @@ class Stellpult:
 
         # -------- Main Program Loop -----------
         done = False
-
         while not done:
             # --- Main event loop
             for event in pygame.event.get():
@@ -62,6 +60,7 @@ class Stellpult:
             for fahrstrecke in self.fahrstrecken:
                 ZugController.update_zug_position(self.zug, fahrstrecke, self.besetzt_modul_verwalter)
                 ZugController.update_zug_speed(self.zug, fahrstrecke)
+                LokControlBote().lok_fahre(self.zug.lok)
 
                 zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
                 if zug_hat_ende_der_strecke_erreicht:
@@ -86,8 +85,8 @@ class Stellpult:
             # --- Go ahead and update the screen with what we've drawn.
             pygame.display.flip()
 
-            # --- Limit to 60 frames per second
-            clock.tick(60)
+            # --- Limit to 5 frames per second
+            clock.tick(30)
 
         # Close the window and quit.
         pygame.quit()

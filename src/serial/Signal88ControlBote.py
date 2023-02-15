@@ -12,7 +12,7 @@ class Signal88ControlBote:
                                                                                    BesetztModulAdresse.H2: 1,
                                                                                    BesetztModulAdresse.H3: 3}
 
-        self.signal_88_control = Signal88Control()
+        self.signal_88_control: Signal88Control = Signal88Control()
         if SerialConnector.is_offline():
             self.signal_88_control = Mock(spec=Signal88Control)
             self.signal_88_control.lese_signale = Mock(
