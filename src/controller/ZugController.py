@@ -31,10 +31,16 @@ class ZugController:
 
     @staticmethod
     def update_zug_speed(zug: Zug, fahrstrecke: Fahrstrecke):
-        if zug.anfang not in fahrstrecke.speed_modifier:
-            zug.lok.speed = zug.speeds[SpeedModifier.STRECKE_GERADE]
+        speed_zugende = ZugController.berechne_geschwindigkeit_an_adresse(zug.anfang, fahrstrecke, zug)
+        speed_zuganfang = ZugController.berechne_geschwindigkeit_an_adresse(zug.ende, fahrstrecke, zug)
+        zug.lok.speed = min(speed_zuganfang, speed_zugende)
+
+    @staticmethod
+    def berechne_geschwindigkeit_an_adresse(besetzt_modul_adresse, fahrstrecke, zug):
+        if besetzt_modul_adresse not in fahrstrecke.speed_modifier:
+            return zug.speeds[SpeedModifier.STRECKE_GERADE]
         else:
-            if fahrstrecke.speed_modifier[zug.anfang] == SpeedModifier.BAHNHOF_STOP:
-                zug.lok.speed = 0
+            if fahrstrecke.speed_modifier[besetzt_modul_adresse] == SpeedModifier.BAHNHOF_STOP:
+                return 0
             else:
-                zug.lok.speed = zug.speeds[fahrstrecke.speed_modifier[zug.anfang]]
+                return zug.speeds[fahrstrecke.speed_modifier[besetzt_modul_adresse]]

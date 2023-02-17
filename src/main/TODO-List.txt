@@ -67,7 +67,6 @@ Integrationstests
 
 
 Refactoring - Erweiterungen
-- min(geschwindigkeit) von zug anfang und ende
 - fahrstrecke an den Zug oder anders herum hängen?
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models
@@ -83,7 +82,6 @@ Refactoring - Erweiterungen
 - Fahrstrasse Weichen stellen beim Beginn
 - Uhr Komponente bzw. die pygame uhr testen
 - Alle Model inits vom stellpult in model setups verschieben
- - gescheiter Lookup Mechanismus für Besetztmodule beim erstellen von Fahrstrassen-Archetypes
  - Fahrplan Komponente zuständig für das neue setzen Fahrstrecke
 
 -> überlegung: Ich muss mir merken, welchem Zug die Fahrstrecke zugeordnet ist
