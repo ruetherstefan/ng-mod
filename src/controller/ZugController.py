@@ -17,16 +17,16 @@ class ZugController:
                 and verwalter.get(fahrstrecke.besetzt_module[zug_anfang_modul_nummer + 1]).besetzt:
             zug_anfang_modul_nummer += 1
         zug.anfang = fahrstrecke.besetzt_module[zug_anfang_modul_nummer]
-        if not verwalter.get(zug.anfang).besetzt:
+
+        if verwalter.get(zug.anfang).besetzt:
+            zug_ende_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.ende)
+            while zug_ende_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
+                    and not verwalter.get(fahrstrecke.besetzt_module[zug_ende_modul_nummer]).besetzt:
+                zug_ende_modul_nummer += 1
+
+            zug.ende = fahrstrecke.besetzt_module[zug_ende_modul_nummer]
+        else:
             zug.anfang = None
-
-        zug_ende_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.ende)
-        while zug_ende_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
-                and not verwalter.get(fahrstrecke.besetzt_module[zug_ende_modul_nummer]).besetzt:
-            zug_ende_modul_nummer += 1
-
-        zug.ende = fahrstrecke.besetzt_module[zug_ende_modul_nummer]
-        if not verwalter.get(zug.ende).besetzt:
             zug.ende = None
 
     @staticmethod

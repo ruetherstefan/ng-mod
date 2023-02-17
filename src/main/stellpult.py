@@ -59,12 +59,13 @@ class Stellpult:
 
             for fahrstrecke in self.fahrstrecken:
                 ZugController.update_zug_position(self.zug, fahrstrecke, self.besetzt_modul_verwalter)
-                ZugController.update_zug_speed(self.zug, fahrstrecke)
-                LokControlBote().lok_fahre(self.zug.lok)
+                if None is not self.zug.anfang:
+                    ZugController.update_zug_speed(self.zug, fahrstrecke)
+                    LokControlBote().lok_fahre(self.zug.lok)
 
-                zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
-                if zug_hat_ende_der_strecke_erreicht:
-                    self.fahrstrecken.remove(fahrstrecke)
+                    zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
+                    if zug_hat_ende_der_strecke_erreicht:
+                        self.fahrstrecken.remove(fahrstrecke)
 
             # lok Geschwindigkeit Signal geben
 
