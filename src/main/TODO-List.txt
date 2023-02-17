@@ -56,7 +56,6 @@ Fahrstaße stellen
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
-- update_zug_position erweitern für den Fall None, also, dass der Zug nicht gefunden wurde
 - Signal88ControlBote besetzt_modul_adress_mappings__module1 schreiben -> im Integrationstest mit altem Stand überschreiben
 
 Integrationstests
@@ -68,6 +67,7 @@ Integrationstests
 
 
 Refactoring - Erweiterungen
+- min(geschwindigkeit) von zug anfang und ende
 - fahrstrecke an den Zug oder anders herum hängen?
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models

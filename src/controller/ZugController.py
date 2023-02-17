@@ -8,6 +8,10 @@ class ZugController:
 
     @staticmethod
     def update_zug_position(zug: Zug, fahrstrecke: Fahrstrecke, verwalter: BesetztModulVerwalter):
+        if zug.anfang is None:
+            zug.anfang = fahrstrecke.besetzt_module[0]
+            zug.ende = fahrstrecke.besetzt_module[0]
+
         zug_anfang_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.anfang)
         while zug_anfang_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
                 and verwalter.get(fahrstrecke.besetzt_module[zug_anfang_modul_nummer + 1]).besetzt:

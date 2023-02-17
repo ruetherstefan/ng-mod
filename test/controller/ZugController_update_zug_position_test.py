@@ -114,3 +114,12 @@ def test_update_zug_position_fehlerfall_zug_weg():
     ZugController().update_zug_position(zug, gegeben_fahrstrecke(), verwalter)
     assert None is zug.ende
     assert None is zug.anfang
+
+
+def test_update_zug_position_fehlerfall_zug_wieder_da():
+    verwalter = gegeben_verwalter_mit_3_besetztmodulen(False, True, False)
+    zug = gegeben_zug_mit_vorposition(None, None)
+
+    ZugController().update_zug_position(zug, gegeben_fahrstrecke(), verwalter)
+    assert BesetztModulAdresse.H2 is zug.ende
+    assert BesetztModulAdresse.H2 is zug.anfang
