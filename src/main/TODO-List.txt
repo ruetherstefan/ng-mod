@@ -52,7 +52,10 @@ Fahrstaße stellen
 - Fahrstraße stellen
 - Fahrstraße kollision anzeigen
 
-
+Topic: Zug fährt mit Anzeige
+- Demo Strecke Barmen
+- Anzeige Gleise - Frei, Fahrstrasse, Besetzt
+- Offline - Faken von besetzt durch klicken
 
 Topic: Zug fährt ohne Anzeige
 
@@ -68,6 +71,8 @@ Integrationstests
 
 
 Refactoring - Erweiterungen
+- Verschieben der Erstellung der Besetztmodule in den Streckenplaner
+- Stellpult braucht model aktuell nicht
 - Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models

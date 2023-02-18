@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="MarkierungenSpr60-1" tilewidth="32" tileheight="32" tilecount="14" columns="0">
+<tileset version="1.9" tiledversion="1.9.2" name="MarkierungenSpr60-1" tilewidth="32" tileheight="32" tilecount="14" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../spr60/png/Markierungen/WeicheRechtsMitte.png"/>
@@ -20,22 +20,22 @@
   <image width="32" height="32" source="../spr60/png/Markierungen/WeicheRechtsUnten.png"/>
  </tile>
  <tile id="6">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheLinksMitte.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheLinksMitte.png"/>
  </tile>
  <tile id="7">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheLinksOben.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheLinksOben.png"/>
  </tile>
  <tile id="8">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheLinksUnten.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheLinksUnten.png"/>
  </tile>
  <tile id="9">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheRechtsMitte.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheRechtsMitte.png"/>
  </tile>
  <tile id="10">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheRechtsOben.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheRechtsOben.png"/>
  </tile>
  <tile id="11">
-  <image width="32" height="32" source="../spr60/png/Markierungen/Fahrstrasse/FahrstrasseWeicheRechtsUnten.png"/>
+  <image width="32" height="32" source="../spr60/png/Markierungen/FahrstrasseWeicheRechtsUnten.png"/>
  </tile>
  <tile id="12">
   <image width="32" height="32" source="../spr60/png/Markierungen/GleisHorizontal.png"/>
