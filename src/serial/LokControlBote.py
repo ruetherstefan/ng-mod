@@ -12,3 +12,4 @@ class LokControlBote:
 
     def lok_fahre(self, lok):
         self.lok_control.lok_fahre(lok)
+        print("LokFahre", lok.adresse, lok.speed, lok.forwaerts)

@@ -1,5 +1,5 @@
 from src.main.stellpult import Stellpult
-from src.model.BesetztModul import BesetztModulVerwalter, BesetztModul
+from src.model.BesetztModul import BesetztModulVerwalter
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weiche import Weiche
 from src.model.weiche.Weichenadresse import Weichenadresse

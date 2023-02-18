@@ -55,7 +55,7 @@ class Stellpult:
             # --- Game logic should go here
 
             # Besetztabfrage
-            Signal88ControlBote().update_module(self.besetzt_modul_verwalter)
+            geaenderte_modul_signale = Signal88ControlBote().update_module(self.besetzt_modul_verwalter)
 
             for fahrstrecke in self.fahrstrecken:
                 ZugController.update_zug_position(self.zug, fahrstrecke, self.besetzt_modul_verwalter)

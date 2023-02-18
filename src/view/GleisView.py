@@ -1,9 +1,21 @@
 from src.model.BesetztModul import BesetztModul
+from src.serial.Signal88ControlBote import Signal88ControlBote
 from src.util.Bilder import Bilder
 from src.view.BausteinView import BausteinView
+from src.view.util import PygameConstant
 
 
 class GleisView(BausteinView):
+
+    def __init__(self, besetztmodul=None):
+        super().__init__()
+        self.model: BesetztModul = besetztmodul
+
+    def click(self, event):
+        if PygameConstant.MOUSE_CLICK_MIDDLE == event.button and self.model is not None:
+            Signal88ControlBote.fake_results[self.model.adresse] = \
+                not Signal88ControlBote.fake_results[self.model.adresse]
+
     def draw(self, screen):
         super().draw(screen)
         if self.model is not None:
@@ -24,23 +36,19 @@ class GleisView(BausteinView):
 class GleisViewHorizontal(GleisView):
 
     def __init__(self, besetztmodul=None):
-        super().__init__()
+        super().__init__(besetztmodul)
 
         self.bild = Bilder().get_image("spdritem_trh.xpm")
-
         self.gleis_markierung_bild = "GleisHorizontal.png"
-        self.model: BesetztModul = besetztmodul
 
 
 class GleisViewVertikal(GleisView):
 
     def __init__(self, besetztmodul=None):
-        super().__init__()
+        super().__init__(besetztmodul)
 
         self.bild = Bilder().get_image("gleis_vertical.png")
-
         self.gleis_markierung_bild = "GleisVertikal.png"
-        self.model = besetztmodul
 
 
 class GleisViewUntenNachRechts(BausteinView):

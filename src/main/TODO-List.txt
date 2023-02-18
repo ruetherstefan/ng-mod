@@ -53,8 +53,11 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Topic: Zug fährt mit Anzeige
-- Offline - Faken von besetzt durch klicken
+- Bug: Rückweg Geschwindigkeit 0 lösen / auf 4 BesetztModule erweitern
 - Markierung besetzt Weichen
+- logging framework verwenden
+ - LokControlBote
+- geänderte Modul Signale -> Lok Befehle, trotzdem bei neuer Route
 
 Topic: Zug fährt ohne Anzeige
 
@@ -73,7 +76,6 @@ Refactoring - Erweiterungen
 - Verschieben der Erstellung der Besetztmodule in den Streckenplaner
 - Stellpult braucht model aktuell nicht
 - Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
-- Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models
 - fahrstrecke an den Zug oder anders herum hängen?
 - speedmodifier setter needed
