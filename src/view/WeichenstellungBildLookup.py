@@ -1,18 +1,18 @@
-from enum import Enum
+from enum import Enum, auto
 
 from src.model.Gleisbelegung import Gleisbelegung
 from src.util.Bilder import Bilder
 
 
 class Markierungsart(Enum):
-    LINKS_MITTE = 1
-    LINKS_OBEN = 2
-    LINKS_UNTEN = 3
-    RECHTS_MITTE = 4
-    RECHTS_OBEN = 5
-    RECHTS_UNTEN = 6
-    MITTE_HORIZONTAL = 7
-    MITTE_VERTIKAL = 8
+    LINKS_MITTE = auto()
+    LINKS_OBEN = auto()
+    LINKS_UNTEN = auto()
+    RECHTS_MITTE = auto()
+    RECHTS_OBEN = auto()
+    RECHTS_UNTEN = auto()
+    MITTE_HORIZONTAL = auto()
+    MITTE_VERTIKAL = auto()
 
 
 class WeichenstellungBildLookup:

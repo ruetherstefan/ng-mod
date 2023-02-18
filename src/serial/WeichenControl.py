@@ -15,15 +15,12 @@ History:
 18.03.2022 - 2.03: Überarbeitung der Kommentare.
                    ser.bautrate in ser.baudrate  geändert aber noch nicht geprüft.
 """
-import timeit
 import time
 
 from src.serial import SerialConnector
-from src.serial.WeichenControlInterface import WeichenControlInterface
 
 
-class WeichenControl(WeichenControlInterface):
-
+class WeichenControl():
     CONF_RUNTIME = True
     CONF_DEBUG = False
     CONF_HEX = True
@@ -35,13 +32,14 @@ class WeichenControl(WeichenControlInterface):
     Deshalb wird in dieser Funktion die Weiche (für den PC) reserviert.
     Die Reservierung muss später wieder aufgehoben werden mit turnout_free().
     """
+
     def turnout_set_for_route(self, str_addr_low, str_addr_high, bol_color):
 
         if self.CONF_RUNTIME:
             timestamp = time.perf_counter()
 
-        #if addr_high>0x07:
-            # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
+        # if addr_high>0x07:
+        # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
         #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
 
         if self.CONF_HEX:
@@ -85,11 +83,11 @@ class WeichenControl(WeichenControlInterface):
         if self.CONF_RUNTIME:
             print('Runtime of turnout_set_for_route():', time.perf_counter() - timestamp, 'sec\n')
 
-
     """
     Zurücknahme der Reservierung einer Weiche (engl. turnout)
     nach Einstellen einer Fahrstrasse (route).
     """
+
     def turnout_free(self, str_addr_low, str_addr_high):
         """
 
@@ -100,13 +98,12 @@ class WeichenControl(WeichenControlInterface):
             timestamp = time.perf_counter()
 
         # if addr_high>0x07:
-            # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
+        # raise Exception('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
         #    print('Cmd turnout_set_for_route: Parameter addr_high must not > 0x07!')
 
         if self.CONF_HEX:
             # NoCmd Bit setzten, um die Reservierung zurückzunehmen.
             string_2nd_byte = b'\x10'
-
 
             if self.CONF_DEBUG:
                 print('2nd byte', string_2nd_byte)

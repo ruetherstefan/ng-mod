@@ -16,7 +16,6 @@ Generell
   - bei Betriebsfehlern - IntelliBox reagiert nicht, lok ist weg, Zug geteilt
 - Beim Zugriff auf serial immer über SerialConnector gehen
  - testen
-- SerialConnector auch in Offline und Online trennen (Wieder Vererbung?)
 - Dirks Konstanten auslagern
     CONF_RUNTIME = True
     CONF_DEBUG = False
@@ -53,6 +52,8 @@ Fahrstaße stellen
 - Fahrstraße stellen
 - Fahrstraße kollision anzeigen
 
+
+
 Topic: Zug fährt ohne Anzeige
 
 Notwendig
@@ -67,10 +68,10 @@ Integrationstests
 
 
 Refactoring - Erweiterungen
-- fahrstrecke an den Zug oder anders herum hängen?
+- Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
 - Logiken zur fahrstrecke nur bei Änderung besetztmodul, update zuggeschwindigkeit nur bei Änderung position, ...
 - besetztmodule init bei den models
-- Zug Init soll auch ohne Definition von anfang und ende auskommen -> keine Abhänigkeit zu den Besetztmodulen beim Setup
+- fahrstrecke an den Zug oder anders herum hängen?
 - speedmodifier setter needed
 - Bei einer Strecke ist immer der letzte Bahnhof halt und vermutlich immer der erste bahnhof fahrt
   -> factory mit
@@ -79,9 +80,9 @@ Refactoring - Erweiterungen
 - Fahrstrasse setzen und fortwährend aufheben
  - update zug position gibt fahrstrasse frei
 - auf verlorenen Wagen reagieren
+- Kollisionsverhinderung
 - Fahrstrasse Weichen stellen beim Beginn
 - Uhr Komponente bzw. die pygame uhr testen
-- Alle Model inits vom stellpult in model setups verschieben
  - Fahrplan Komponente zuständig für das neue setzen Fahrstrecke
 
 -> überlegung: Ich muss mir merken, welchem Zug die Fahrstrecke zugeordnet ist
@@ -92,4 +93,3 @@ Schönheit - pip8 und Refactoring
 - Andere Tastaturlayouts entfernen
 - rename modules / pythonfiles
 - logging framework
-- Alle ControlBoten auf Mocking umstellen
