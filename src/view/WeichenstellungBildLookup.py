@@ -40,7 +40,7 @@ class WeichenstellungBildLookup:
             return ""
         elif weichenbelegung == Gleisbelegung.FAHRSTRASSE:
             return "Fahrstrasse"
-        elif weichenbelegung == Gleisbelegung.GESPRERRT:
-            return "Blockiert"  # TODO Anpassen an neue Gleisbelegungen Gesperrt und Besetzt
+        elif weichenbelegung == Gleisbelegung.BESETZT:
+            return "Besetzt"
         else:
             raise ValueError(weichenbelegung + " ist keine bekannte Weichenstellung")

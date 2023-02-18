@@ -33,19 +33,20 @@ def get_model_mit_zwei_weichen(verwalter):
             Weiche(Weichenadresse.W2, verwalter.get(BesetztModulAdresse.H3))]
 
 
-def get_barmen_view(models):
+def get_barmen_view(models, besetzt_module: BesetztModulVerwalter):
     haupt1 = GleisViewHorizontal()
     haupt1.set_position_index([12, 12])
 
     gleise = GleisViewSchrauber().neu(haupt1) \
+        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.H1))) \
         .rechter_nachbar(GleisViewHorizontal()) \
-        .rechter_nachbar(GleisViewHorizontal()) \
+        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.H2))) \
         .rechter_nachbar(WeicheViewRechtsNachOben(get_model(Weichenadresse.W1, models))) \
         .rechter_nachbar(WeicheViewLinksNachOben(get_model(Weichenadresse.W2, models))) \
         .rechts_oben_nachbar(GleisViewObenNachLinks()) \
+        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.H3))) \
         .oberer_nachbar(GleisViewVertikal()) \
-        .oberer_nachbar(GleisViewVertikal()) \
-        .oberer_nachbar(GleisViewVertikal()) \
+        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.H4))) \
         .ende()
 
     return gleise
@@ -63,7 +64,7 @@ def get_model(adresse, models):
 
 besetzt_modul_verwalter: BesetztModulVerwalter = get_besetzt_module()
 barmen_model = get_model_mit_zwei_weichen(besetzt_modul_verwalter)
-barmen_view = get_barmen_view(barmen_model)
+barmen_view = get_barmen_view(barmen_model, besetzt_modul_verwalter)
 zug = get_zug()
 
 stellpult = Stellpult(barmen_model, barmen_view, besetzt_modul_verwalter, zug)

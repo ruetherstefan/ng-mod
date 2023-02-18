@@ -53,12 +53,8 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Topic: Zug fährt mit Anzeige
-- Demo Strecke Barmen
-- Anzeige Gleise - Frei, Fahrstrasse, Besetzt
- - modelle verbinden
- - anzeige ohne status
- - mit status
 - Offline - Faken von besetzt durch klicken
+- Markierung besetzt Weichen
 
 Topic: Zug fährt ohne Anzeige
 
