@@ -55,6 +55,9 @@ Fahrstaße stellen
 Topic: Zug fährt mit Anzeige
 - Demo Strecke Barmen
 - Anzeige Gleise - Frei, Fahrstrasse, Besetzt
+ - modelle verbinden
+ - anzeige ohne status
+ - mit status
 - Offline - Faken von besetzt durch klicken
 
 Topic: Zug fährt ohne Anzeige

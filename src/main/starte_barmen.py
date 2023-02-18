@@ -43,6 +43,9 @@ def get_barmen_view(models):
         .rechter_nachbar(WeicheViewRechtsNachOben(get_model(Weichenadresse.W1, models))) \
         .rechter_nachbar(WeicheViewLinksNachOben(get_model(Weichenadresse.W2, models))) \
         .rechts_oben_nachbar(GleisViewObenNachLinks()) \
+        .oberer_nachbar(GleisViewVertikal()) \
+        .oberer_nachbar(GleisViewVertikal()) \
+        .oberer_nachbar(GleisViewVertikal()) \
         .ende()
 
     return gleise
