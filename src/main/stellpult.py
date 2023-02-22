@@ -41,6 +41,7 @@ class Stellpult:
 
         # -------- Main Program Loop -----------
         done = False
+        waiting_time = 0
         while not done:
             # --- Main event loop
             for event in pygame.event.get():
@@ -74,8 +75,13 @@ class Stellpult:
                     self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
                     self.zug.lok.forwaerts = not self.zug.lok.forwaerts
                 elif self.zug.anfang is DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]:
-                    self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
-                    self.zug.lok.forwaerts = not self.zug.lok.forwaerts
+                    print(waiting_time)
+                    if waiting_time == 0:
+                        waiting_time = pygame.time.get_ticks()
+                    elif waiting_time + 2000 < pygame.time.get_ticks():
+                        self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
+                        self.zug.lok.forwaerts = not self.zug.lok.forwaerts
+                        waiting_time = 0
 
             # --- Screen-clearing code goes here
             screen.fill(Stellpult.WHITE)
