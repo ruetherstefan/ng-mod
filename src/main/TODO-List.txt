@@ -53,7 +53,6 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Topic: Zug fährt mit Anzeige
-- Bug: Rückweg Geschwindigkeit 0 lösen / auf 4 BesetztModule erweitern
 - Markierung besetzt Weichen
 - logging framework verwenden
  - LokControlBote

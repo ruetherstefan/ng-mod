@@ -12,7 +12,8 @@ class Fahrstrecke:
 
 
 DEMO_FAHRSTRECKE_HIN = Fahrstrecke()
-DEMO_FAHRSTRECKE_HIN.besetzt_module = [BesetztModulAdresse.H1, BesetztModulAdresse.H2, BesetztModulAdresse.H3]
+DEMO_FAHRSTRECKE_HIN.besetzt_module = [BesetztModulAdresse.H1, BesetztModulAdresse.H2, BesetztModulAdresse.H3,
+                                       BesetztModulAdresse.H4]
 DEMO_FAHRSTRECKE_HIN.speed_modifier = {
     DEMO_FAHRSTRECKE_HIN.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
     DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]: SpeedModifier.BAHNHOF_STOP}

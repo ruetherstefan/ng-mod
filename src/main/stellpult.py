@@ -4,7 +4,6 @@ import pygame
 
 from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModulVerwalter
-from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weiche import Weiche
 from src.model.zug.Fahrstrecke import Fahrstrecke, DEMO_FAHRSTRECKE_HIN, DEMO_FAHRSTRECKE_ZURUECK
 from src.model.zug.Zug import Zug
@@ -71,10 +70,10 @@ class Stellpult:
 
             # Demo: neue Strecke setzen
             if 0 == len(self.fahrstrecken):
-                if self.zug.anfang is BesetztModulAdresse.H1:
+                if self.zug.anfang is DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[-1]:
                     self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
                     self.zug.lok.forwaerts = not self.zug.lok.forwaerts
-                elif self.zug.anfang is BesetztModulAdresse.H3:
+                elif self.zug.anfang is DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]:
                     self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
                     self.zug.lok.forwaerts = not self.zug.lok.forwaerts
 
