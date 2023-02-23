@@ -68,7 +68,7 @@ class Stellpult:
                 ZugController.update_zug_position(self.zug, fahrstrecke, self.besetzt_modul_verwalter)
                 if None is not self.zug.anfang:
                     ZugController.update_zug_speed(self.zug, fahrstrecke)
-                    LokControlBote().lok_fahre(self.zug.lok)
+                    LokControlBote().lok_fahre__dopplungsreduziert(self.zug.lok)
 
                     zug_hat_ende_der_strecke_erreicht = self.zug.anfang is fahrstrecke.besetzt_module[-1]
                     if zug_hat_ende_der_strecke_erreicht:

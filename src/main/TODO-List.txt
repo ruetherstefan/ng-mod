@@ -53,9 +53,10 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Topic: Zug fährt mit Anzeige
+- 0 speed Bug nach Richtungsänderung lösen
 - logging framework verwenden
  - LokControlBote
-- geänderte Modul Signale -> Lok Befehle, trotzdem bei neuer Route
+- Tests für Lok equals und Lokcontrolbote caching
 
 Topic: Zug fährt ohne Anzeige
 
