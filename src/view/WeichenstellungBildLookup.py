@@ -37,10 +37,10 @@ class WeichenstellungBildLookup:
     @staticmethod
     def get_bildmodiefier_weichenbelegung(weichenbelegung):
         if weichenbelegung == Gleisbelegung.FREI:
-            return "Frei/"
+            return "Weis/"
         elif weichenbelegung == Gleisbelegung.FAHRSTRASSE:
-            return "Fahrstrasse/"
+            return "Gelb/"
         elif weichenbelegung == Gleisbelegung.BESETZT:
-            return "Besetzt/"
+            return "Rot/"
         else:
             raise ValueError(weichenbelegung + " ist keine bekannte Weichenstellung")
