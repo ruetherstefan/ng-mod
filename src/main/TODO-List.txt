@@ -87,9 +87,7 @@ Refactoring - Erweiterungen
 - auf verlorenen Wagen reagieren
 - Kollisionsverhinderung
 - Fahrstrasse Weichen stellen beim Beginn
-- Uhr Komponente bzw. die pygame uhr testen
- - Fahrplan Komponente zuständig für das neue setzen Fahrstrecke
-
+- Fahrplan Komponente zuständig für das neue setzen Fahrstrecke
 -> überlegung: Ich muss mir merken, welchem Zug die Fahrstrecke zugeordnet ist
 
 Schönheit - pip8 und Refactoring

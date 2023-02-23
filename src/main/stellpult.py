@@ -5,11 +5,13 @@ import pygame
 from src.controller.ZugController import ZugController
 from src.model.BesetztModul import BesetztModulVerwalter
 from src.model.weiche.Weiche import Weiche
-from src.model.zug.Fahrstrecke import Fahrstrecke, DEMO_FAHRSTRECKE_HIN, DEMO_FAHRSTRECKE_ZURUECK
+from src.model.zug.Fahrstrecke import Fahrstrecke, DEMO_FAHRSTRECKE_HIN, DEMO_FAHRSTRECKE_ZURUECK, \
+    neue_fahrstrecke_mit_richtungswechsel
 from src.model.zug.Zug import Zug
 from src.serial import SerialConnector
 from src.serial.LokControlBote import LokControlBote
 from src.serial.Signal88ControlBote import Signal88ControlBote
+from src.util.PyTimer import PyTimer
 from src.view.BausteinView import BausteinView
 
 
@@ -39,6 +41,8 @@ class Stellpult:
         # Used to manage how fast the screen updates
         clock = pygame.time.Clock()
 
+        timer: [PyTimer] = []
+
         # -------- Main Program Loop -----------
         done = False
         waiting_time = 0
@@ -53,6 +57,9 @@ class Stellpult:
                             baustein_view.click(event)
 
             # --- Game logic should go here
+            for t in timer:
+                if t.run():
+                    timer.remove(t)
 
             # Besetztabfrage
             geaenderte_modul_signale = Signal88ControlBote().update_module(self.besetzt_modul_verwalter)
@@ -70,18 +77,13 @@ class Stellpult:
             # lok Geschwindigkeit Signal geben
 
             # Demo: neue Strecke setzen
-            if 0 == len(self.fahrstrecken):
+            if 0 == len(self.fahrstrecken) and 0 == len(timer):
                 if self.zug.anfang is DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[-1]:
-                    self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_HIN))
-                    self.zug.lok.forwaerts = not self.zug.lok.forwaerts
+                    timer.append(PyTimer(2000, neue_fahrstrecke_mit_richtungswechsel, self.fahrstrecken,
+                                         copy(DEMO_FAHRSTRECKE_HIN), self.zug.lok))
                 elif self.zug.anfang is DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]:
-                    print(waiting_time)
-                    if waiting_time == 0:
-                        waiting_time = pygame.time.get_ticks()
-                    elif waiting_time + 2000 < pygame.time.get_ticks():
-                        self.fahrstrecken.append(copy(DEMO_FAHRSTRECKE_ZURUECK))
-                        self.zug.lok.forwaerts = not self.zug.lok.forwaerts
-                        waiting_time = 0
+                    timer.append(PyTimer(2000, neue_fahrstrecke_mit_richtungswechsel, self.fahrstrecken,
+                                         copy(DEMO_FAHRSTRECKE_ZURUECK), self.zug.lok))
 
             # --- Screen-clearing code goes here
             screen.fill(Stellpult.WHITE)

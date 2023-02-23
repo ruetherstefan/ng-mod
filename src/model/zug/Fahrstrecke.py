@@ -1,6 +1,7 @@
 from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weiche import Weiche
 from src.model.weiche.Weichenstellung import Weichenstellung
+from src.model.zug.Lok import Lok
 from src.model.zug.SpeedModifier import SpeedModifier
 
 
@@ -24,3 +25,8 @@ DEMO_FAHRSTRECKE_ZURUECK.besetzt_module = list(
 DEMO_FAHRSTRECKE_ZURUECK.speed_modifier = {
     DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[0]: SpeedModifier.BAHNHOF_FAHRT,
     DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[-1]: SpeedModifier.BAHNHOF_STOP}
+
+
+def neue_fahrstrecke_mit_richtungswechsel(fahrstrecken: [], strecke: Fahrstrecke, lok: Lok):
+    fahrstrecken.append(strecke)
+    lok.forwaerts = not lok.forwaerts
