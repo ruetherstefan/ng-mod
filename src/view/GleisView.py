@@ -2,6 +2,7 @@ from src.model.BesetztModul import BesetztModul
 from src.serial.Signal88ControlBote import Signal88ControlBote
 from src.util.Bilder import Bilder
 from src.view.BausteinView import BausteinView
+from src.view.WeichenstellungBildLookup import WeichenstellungBildLookup
 from src.view.util import PygameConstant
 
 
@@ -20,17 +21,9 @@ class GleisView(BausteinView):
         super().draw(screen)
         if self.model is not None:
             screen.blit(Bilder().get_image(
-                "Markierungen/" + self.get_bildmodiefier_weichenbelegung(self.model) + self.gleis_markierung_bild),
+                "Markierungen/" + WeichenstellungBildLookup.get_bildmodiefier_weichenbelegung(
+                    self.model.gleisbelegung()) + self.gleis_markierung_bild),
                 self.get_position())
-
-    @staticmethod
-    def get_bildmodiefier_weichenbelegung(model):
-        if model.besetzt:
-            return "Besetzt"
-        elif model.fahrstrasse:
-            return "Fahrstrasse"
-        else:
-            return ""
 
 
 class GleisViewHorizontal(GleisView):

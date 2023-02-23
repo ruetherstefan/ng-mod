@@ -53,7 +53,6 @@ Fahrstaße stellen
 - Fahrstraße kollision anzeigen
 
 Topic: Zug fährt mit Anzeige
-- Markierung besetzt Weichen
 - logging framework verwenden
  - LokControlBote
 - geänderte Modul Signale -> Lok Befehle, trotzdem bei neuer Route

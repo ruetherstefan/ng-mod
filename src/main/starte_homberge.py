@@ -11,7 +11,8 @@ from src.view.Streckenmaler import Streckenmaler
 def get_besetzt_module():
     return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.H1),
                                   BesetztModul(BesetztModulAdresse.H2),
-                                  BesetztModul(BesetztModulAdresse.H3)})
+                                  BesetztModul(BesetztModulAdresse.H3),
+                                  BesetztModul(BesetztModulAdresse.H4)})
 
 
 def get_zug():

@@ -98,8 +98,10 @@ def test_fahrstrasse_keine_fahrstrasse_wenn_besetzt():
     verwalter.get(BesetztModulAdresse.H1).besetzt = True
 
     assert False is FahrstrasseController.stelle_fahrstrasse(fahrstrecke, verwalter)
-    assert Gleisbelegung.FREI == verwalter.get(BesetztModulAdresse.H1).gleisbelegung()
+    assert Gleisbelegung.BESETZT == verwalter.get(BesetztModulAdresse.H1).gleisbelegung()
     assert Gleisbelegung.FREI == verwalter.get(BesetztModulAdresse.H2).gleisbelegung()
+    assert not verwalter.get(BesetztModulAdresse.H1).fahrstrasse
+    assert not verwalter.get(BesetztModulAdresse.H2).fahrstrasse
 
 
 # Test Toggle
