@@ -80,10 +80,10 @@ class Stellpult:
             if 0 == len(self.fahrstrecken) and 0 == len(timer):
                 if self.zug.anfang is DEMO_FAHRSTRECKE_ZURUECK.besetzt_module[-1]:
                     timer.append(PyTimer(2000, neue_fahrstrecke_mit_richtungswechsel, self.fahrstrecken,
-                                         copy(DEMO_FAHRSTRECKE_HIN), self.zug.lok))
+                                         copy(DEMO_FAHRSTRECKE_HIN), self.zug))
                 elif self.zug.anfang is DEMO_FAHRSTRECKE_HIN.besetzt_module[-1]:
                     timer.append(PyTimer(2000, neue_fahrstrecke_mit_richtungswechsel, self.fahrstrecken,
-                                         copy(DEMO_FAHRSTRECKE_ZURUECK), self.zug.lok))
+                                         copy(DEMO_FAHRSTRECKE_ZURUECK), self.zug))
 
             # --- Screen-clearing code goes here
             screen.fill(Stellpult.WHITE)
