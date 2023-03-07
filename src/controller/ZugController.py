@@ -22,6 +22,7 @@ class ZugController:
             zug_ende_modul_nummer: int = fahrstrecke.besetzt_module.index(zug.ende)
             while zug_ende_modul_nummer + 1 < len(fahrstrecke.besetzt_module) \
                     and not verwalter.get(fahrstrecke.besetzt_module[zug_ende_modul_nummer]).besetzt:
+                verwalter.get(fahrstrecke.besetzt_module[zug_ende_modul_nummer]).fahrstrasse = False
                 zug_ende_modul_nummer += 1
 
             zug.ende = fahrstrecke.besetzt_module[zug_ende_modul_nummer]

@@ -123,3 +123,12 @@ def test_update_zug_position_fehlerfall_zug_wieder_da():
     ZugController().update_zug_position(zug, gegeben_fahrstrecke(), verwalter)
     assert BesetztModulAdresse.H2 is zug.ende
     assert BesetztModulAdresse.H2 is zug.anfang
+
+
+def test_update_zug_position_weiter_gefahren_vorherige_strecke_freigeben():
+    verwalter = gegeben_verwalter_mit_3_besetztmodulen(False, True, False)
+    zug = gegeben_zug_mit_vorposition(BesetztModulAdresse.H1, BesetztModulAdresse.H2)
+    verwalter.get(BesetztModulAdresse.H1).fahrstrasse = True
+
+    ZugController().update_zug_position(zug, gegeben_fahrstrecke(), verwalter)
+    assert verwalter.get(BesetztModulAdresse.H1).fahrstrasse is False
