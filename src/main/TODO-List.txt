@@ -82,8 +82,9 @@ Refactoring - Erweiterungen
   -> setter nummer -> Modifier
   -> construktor mit modulen, der dies setzt
 - Fahrstrasse setzen und fortwährend aufheben
- - Test, neue Fahrstrasse hinter dem Zug wird nicht freigegeben
  - Fahrstrecke nur setzen, wenn fahrstrasse gesetzt werden kann
+ - Bug: Fahrstrasse wird nicht freigegeben, wenn Fahrstrecke schon gelöscht weil fertig
+ -> Fahrstrasse unter Zug (zwischen Anfang und Ende) freigeben, wenn Fahrstrecke gelöscht wird
 - auf verlorenen Wagen reagieren
 - Kollisionsverhinderung
 - Fahrstrasse Weichen stellen beim Beginn
@@ -96,3 +97,28 @@ Schönheit - pip8 und Refactoring
 - Andere Tastaturlayouts entfernen
 - rename modules / pythonfiles
 - logging framework
+
+
+
+
+Anzahl Besetzbereiche
+Basisrechnung:
+Oben: Endbahnhof:   5 + 1
+Zwischenbahnhof:    10 + 2
+Güterbahnhof:       10 + 2
+Hauptbahnhof:       14 + 1
+Schattenbahnhof:    14 + 6 + 4
+6 + 12 + 12 + 15 + 24 = 69
+
+Ergänzung nach Dirk + 22 (1, 2, 3, 3, 2)
+-> 91
+
+
+Hardware:
+- Herzstückpolarisierung -> besonders Ecke Kleingarten (hängendes Kabel)
+- Schienenschleifwagen gleich 1 Einfahrt bleibt an Kabel hängen
+
+
+
+
+ungefähr 10 im Güterbahnhof
