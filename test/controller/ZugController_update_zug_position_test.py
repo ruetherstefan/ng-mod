@@ -129,6 +129,10 @@ def test_update_zug_position_weiter_gefahren_vorherige_strecke_freigeben():
     verwalter = gegeben_verwalter_mit_3_besetztmodulen(False, True, False)
     zug = gegeben_zug_mit_vorposition(BesetztModulAdresse.H1, BesetztModulAdresse.H2)
     verwalter.get(BesetztModulAdresse.H1).fahrstrasse = True
+    verwalter.get(BesetztModulAdresse.H2).fahrstrasse = True
+    verwalter.get(BesetztModulAdresse.H3).fahrstrasse = True
 
     ZugController().update_zug_position(zug, gegeben_fahrstrecke(), verwalter)
     assert verwalter.get(BesetztModulAdresse.H1).fahrstrasse is False
+    assert verwalter.get(BesetztModulAdresse.H2).fahrstrasse is True
+    assert verwalter.get(BesetztModulAdresse.H3).fahrstrasse is True

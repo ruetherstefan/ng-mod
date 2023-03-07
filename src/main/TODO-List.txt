@@ -82,7 +82,6 @@ Refactoring - Erweiterungen
   -> setter nummer -> Modifier
   -> construktor mit modulen, der dies setzt
 - Fahrstrasse setzen und fortwährend aufheben
- - Test, nur Hinter dem Zug wird freigegeben
  - Test, neue Fahrstrasse hinter dem Zug wird nicht freigegeben
  - Fahrstrecke nur setzen, wenn fahrstrasse gesetzt werden kann
 - auf verlorenen Wagen reagieren
