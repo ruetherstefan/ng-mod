@@ -1,6 +1,7 @@
-import serial.tools.list_ports
-import serial
 import time
+
+import serial
+import serial.tools.list_ports
 
 CONF_RUNTIME = True
 CONF_DEBUG = False
@@ -49,4 +50,9 @@ def de_initialisation():
 
 
 if not is_offline():
-    ser = serial.Serial('COM5')
+    comports = serial.tools.list_ports.comports()
+
+    if len(comports) == 1:
+        ser = serial.Serial('COM5')
+    else:
+        ser = serial.Serial('COM4')
