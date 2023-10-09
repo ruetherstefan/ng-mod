@@ -12,7 +12,8 @@ def get_besetzt_module():
     return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS),
                                   BesetztModul(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS),
                                   BesetztModul(BesetztModulAdresse.B012_HAUPT_G1_MITTE),
-                                  BesetztModul(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS)})
+                                  BesetztModul(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS),
+                                  BesetztModul(BesetztModulAdresse.NOCH_NICHT_BESTIMMT)})
 
 
 def get_zug():
@@ -25,9 +26,9 @@ def get_zug():
     return zug_2015
 
 
-ennepetal_model = Streckenplaner().plane_ennepetal_model()
-ennepetal_view = Streckenmaler(ennepetal_model).plane_ennepetal_view()
 besetzt_modul_verwalter: BesetztModulVerwalter = get_besetzt_module()
+ennepetal_model = Streckenplaner().plane_ennepetal_model(besetzt_modul_verwalter)
+ennepetal_view = Streckenmaler(ennepetal_model, besetzt_modul_verwalter).plane_ennepetal_view()
 zug = get_zug()
 
 stellpult = Stellpult(ennepetal_model, ennepetal_view, besetzt_modul_verwalter, zug)

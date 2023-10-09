@@ -122,3 +122,15 @@ Hardware:
 
 
 ungefähr 10 im Güterbahnhof
+
+
+
+Aktuell einbau Besetztmeldungen in Homberge
+- Weichen kodieren
+- Meldungen in View einbauen
+- Zug 215 -> 91
+
+- alle initialisieren, nicht händisch
+- Besetztmodule bei model initialisieren bzw. zusammenlegen
+
+

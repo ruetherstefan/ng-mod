@@ -1,15 +1,17 @@
-from src.view.GleisView import *
-from src.view.WeicheView import *
-from src.view.GleisViewSchrauber import GleisViewSchrauber
+from src.model.BesetztModul import BesetztModulVerwalter
 from src.model.weiche.Weichenadresse import Weichenadresse
+from src.view.GleisView import *
+from src.view.GleisViewSchrauber import GleisViewSchrauber
+from src.view.WeicheView import *
 
 
 class Streckenmaler:
 
-    def __init__(self, models):
+    def __init__(self, models, verwalter: BesetztModulVerwalter):
         self.strecke_y = 9
         self.strecke_x = 20
         self.models = models
+        self.verwalter = verwalter
 
     def plane_ennepetal_view(self):
         gleise = self.erstelle_haupt_und_schattenbahnhof()
@@ -294,4 +296,3 @@ class Streckenmaler:
             # Liste der Elemente muss das gesuchte (nur einmal) enthalten, sonst gab es wohl einen
             # Implementierungsfehler
             raise NotImplementedError
-
