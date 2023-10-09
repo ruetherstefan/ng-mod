@@ -26,10 +26,10 @@ class Streckenmaler:
         haupt1.set_position_index([self.strecke_x, self.strecke_y])
         gleise = GleisViewSchrauber().neu(haupt1) \
             .linker_nachbar(WeicheViewLinksNachUnten(self.get_model(Weichenadresse.W20))) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B033_HAUPT_G3_HALTE_RECHTS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B032_HAUPT_G3_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B032_HAUPT_G3_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B031_HAUPT_G3_HALTE_LINKS))) \
             .linker_nachbar(GleisViewRechtsNachUnten()) \
             .links_unten_nachbar(WeicheViewLinksUntenNachOben(self.get_model(Weichenadresse.W24))) \
             .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B021_HAUPT_G2_HALTE_LINKS))) \
@@ -54,12 +54,12 @@ class Streckenmaler:
             .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS))) \
             .linker_nachbar(WeicheViewLinksNachOben(self.get_model(Weichenadresse.W25))) \
  \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
             .linker_nachbar(WeicheViewLinksUntenNachOben(self.get_model(Weichenadresse.W26))) \
             .links_unten_nachbar(GleisViewUntenNachRechts()) \
             .unterer_nachbar(GleisViewVertikal()) \
