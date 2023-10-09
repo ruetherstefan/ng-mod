@@ -16,19 +16,20 @@ def gegeben_zug_mit_anfang_und_ende(anfang, ende) -> Zug:
 
 def gegeben_fahrstrecke_mit_einem_modul() -> Fahrstrecke:
     fahrstrecke: Fahrstrecke = Fahrstrecke()
-    fahrstrecke.besetzt_module = [BesetztModulAdresse.H1]
+    fahrstrecke.besetzt_module = [BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS]
     return fahrstrecke
 
 
 def gegeben_fahrstrecke_mit_zwei_modulen() -> Fahrstrecke:
     fahrstrecke: Fahrstrecke = gegeben_fahrstrecke_mit_einem_modul()
-    fahrstrecke.besetzt_module.append(BesetztModulAdresse.H2)
+    fahrstrecke.besetzt_module.append(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS)
     return fahrstrecke
 
 
 def test_update_zug_speed_strecke_gerade():
     fahrstrecke = gegeben_fahrstrecke_mit_einem_modul()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H1)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS)
 
     fahrstrecke.speed_modifier = {}
     zug.speeds = {SpeedModifier.STRECKE_GERADE: 10}
@@ -39,9 +40,10 @@ def test_update_zug_speed_strecke_gerade():
 
 def test_update_zug_speed_strecke_abwaerts():
     fahrstrecke = gegeben_fahrstrecke_mit_einem_modul()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H1)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS)
 
-    fahrstrecke.speed_modifier = {BesetztModulAdresse.H1: SpeedModifier.STRECKE_ABWAERTS}
+    fahrstrecke.speed_modifier = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: SpeedModifier.STRECKE_ABWAERTS}
     zug.speeds = {SpeedModifier.STRECKE_ABWAERTS: 7,
                   SpeedModifier.STRECKE_AUFWAERTS: 15}
 
@@ -51,9 +53,10 @@ def test_update_zug_speed_strecke_abwaerts():
 
 def test_update_zug_speed_strecke_aufwaerts():
     fahrstrecke = gegeben_fahrstrecke_mit_einem_modul()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H1)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS)
 
-    fahrstrecke.speed_modifier = {BesetztModulAdresse.H1: SpeedModifier.STRECKE_AUFWAERTS}
+    fahrstrecke.speed_modifier = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: SpeedModifier.STRECKE_AUFWAERTS}
     zug.speeds = {SpeedModifier.STRECKE_ABWAERTS: 7,
                   SpeedModifier.STRECKE_AUFWAERTS: 15}
 
@@ -63,9 +66,10 @@ def test_update_zug_speed_strecke_aufwaerts():
 
 def test_update_zug_speed_bahnhof_stop():
     fahrstrecke = gegeben_fahrstrecke_mit_einem_modul()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H1)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS)
 
-    fahrstrecke.speed_modifier = {BesetztModulAdresse.H1: SpeedModifier.BAHNHOF_STOP}
+    fahrstrecke.speed_modifier = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: SpeedModifier.BAHNHOF_STOP}
     zug.speeds = {}
 
     ZugController().update_zug_speed(zug, fahrstrecke)
@@ -74,10 +78,11 @@ def test_update_zug_speed_bahnhof_stop():
 
 def test_update_zug_speed_min_von_anfang_und_ende__anfang_kleiner():
     fahrstrecke = gegeben_fahrstrecke_mit_zwei_modulen()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H2)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS)
 
-    fahrstrecke.speed_modifier = {BesetztModulAdresse.H1: SpeedModifier.STRECKE_ABWAERTS,
-                                  BesetztModulAdresse.H2: SpeedModifier.STRECKE_AUFWAERTS}
+    fahrstrecke.speed_modifier = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: SpeedModifier.STRECKE_ABWAERTS,
+                                  BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS: SpeedModifier.STRECKE_AUFWAERTS}
     zug.speeds = {SpeedModifier.STRECKE_ABWAERTS: 7,
                   SpeedModifier.STRECKE_AUFWAERTS: 15}
 
@@ -87,10 +92,11 @@ def test_update_zug_speed_min_von_anfang_und_ende__anfang_kleiner():
 
 def test_update_zug_speed_min_von_anfang_und_ende__ende_kleiner():
     fahrstrecke = gegeben_fahrstrecke_mit_zwei_modulen()
-    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.H1, BesetztModulAdresse.H2)
+    zug = gegeben_zug_mit_anfang_und_ende(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS,
+                                          BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS)
 
-    fahrstrecke.speed_modifier = {BesetztModulAdresse.H1: SpeedModifier.STRECKE_ABWAERTS,
-                                  BesetztModulAdresse.H2: SpeedModifier.STRECKE_AUFWAERTS}
+    fahrstrecke.speed_modifier = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: SpeedModifier.STRECKE_ABWAERTS,
+                                  BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS: SpeedModifier.STRECKE_AUFWAERTS}
     zug.speeds = {SpeedModifier.STRECKE_ABWAERTS: 15,
                   SpeedModifier.STRECKE_AUFWAERTS: 7}
 

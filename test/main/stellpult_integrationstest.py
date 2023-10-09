@@ -35,15 +35,15 @@ def mock_pygame_quit():
 
 
 def get_besetzt_module():
-    return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.H1),
-                                  BesetztModul(BesetztModulAdresse.H2),
-                                  BesetztModul(BesetztModulAdresse.H3)})
+    return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS),
+                                  BesetztModul(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS),
+                                  BesetztModul(BesetztModulAdresse.B012_HAUPT_G1_MITTE)})
 
 
 def get_zug():
     zug_2015: Zug = Zug()
-    zug_2015.ende = BesetztModulAdresse.H1
-    zug_2015.anfang = BesetztModulAdresse.H1
+    zug_2015.ende = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
+    zug_2015.anfang = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
     zug_2015.speeds = {SpeedModifier.STRECKE_GERADE: 15,
                        SpeedModifier.BAHNHOF_FAHRT: 8}
     zug_2015.lok = Lok(215)

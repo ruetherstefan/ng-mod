@@ -12,16 +12,16 @@ from src.view.WeicheView import WeicheViewRechtsNachOben, WeicheViewLinksNachObe
 
 
 def get_besetzt_module() -> BesetztModulVerwalter:
-    return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.H1),
-                                  BesetztModul(BesetztModulAdresse.H2),
-                                  BesetztModul(BesetztModulAdresse.H3),
-                                  BesetztModul(BesetztModulAdresse.H4)})
+    return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS),
+                                  BesetztModul(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS),
+                                  BesetztModul(BesetztModulAdresse.B012_HAUPT_G1_MITTE),
+                                  BesetztModul(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS)})
 
 
 def get_zug():
     zug_2015: Zug = Zug()
-    zug_2015.ende = BesetztModulAdresse.H1
-    zug_2015.anfang = BesetztModulAdresse.H1
+    zug_2015.ende = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
+    zug_2015.anfang = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
     zug_2015.speeds = {SpeedModifier.STRECKE_GERADE: 15,
                        SpeedModifier.BAHNHOF_FAHRT: 8}
     zug_2015.lok = Lok(215)
@@ -29,8 +29,8 @@ def get_zug():
 
 
 def get_model_mit_zwei_weichen(verwalter):
-    return [Weiche(Weichenadresse.W1, verwalter.get(BesetztModulAdresse.H3)),
-            Weiche(Weichenadresse.W2, verwalter.get(BesetztModulAdresse.H3))]
+    return [Weiche(Weichenadresse.W1, verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE)),
+            Weiche(Weichenadresse.W2, verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))]
 
 
 def get_barmen_view(models, besetzt_module: BesetztModulVerwalter):
@@ -38,15 +38,15 @@ def get_barmen_view(models, besetzt_module: BesetztModulVerwalter):
     haupt1.set_position_index([12, 12])
 
     gleise = GleisViewSchrauber().neu(haupt1) \
-        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.H1))) \
+        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS))) \
         .rechter_nachbar(GleisViewHorizontal()) \
-        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.H2))) \
+        .rechter_nachbar(GleisViewHorizontal(besetzt_module.get(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS))) \
         .rechter_nachbar(WeicheViewRechtsNachOben(get_model(Weichenadresse.W1, models))) \
         .rechter_nachbar(WeicheViewLinksNachOben(get_model(Weichenadresse.W2, models))) \
         .rechts_oben_nachbar(GleisViewObenNachLinks()) \
-        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.H3))) \
+        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
         .oberer_nachbar(GleisViewVertikal()) \
-        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.H4))) \
+        .oberer_nachbar(GleisViewVertikal(besetzt_module.get(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS))) \
         .ende()
 
     return gleise

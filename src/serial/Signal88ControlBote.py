@@ -7,29 +7,30 @@ from src.serial.Signal88Control import Signal88Control
 
 
 class Signal88ControlBote:
-    besetzt_modul_adress_mappings__module1: {BesetztModulAdresse: int} = {BesetztModulAdresse.H1: 0,
-                                                                          BesetztModulAdresse.H2: 1,
-                                                                          BesetztModulAdresse.H3: 2,
-                                                                          BesetztModulAdresse.H4: 3}
-    fake_results = {BesetztModulAdresse.H1: True,
-                    BesetztModulAdresse.H2: False,
-                    BesetztModulAdresse.H3: False,
-                    BesetztModulAdresse.H4: False}
+    besetzt_modul_adress_mappings__module1: {BesetztModulAdresse: int} = {
+        BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: 0,
+        BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS: 1,
+        BesetztModulAdresse.B012_HAUPT_G1_MITTE: 2,
+        BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS: 3}
+    fake_results = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: True,
+                    BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS: False,
+                    BesetztModulAdresse.B012_HAUPT_G1_MITTE: False,
+                    BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS: False}
 
     def __init__(self):
         self.signal_88_control: Signal88Control = Signal88Control()
         if SerialConnector.is_offline():
-            self.fake_results = {BesetztModulAdresse.H1: True,
-                                 BesetztModulAdresse.H2: False,
-                                 BesetztModulAdresse.H3: False,
-                                 BesetztModulAdresse.H4: False}
+            self.fake_results = {BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS: True,
+                                 BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS: False,
+                                 BesetztModulAdresse.B012_HAUPT_G1_MITTE: False,
+                                 BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS: False}
 
             self.signal_88_control = Mock(spec=Signal88Control)
             self.signal_88_control.lese_signale = Mock(
-                return_value=[Signal88ControlBote.fake_results[BesetztModulAdresse.H1],
-                              Signal88ControlBote.fake_results[BesetztModulAdresse.H2],
-                              Signal88ControlBote.fake_results[BesetztModulAdresse.H3],
-                              Signal88ControlBote.fake_results[BesetztModulAdresse.H4],
+                return_value=[Signal88ControlBote.fake_results[BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS],
+                              Signal88ControlBote.fake_results[BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS],
+                              Signal88ControlBote.fake_results[BesetztModulAdresse.B012_HAUPT_G1_MITTE],
+                              Signal88ControlBote.fake_results[BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS],
                               False, False,
                               False, False])
 
