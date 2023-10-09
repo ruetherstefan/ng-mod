@@ -1,4 +1,5 @@
 from src.model.BesetztModul import BesetztModulVerwalter
+from src.model.BesetztModulAdresse import BesetztModulAdresse
 from src.model.weiche.Weichenadresse import Weichenadresse
 from src.view.GleisView import *
 from src.view.GleisViewSchrauber import GleisViewSchrauber
@@ -20,7 +21,7 @@ class Streckenmaler:
 
         return gleise
 
-    def erstelle_haupt_und_schattenbahnhof(self, ):
+    def erstelle_haupt_und_schattenbahnhof(self):
         haupt1 = GleisViewHorizontal()
         haupt1.set_position_index([self.strecke_x, self.strecke_y])
         gleise = GleisViewSchrauber().neu(haupt1) \
@@ -31,26 +32,26 @@ class Streckenmaler:
             .linker_nachbar(GleisViewHorizontal()) \
             .linker_nachbar(GleisViewRechtsNachUnten()) \
             .links_unten_nachbar(WeicheViewLinksUntenNachOben(self.get_model(Weichenadresse.W24))) \
-            .rechter_nachbar(GleisViewHorizontal()) \
-            .rechter_nachbar(GleisViewHorizontal()) \
-            .rechter_nachbar(GleisViewHorizontal()) \
-            .rechter_nachbar(GleisViewHorizontal()) \
-            .rechter_nachbar(GleisViewHorizontal()) \
-            .rechter_nachbar(GleisViewHorizontal()) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B021_HAUPT_G2_HALTE_LINKS))) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B022_HAUPT_G2_MITTE))) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B022_HAUPT_G2_MITTE))) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B022_HAUPT_G2_MITTE))) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B022_HAUPT_G2_MITTE))) \
+            .rechter_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B023_HAUPT_G2_HALTE_RECHTS))) \
             .rechter_nachbar(WeicheViewRechtsNachOben(self.get_model(Weichenadresse.W23))) \
             .rechter_nachbar(WeicheViewLinksNachOben(self.get_model(Weichenadresse.W22))) \
             .rechter_nachbar(GleisViewLinksNachUnten()) \
             .rechts_unten_nachbar(WeicheViewRechtsUntenNachOben(self.get_model(Weichenadresse.W21))) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
-            .linker_nachbar(GleisViewHorizontal()) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B012_HAUPT_G1_MITTE))) \
+            .linker_nachbar(GleisViewHorizontal(self.verwalter.get(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS))) \
             .linker_nachbar(WeicheViewLinksNachOben(self.get_model(Weichenadresse.W25))) \
  \
             .linker_nachbar(GleisViewHorizontal()) \

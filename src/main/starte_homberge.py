@@ -9,11 +9,11 @@ from src.view.Streckenmaler import Streckenmaler
 
 
 def get_besetzt_module():
-    return BesetztModulVerwalter({BesetztModul(BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS),
-                                  BesetztModul(BesetztModulAdresse.B011_HAUPT_G1_HALTE_LINKS),
-                                  BesetztModul(BesetztModulAdresse.B012_HAUPT_G1_MITTE),
-                                  BesetztModul(BesetztModulAdresse.B013_HAUPT_G1_HALTE_RECHTS),
-                                  BesetztModul(BesetztModulAdresse.NOCH_NICHT_BESTIMMT)})
+    module: {BesetztModul} = set()
+    for adresse in BesetztModulAdresse:
+        module.add(BesetztModul(adresse))
+
+    return BesetztModulVerwalter(module)
 
 
 def get_zug():
