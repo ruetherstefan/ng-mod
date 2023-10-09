@@ -17,13 +17,13 @@ def get_besetzt_module():
 
 
 def get_zug():
-    zug_2015: Zug = Zug()
-    zug_2015.ende = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
-    zug_2015.anfang = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
-    zug_2015.speeds = {SpeedModifier.STRECKE_GERADE: 15,
+    zug_0091: Zug = Zug()
+    zug_0091.ende = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
+    zug_0091.anfang = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
+    zug_0091.speeds = {SpeedModifier.STRECKE_GERADE: 15,
                        SpeedModifier.BAHNHOF_FAHRT: 8}
-    zug_2015.lok = Lok(215)
-    return zug_2015
+    zug_0091.lok = Lok(91)
+    return zug_0091
 
 
 besetzt_modul_verwalter: BesetztModulVerwalter = get_besetzt_module()
