@@ -1,0 +1,25 @@
+Material:
+- IntelliBox
+ + Verbindungsstecker PC
+ + Lan Adapter
+ + Anschlussstecker s.u. mit Kabel (1. gelb/braun, 2. rot/braun, 3. rot/schwarz)
+ + Traffo
+
+Anleitung:
+- IntelliBox aufstellen
+ + mit PC
+ + mit extra Lan Adapter Verbinden
+ + Anschluss 1 mit Traffo verbinden, Eingang
+ + Anschluss 2 mit Gleisen, Ausgang
+ + Anschluss 3 mit Programiergleis verbinden, Ausgang
+
+- Schattenbahnhof
+ + Mitte- 4x Steckverbinder Weichensteuerung verbinden (~Elektronik und Gleisspannung)
+ + IntelliBox 12x Steckverbinder Stromversorgung Gleisauswärts verbinden
+ + 2 Kabel von Mitte gleis bei Hauptstromleiste verbinden, Draufsicht von Unten -> 5 von Links; hinten und vorne
+ + Ende Ausfahrleis - Kehrschleifenkabal 3x Kabel
+ + 2 Kabel Eingang Schatten zu Aufgang
+ + Pflügenschrauben Mitte
+ + Pflügenschraube Ausgangsteil-Kehrschleife-Verbindung lösen und Ausgangsteil ausbauen
+ + Pflügenschrauben 2x Kerschleifengerade
+ + Pflügelschrauben 2x Verbindung Aufgang

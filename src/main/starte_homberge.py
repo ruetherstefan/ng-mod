@@ -22,7 +22,7 @@ def get_zug():
     zug_0091.anfang = BesetztModulAdresse.B001_HAUPT_AUSFAHRT_LINKS
     zug_0091.speeds = {SpeedModifier.STRECKE_GERADE: 70,
                        SpeedModifier.BAHNHOF_FAHRT: 30}
-    zug_0091.lok = Lok(91)
+    zug_0091.lok = Lok(100)
     return zug_0091
 
 

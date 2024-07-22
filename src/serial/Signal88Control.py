@@ -7,12 +7,10 @@ Communication with Intellibox (IB) via serial COM port
 History:
 """
 
-
 from src.serial import SerialConnector
 
 
 class Signal88Control:
-
     """
     -> Diese Funktion sollte aufgerufen werden, um die erwartete Konfiguration der IB zu prüfen.
        Diese sollte manuell in der IB konfiguriert werden.
@@ -26,12 +24,13 @@ class Signal88Control:
     Antwort: 1. Byte: 0 = Ok, accepted oder Fehlercode
              2. Byte: Wert des abgefragten Parameters
     """
+
     def get_anzahl_16bit_module(self):
         cmd = b'\x9C'
         print(cmd)
         SerialConnector.ser.write(cmd)
         parameter = b'\0'
-        print (parameter)
+        print(parameter)
         SerialConnector.ser.write(parameter)
         errorcode = SerialConnector.ser.read()
         if errorcode != 0:
@@ -40,7 +39,6 @@ class Signal88Control:
         print(answer)
         # Anzahl der in der IB konfigurierten 2-Byte Module
         return answer
-
 
     """
     X88PSet (0x9D)- Länge = 1+2 Bytes
@@ -58,7 +56,6 @@ class Signal88Control:
          values specified by the user (per IB menus) and stored in the
          corresponding Special Option.
     """
-
 
     """
     -> Wichtigste Funktion um die an der IB angeschlossenen S88-Module von der IB einzulesen.
@@ -82,22 +79,23 @@ class Signal88Control:
     Reading an s88 module with the XSensor cmd removes any
     eventually pending sensor event for that module.
     """
+
     def lese_signale(self, modulenumber: int):
         cmd = b'\x98'
-        print(cmd)
+        # print(cmd)
         SerialConnector.ser.write(cmd)
 
-        print("modulnummer: " + str(modulenumber))
+        # print("modulnummer: " + str(modulenumber))
         SerialConnector.ser.write(modulenumber.to_bytes(1, 'little'))
         errorcode = SerialConnector.ser.read()
         if errorcode != b'\x00':
             print('GetS88Module Error Code: ' + str(errorcode))
             return  # Abbruch anders programmieren
-        byte1 = SerialConnector.ser.read()      # Eingänge 1..8 dieses Moduls (Bits 7..0)
-        byte2 = SerialConnector.ser.read()      # Eingänge 9..16 dieses Moduls
+        byte1 = SerialConnector.ser.read()  # Eingänge 1..8 dieses Moduls (Bits 7..0)
+        byte2 = SerialConnector.ser.read()  # Eingänge 9..16 dieses Moduls
 
-        print("Byte1: " + str(self.decode_bytes_to_boolarray(byte1)))
-        print("Byte2: " + str(self.decode_bytes_to_boolarray(byte2)))
+        # print("Byte1: " + str(self.decode_bytes_to_boolarray(byte1)))
+        # print("Byte2: " + str(self.decode_bytes_to_boolarray(byte2)))
         return self.decode_bytes_to_boolarray(byte1) + self.decode_bytes_to_boolarray(byte2)
 
     @staticmethod

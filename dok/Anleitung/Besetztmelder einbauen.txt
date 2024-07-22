@@ -1,0 +1,31 @@
+Material:
+- ungefähr 12 V Testspannung (Gleichspannung)
+
+Anleitung:
+- Vor Einbau sind GND und VDrive die beiden Leitungen die als Fahrspannung von der IntelliBox an die Gleise gehen
+- Beim Einbau entscheide ich welche dieser beiden für mich GND und welche VDrive (Wechselspannung)
+- Die VDrive wird von den Gleisen getrennt und mit der Schaltung verbunden
+- Auf dieser Seite werden die Gleise geschnitten und die Inputs werden an die unterbrochenen Gleisabschnitte angeschlossen
+
+Grundsätzliches:
+- Jede Platine hat 2 Besetztmelde-Schaltung
+- Jede Platine hat für beide Schaltungen eine gemeinsame Masse
+-> Daraus folgt, dass die beiden Schaltungen einer Platine für 2 Messstellen mit durchgehendem Gleis (Masse) sind
+-> Daraus folgt, dass das zweite Gleis der beiden Schaltungen getrennt sein muss, um messen zu können
+
+Begriffe:
+-
+
+
+
+
+Kehrschleifen-Modus:
+- Durchdenken, ob nach Layout Kurzschluss entstehen kann
+- Eine reduzierte Platine würde nicht benötigt, wenn ich diesen Bereich nicht auf dem PC benötige
+- Die Kehrschleifenschaltung kann ich simulieren, indem ich händisch umpole
+- Bzw. ausprobieren, da mit vollen Schaltungen experimentiert werden kann
+- Beim Bauen der Schaltungen die beiden Kehrschleifenjumper verbinden jeweils J2 und J4
+- Außerdem die beiden GND verbinden, hierfür wird bei der reduzierten Platine anstatt den Steckers J1 bei GND ein Kabel eingelötet
+- Minderbestückung ist Rot markiert
+- Im Schaltbind wird nur benötigt, was hinter den Jumpern ist
+- Somit wird bei Anschluss der reduzierten Schaltung kein VDrive, Input und GND einmal an die Schienen angeschlossen (auch kein Stecker da)
