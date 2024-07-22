@@ -4,7 +4,7 @@ Material:
 Anleitung:
 - Vor Einbau sind GND und VDrive die beiden Leitungen die als Fahrspannung von der IntelliBox an die Gleise gehen
 - Beim Einbau entscheide ich welche dieser beiden für mich GND und welche VDrive (Wechselspannung)
-- Die VDrive wird von den Gleisen getrennt und mit der Schaltung verbunden
+- Die GND wird von den Gleisen getrennt und mit der Schaltung verbunden
 - Auf dieser Seite werden die Gleise geschnitten und die Inputs werden an die unterbrochenen Gleisabschnitte angeschlossen
 
 Grundsätzliches:
@@ -29,3 +29,17 @@ Kehrschleifen-Modus:
 - Minderbestückung ist Rot markiert
 - Im Schaltbind wird nur benötigt, was hinter den Jumpern ist
 - Somit wird bei Anschluss der reduzierten Schaltung kein VDrive, Input und GND einmal an die Schienen angeschlossen (auch kein Stecker da)
+
+
+belegung rechts
+gleis   nr-S88
+2       10
+2 melde 9
+3       11
+3 melde 12
+1       13
+1 melde 14
+4       7
+4 melde 8
+5       6
+5 melde 5

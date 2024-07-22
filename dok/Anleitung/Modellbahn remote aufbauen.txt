@@ -23,3 +23,58 @@ Anleitung:
  + Pflügenschraube Ausgangsteil-Kehrschleife-Verbindung lösen und Ausgangsteil ausbauen
  + Pflügenschrauben 2x Kerschleifengerade
  + Pflügelschrauben 2x Verbindung Aufgang
+
+
+ Gedankenliste
+
++ Die Eingangsplatte hat noch zu viel Wiederstand - alle Gleise + Weichen verbunden
+
+x Kehrschleife Schattenbahnhof
+- Die Doppelte Trennung der Kehrschleife ist jeweils an den Bauteilübergängen (Ausfahrt-Kurve, Gerade-Einfahrt)
+- Die Kurve besteht aus einem Mess und dem Umpolbereich
+- Die Gerade besteht aus einem Mess und einem Umpolbereich
+- Man könnte die beiden Umpolbereiche zusammenlegen und gemeinsam anschließen; möglicherweise bei einer Schaltung in der Nähe mit Platz
+- Alternativ kann man beide seperat messen mit einer Vollbestückten Platine
+- Es ist sinnvoll die beiden inneren Messbereiche zusammen mit einer Sonderkombi anzuschließen. Lange Kabel aber gemeinsame Umpolung.
+- Jeweils die Eingangs, als auch die Ausgangsplatte haben einen Kehrschleifen-Messbereich mit dabei, und benötigen dafür eine Sonderkombi
+
+
+
+
+
+
+
+
+- weichenbereich + kehr
+- messbrücke nach vorne
+- kabel sichern
+
+- Warum habe ich gerade vdive auf den Messgleisen?
+- wie bekomme ich besser VDrive an meine Schaltung
+
+- Hauptleitungsverteiler anbringen
+ - Vdrive und Ground (nur zur Schaltung)
+
+- Mehr einbauen
+
+- Adapter Messleitung a-b Brücke bauen
+
+
+
+
+
+
+- Testweise Schaltung löten
+
+- Alte Kabel oben befestigen, weg von den Gleisen
+
+Baumarkt
+- 2er Bohrer
+- 3 bastelplatte
+- Klötzchen
+- Schrauben für bastel und klötzchen
+- Anlötpunkte
+- Heißklebepistole?
+- Akku-Schrauber
+- Kabelbinder
+- Schrauben für S88 festmachen 2x30
